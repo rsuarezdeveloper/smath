@@ -18,6 +18,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Auth\UserBundle\AuthUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Smath\ProductoBundle\SmathProductoBundle(),
+            new Smath\ClienteBundle\SmathClienteBundle(),
+            new Smath\BaseBundle\SmathBaseBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,18 @@
+smath_base:
+    resource: "@SmathBaseBundle/Controller/"
+    type:     annotation
+    prefix:   /base
+
+smath_cliente:
+    resource: "@SmathClienteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+smath_producto:
+    resource: "@SmathProductoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 auth_user:
     resource: "@AuthUserBundle/Controller/"
     type:     annotation
