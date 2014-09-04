@@ -5,12 +5,12 @@ namespace Smath\ProductoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * productoproveedor
+ * ProductoProveedor
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\productoproveedorRepository")
+ * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\ProductoProveedorRepository")
  */
-class productoproveedor
+class ProductoProveedor
 {
     /**
      * @var integer
@@ -22,13 +22,13 @@ class productoproveedor
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\producto",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\Producto",cascade={"persist"})
      * @ORM\JoinColumn(name="producto", referencedColumnName="id")
      */
     private $producto;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\proveedor",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\Proveedor",cascade={"persist"})
      * @ORM\JoinColumn(name="proveedor", referencedColumnName="id")
      */
     private $proveedor;
@@ -36,9 +36,9 @@ class productoproveedor
     /**
      * @var integer
      *
-     * @ORM\Column(name="propro_stock", type="integer")
+     * @ORM\Column(name="stock", type="integer")
      */
-    private $proproStock;
+    private $Stock;
 
 
     /**
@@ -55,35 +55,35 @@ class productoproveedor
 
 
     /**
-     * Set proproStock
+     * Set Stock
      *
-     * @param integer $proproStock
+     * @param integer $Stock
      * @return productoproveedor
      */
-    public function setProproStock($proproStock)
+    public function setStock($Stock)
     {
-        $this->proproStock = $proproStock;
+        $this->proproStock = $Stock;
 
         return $this;
     }
 
     /**
-     * Get proproStock
+     * Get Stock
      *
      * @return integer
      */
-    public function getProproStock()
+    public function getStock()
     {
-        return $this->proproStock;
+        return $this->Stock;
     }
 
     /**
      * Set producto
      *
-     * @param \Smath\ProductoBundle\Entity\producto $producto
+     * @param \Smath\ProductoBundle\Entity\Producto $producto
      * @return productoproveedor
      */
-    public function setProducto(\Smath\ProductoBundle\Entity\producto $producto = null)
+    public function setProducto(\Smath\ProductoBundle\Entity\Producto $producto = null)
     {
         $this->producto = $producto;
 
@@ -93,7 +93,7 @@ class productoproveedor
     /**
      * Get producto
      *
-     * @return \Smath\ProductoBundle\Entity\producto
+     * @return \Smath\ProductoBundle\Entity\Producto
      */
     public function getProducto()
     {
@@ -103,10 +103,10 @@ class productoproveedor
     /**
      * Set proveedor
      *
-     * @param \Smath\ProductoBundle\Entity\proveedor $proveedor
+     * @param \Smath\ProductoBundle\Entity\Proveedor $proveedor
      * @return productoproveedor
      */
-    public function setProveedor(\Smath\ProductoBundle\Entity\proveedor $proveedor = null)
+    public function setProveedor(\Smath\ProductoBundle\Entity\Proveedor $proveedor = null)
     {
         $this->proveedor = $proveedor;
 
@@ -116,7 +116,7 @@ class productoproveedor
     /**
      * Get proveedor
      *
-     * @return \Smath\ProductoBundle\Entity\proveedor
+     * @return \Smath\ProductoBundle\Entity\Proveedor
      */
     public function getProveedor()
     {

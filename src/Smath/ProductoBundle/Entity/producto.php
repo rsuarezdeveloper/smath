@@ -5,12 +5,12 @@ namespace Smath\ProductoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * producto
+ * Producto
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\productoRepository")
+ * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\ProductoRepository")
  */
-class producto
+class Producto
 {
     /**
      * @var integer
@@ -23,38 +23,38 @@ class producto
 
 
      /**
-     * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\linea",cascade={"persist"})
-     * @ORM\JoinColumn(name="linea", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\Linea",cascade={"persist"})
+     * @ORM\JoinColumn(name="Linea", referencedColumnName="id")
      */
     private $linea;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_referencia", type="string", length=45)
+     * @ORM\Column(name="referencia", type="string", length=45)
      */
-    private $proReferencia;
+    private $Referencia;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_nombre", type="string", length=45)
+     * @ORM\Column(name="nombre", type="string", length=45)
      */
-    private $proNombre;
+    private $Nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_descripcion", type="string", length=150)
+     * @ORM\Column(name="descripcion", type="string", length=150)
      */
-    private $proDescripcion;
+    private $Descripcion;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="pro_activo", type="smallint")
+     * @ORM\Column(name="estado", type="smallint")
      */
-    private $proActivo;
+    private $Estado;
 
 
     /**
@@ -70,104 +70,104 @@ class producto
 
 
     /**
-     * Set proReferencia
+     * Set Referencia
      *
-     * @param string $proReferencia
+     * @param string $Referencia
      * @return producto
      */
-    public function setProReferencia($proReferencia)
+    public function setReferencia($Referencia)
     {
-        $this->proReferencia = $proReferencia;
+        $this->Referencia = $Referencia;
 
         return $this;
     }
 
     /**
-     * Get proReferencia
+     * Get Referencia
      *
      * @return string
      */
-    public function getProReferencia()
+    public function getReferencia()
     {
-        return $this->proReferencia;
+        return $this->Referencia;
     }
 
     /**
-     * Set proNombre
+     * Set Nombre
      *
-     * @param string $proNombre
+     * @param string $Nombre
      * @return producto
      */
-    public function setProNombre($proNombre)
+    public function setNombre($Nombre)
     {
-        $this->proNombre = $proNombre;
+        $this->Nombre = $Nombre;
 
         return $this;
     }
 
     /**
-     * Get proNombre
+     * Get Nombre
      *
      * @return string
      */
-    public function getProNombre()
+    public function getNombre()
     {
-        return $this->proNombre;
+        return $this->Nombre;
     }
 
     /**
-     * Set proDescripcion
+     * Set Descripcion
      *
-     * @param string $proDescripcion
+     * @param string $Descripcion
      * @return producto
      */
-    public function setProDescripcion($proDescripcion)
+    public function setDescripcion($Descripcion)
     {
-        $this->proDescripcion = $proDescripcion;
+        $this->Descripcion = $Descripcion;
 
         return $this;
     }
 
     /**
-     * Get proDescripcion
+     * Get Descripcion
      *
      * @return string
      */
-    public function getProDescripcion()
+    public function getDescripcion()
     {
-        return $this->proDescripcion;
+        return $this->Descripcion;
     }
 
     /**
-     * Set proActivo
+     * Set Estado
      *
-     * @param integer $proActivo
+     * @param integer Estado
      * @return producto
      */
-    public function setProActivo($proActivo)
+    public function setEstado($Estado)
     {
-        $this->proActivo = $proActivo;
+        $this->Estado = $Estado;
 
         return $this;
     }
 
     /**
-     * Get proActivo
+     * Get Estado
      *
      * @return integer
      */
-    public function getProActivo()
+    public function getEstado()
     {
-        return $this->proActivo;
+        return $this->Estado;
     }
 
     /**
      * Set linea
      *
-     * @param \Smath\ProductoBundle\Entity\linea $linea
+     * @param \Smath\ProductoBundle\Entity\Linea $linea
      * @return producto
      */
-    public function setLinea(\Smath\ProductoBundle\Entity\linea $linea = null)
+    public function setLinea(\Smath\ProductoBundle\Entity\Linea $linea = null)
     {
         $this->linea = $linea;
 
@@ -177,7 +177,7 @@ class producto
     /**
      * Get linea
      *
-     * @return \Smath\ProductoBundle\Entity\linea
+     * @return \Smath\ProductoBundle\Entity\Linea
      */
     public function getLinea()
     {

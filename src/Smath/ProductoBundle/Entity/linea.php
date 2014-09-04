@@ -5,12 +5,12 @@ namespace Smath\ProductoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * linea
+ * Linea
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\lineaRepository")
+ * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\LineaRepository")
  */
-class linea
+class Linea
 {
     /**
      * @var integer
@@ -24,23 +24,16 @@ class linea
     /**
      * @var integer
      *
-     * @ORM\Column(name="lin_lin_id", type="integer")
+     * @ORM\Column(name="codigo", type="integer")
      */
-    private $linLinId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lin_codigo", type="integer")
-     */
-    private $linCodigo;
+    private $Codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lin_descripcion", type="string", length=45)
+     * @ORM\Column(name="descripcion", type="string", length=45)
      */
-    private $linDescripcion;
+    private $Descripcion;
 
     /**
      * @var integer
@@ -52,9 +45,9 @@ class linea
     /**
      * @var integer
      *
-     * @ORM\Column(name="lin_activo", type="smallint")
+     * @ORM\Column(name="estado", type="smallint")
      */
-    private $linActivo;
+    private $estado;
 
 
     /**
@@ -68,72 +61,49 @@ class linea
     }
 
     /**
-     * Set linLinId
+     * Set Codigo
      *
-     * @param integer $linLinId
+     * @param integer $Codigo
      * @return linea
      */
-    public function setLinLinId($linLinId)
+    public function setCodigo($Codigo)
     {
-        $this->linLinId = $linLinId;
+        $this->Codigo = $Codigo;
 
         return $this;
     }
 
     /**
-     * Get linLinId
+     * Get Codigo
      *
      * @return integer
      */
-    public function getLinLinId()
+    public function getCodigo()
     {
-        return $this->linLinId;
+        return $this->Codigo;
     }
 
     /**
-     * Set linCodigo
+     * Set Descripcion
      *
-     * @param integer $linCodigo
+     * @param string $Descripcion
      * @return linea
      */
-    public function setLinCodigo($linCodigo)
+    public function setDescripcion($Descripcion)
     {
-        $this->linCodigo = $linCodigo;
+        $this->Descripcion = $Descripcion;
 
         return $this;
     }
 
     /**
-     * Get linCodigo
-     *
-     * @return integer
-     */
-    public function getLinCodigo()
-    {
-        return $this->linCodigo;
-    }
-
-    /**
-     * Set linDescripcion
-     *
-     * @param string $linDescripcion
-     * @return linea
-     */
-    public function setLinDescripcion($linDescripcion)
-    {
-        $this->linDescripcion = $linDescripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get linDescripcion
+     * Get Descripcion
      *
      * @return string
      */
-    public function getLinDescripcion()
+    public function getDescripcion()
     {
-        return $this->linDescripcion;
+        return $this->Descripcion;
     }
 
     /**
@@ -160,30 +130,30 @@ class linea
     }
 
     /**
-     * Set linActivo
+     * Set Estado
      *
-     * @param integer $linActivo
+     * @param integer $estado
      * @return linea
      */
-    public function setLinActivo($linActivo)
+    public function setEstado($estado)
     {
-        $this->linActivo = $linActivo;
+        $this->Estado = $estado;
 
         return $this;
     }
 
     /**
-     * Get linActivo
+     * Get Estado
      *
      * @return integer
      */
-    public function getLinActivo()
+    public function getEstado()
     {
-        return $this->linActivo;
+        return $this->Estado;
     }
 
     public function __toString()
     {
-        return $this->linDescripcion;
+        return $this->Descripcion;
     }
 }

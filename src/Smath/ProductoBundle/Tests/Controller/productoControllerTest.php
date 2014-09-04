@@ -4,7 +4,7 @@ namespace Smath\ProductoBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class productoControllerTest extends WebTestCase
+class ProductoControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
