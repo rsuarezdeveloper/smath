@@ -1,3 +1,8 @@
+smath_empresa:
+    resource: "@SmathEmpresaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 smath_base:
     resource: "@SmathBaseBundle/Controller/"
     type:     annotation

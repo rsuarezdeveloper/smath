@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Smath\ProductoBundle\SmathProductoBundle(),
             new Smath\ClienteBundle\SmathClienteBundle(),
             new Smath\BaseBundle\SmathBaseBundle(),
+            new Smath\EmpresaBundle\SmathEmpresaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
