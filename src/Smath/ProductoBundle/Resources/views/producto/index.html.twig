@@ -1,17 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>producto list</h1>
+    <h1>Producto list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Proreferencia</th>
-                <th>Linea</th>
-                <th>Pronombre</th>
-                <th>Prodescripcion</th>
-                <th>Proactivo</th>
+                <th>Referencia</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,11 +18,10 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('producto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.proReferencia }}</td>
-                <td>{{ entity.linea.linDescripcion}}</td>
-                <td>{{ entity.proNombre }}</td>
-                <td>{{ entity.proDescripcion }}</td>
-                <td>{{ entity.proActivo }}</td>
+                <td>{{ entity.Referencia }}</td>
+                <td>{{ entity.Nombre }}</td>
+                <td>{{ entity.Descripcion }}</td>
+                <td>{{ entity.Estado }}</td>
                 <td>
                 <ul>
                     <li>

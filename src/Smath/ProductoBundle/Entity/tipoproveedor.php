@@ -5,12 +5,12 @@ namespace Smath\ProductoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * tipoproveedor
+ * TipoProveedor
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\tipoproveedorRepository")
+ * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\TipoProveedorRepository")
  */
-class tipoproveedor
+class TipoProveedor
 {
     /**
      * @var integer
@@ -24,16 +24,16 @@ class tipoproveedor
     /**
      * @var string
      *
-     * @ORM\Column(name="tippro_nombre", type="string", length=45)
+     * @ORM\Column(name="nombre", type="string", length=45)
      */
-    private $tipproNombre;
+    private $Nombre;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tippro_activo", type="smallint")
+     * @ORM\Column(name="estado", type="smallint")
      */
-    private $tipproActivo;
+    private $Estado;
 
 
     /**
@@ -47,48 +47,48 @@ class tipoproveedor
     }
 
     /**
-     * Set tipproNombre
+     * Set Nombre
      *
-     * @param string $tipproNombre
+     * @param string $Nombre
      * @return tipoproveedor
      */
-    public function setTipproNombre($tipproNombre)
+    public function setNombre($Nombre)
     {
-        $this->tipproNombre = $tipproNombre;
+        $this->Nombre = $Nombre;
 
         return $this;
     }
 
     /**
-     * Get tipproNombre
+     * Get Nombre
      *
      * @return string
      */
-    public function getTipproNombre()
+    public function getNombre()
     {
-        return $this->tipproNombre;
+        return $this->Nombre;
     }
 
     /**
-     * Set tipproActivo
+     * Set Estado
      *
-     * @param integer $tipproActivo
+     * @param integer $Estado
      * @return tipoproveedor
      */
-    public function setTipproActivo($tipproActivo)
+    public function setEstado($Estado)
     {
-        $this->tipproActivo = $tipproActivo;
+        $this->Estado = $Estado;
 
         return $this;
     }
 
     /**
-     * Get tipproActivo
+     * Get Estado
      *
      * @return integer
      */
-    public function getTipproActivo()
+    public function getEstado()
     {
-        return $this->tipproActivo;
+        return $this->Estado;
     }
 }

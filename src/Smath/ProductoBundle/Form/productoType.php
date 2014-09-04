@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class productoType extends AbstractType
+class ProductoType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,11 @@ class productoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('proReferencia')
-            ->add('proNombre')
-            ->add('proDescripcion')
-            ->add('proActivo')
-            ->add('linea')
+            ->add('Referencia')
+            ->add('Nombre')
+            ->add('Descripcion')
+            ->add('Estado')
+            ->add('Linea')
         ;
     }
 
@@ -29,7 +29,7 @@ class productoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Smath\ProductoBundle\Entity\producto'
+            'data_class' => 'Smath\ProductoBundle\Entity\Producto'
         ));
     }
 

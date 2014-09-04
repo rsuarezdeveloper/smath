@@ -5,12 +5,12 @@ namespace Smath\ProductoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * proveedor
+ * Proveedor
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\proveedorRepository")
+ * @ORM\Entity(repositoryClass="Smath\ProductoBundle\Entity\ProveedorRepository")
  */
-class proveedor
+class Proveedor
 {
     /**
      * @var integer
@@ -31,9 +31,9 @@ class proveedor
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_razonsocial", type="string", length=150)
+     * @ORM\Column(name="razonsocial", type="string", length=150)
      */
-    private $proRazonsocial;
+    private $Razonsocial;
 
     /**
      * @var integer
@@ -45,37 +45,37 @@ class proveedor
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_numerodocumento", type="string", length=100)
+     * @ORM\Column(name="numerodocumento", type="string", length=100)
      */
-    private $proNumerodocumento;
+    private $Numerodocumento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_direccion", type="string", length=45)
+     * @ORM\Column(name="direccion", type="string", length=45)
      */
-    private $proDireccion;
+    private $Direccion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_telefono", type="string", length=45)
+     * @ORM\Column(name="telefono", type="string", length=45)
      */
-    private $proTelefono;
+    private $Telefono;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pro_correoelectronico", type="string", length=100)
+     * @ORM\Column(name="correoelectronico", type="string", length=100)
      */
-    private $proCorreoelectronico;
+    private $Correoelectronico;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="pro_activo", type="integer")
+     * @ORM\Column(name="estado", type="integer")
      */
-    private $proActivo;
+    private $Estado;
 
 
     /**
@@ -112,26 +112,26 @@ class proveedor
     }
 
     /**
-     * Set proRazonsocial
+     * Set Razonsocial
      *
-     * @param string $proRazonsocial
+     * @param string $Razonsocial
      * @return proveedor
      */
-    public function setProRazonsocial($proRazonsocial)
+    public function setRazonsocial($Razonsocial)
     {
-        $this->proRazonsocial = $proRazonsocial;
+        $this->Razonsocial = $Razonsocial;
 
         return $this;
     }
 
     /**
-     * Get proRazonsocial
+     * Get Razonsocial
      *
      * @return string
      */
-    public function getProRazonsocial()
+    public function getRazonsocial()
     {
-        return $this->proRazonsocial;
+        return $this->Razonsocial;
     }
 
     /**
@@ -158,117 +158,117 @@ class proveedor
     }
 
     /**
-     * Set proNumerodocumento
+     * Set Numerodocumento
      *
-     * @param string $proNumerodocumento
+     * @param string $Numerodocumento
      * @return proveedor
      */
-    public function setProNumerodocumento($proNumerodocumento)
+    public function setNumerodocumento($Numerodocumento)
     {
-        $this->proNumerodocumento = $proNumerodocumento;
+        $this->Numerodocumento = $Numerodocumento;
 
         return $this;
     }
 
     /**
-     * Get proNumerodocumento
+     * Get Numerodocumento
      *
      * @return string
      */
-    public function getProNumerodocumento()
+    public function getNumerodocumento()
     {
-        return $this->proNumerodocumento;
+        return $this->Numerodocumento;
     }
 
     /**
-     * Set proDireccion
+     * Set Direccion
      *
-     * @param string $proDireccion
+     * @param string $Direccion
      * @return proveedor
      */
-    public function setProDireccion($proDireccion)
+    public function setDireccion($Direccion)
     {
-        $this->proDireccion = $proDireccion;
+        $this->Direccion = $Direccion;
 
         return $this;
     }
 
     /**
-     * Get proDireccion
+     * Get Direccion
      *
      * @return string
      */
-    public function getProDireccion()
+    public function getDireccion()
     {
-        return $this->proDireccion;
+        return $this->Direccion;
     }
 
     /**
-     * Set proTelefono
+     * Set Telefono
      *
-     * @param string $proTelefono
+     * @param string $Telefono
      * @return proveedor
      */
-    public function setProTelefono($proTelefono)
+    public function setTelefono($Telefono)
     {
-        $this->proTelefono = $proTelefono;
+        $this->Telefono = $Telefono;
 
         return $this;
     }
 
     /**
-     * Get proTelefono
+     * Get Telefono
      *
      * @return string
      */
-    public function getProTelefono()
+    public function getTelefono()
     {
-        return $this->proTelefono;
+        return $this->Telefono;
     }
 
     /**
-     * Set proCorreoelectronico
+     * Set Correoelectronico
      *
-     * @param string $proCorreoelectronico
+     * @param string $Correoelectronico
      * @return proveedor
      */
-    public function setProCorreoelectronico($proCorreoelectronico)
+    public function setCorreoelectronico($Correoelectronico)
     {
-        $this->proCorreoelectronico = $proCorreoelectronico;
+        $this->Correoelectronico = $Correoelectronico;
 
         return $this;
     }
 
     /**
-     * Get proCorreoelectronico
+     * Get Correoelectronico
      *
      * @return string
      */
-    public function getProCorreoelectronico()
+    public function getCorreoelectronico()
     {
-        return $this->proCorreoelectronico;
+        return $this->Correoelectronico;
     }
 
     /**
-     * Set proActivo
+     * Set Estado
      *
-     * @param integer $proActivo
+     * @param integer $Estado
      * @return proveedor
      */
-    public function setProActivo($proActivo)
+    public function setEstado($Estado)
     {
-        $this->proActivo = $proActivo;
+        $this->Estado = $Estado;
 
         return $this;
     }
 
     /**
-     * Get proActivo
+     * Get Estado
      *
      * @return integer
      */
-    public function getProActivo()
+    public function getEstado()
     {
-        return $this->proActivo;
+        return $this->Estado;
     }
 }

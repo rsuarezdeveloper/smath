@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>producto</h1>
+    <h1>Producto</h1>
 
     <table class="record_properties">
         <tbody>
@@ -10,20 +10,20 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Proreferencia</th>
-                <td>{{ entity.proReferencia }}</td>
+                <th>Referencia</th>
+                <td>{{ entity.Referencia }}</td>
             </tr>
             <tr>
-                <th>Pronombre</th>
-                <td>{{ entity.proNombre }}</td>
+                <th>Nombre</th>
+                <td>{{ entity.Nombre }}</td>
             </tr>
             <tr>
-                <th>Prodescripcion</th>
-                <td>{{ entity.proDescripcion }}</td>
+                <th>Descripcion</th>
+                <td>{{ entity.Descripcion }}</td>
             </tr>
             <tr>
-                <th>Proactivo</th>
-                <td>{{ entity.proActivo }}</td>
+                <th>Estado</th>
+                <td>{{ entity.Estado }}</td>
             </tr>
         </tbody>
     </table>
