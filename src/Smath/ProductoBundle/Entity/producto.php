@@ -21,10 +21,9 @@ class Producto
      */
     private $id;
 
-
      /**
      * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\Linea",cascade={"persist"})
-     * @ORM\JoinColumn(name="Linea", referencedColumnName="id")
+     * @ORM\JoinColumn(name="linea", referencedColumnName="id")
      */
     private $linea;
 
@@ -66,8 +65,6 @@ class Producto
     {
         return $this->id;
     }
-
-
 
     /**
      * Set Referencia
@@ -165,7 +162,7 @@ class Producto
      * Set linea
      *
      * @param \Smath\ProductoBundle\Entity\Linea $linea
-     * @return producto
+     * @return Producto
      */
     public function setLinea(\Smath\ProductoBundle\Entity\Linea $linea = null)
     {
@@ -184,8 +181,7 @@ class Producto
         return $this->linea;
     }
 
-    public function __toString()
-    {
-        return $this->lin_descripcion;
+    public function __toString(){
+         return $this->Nombre;
     }
 }

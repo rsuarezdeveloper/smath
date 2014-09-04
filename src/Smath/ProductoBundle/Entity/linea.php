@@ -47,7 +47,7 @@ class Linea
      *
      * @ORM\Column(name="estado", type="smallint")
      */
-    private $estado;
+    private $Estado;
 
 
     /**
@@ -106,28 +106,6 @@ class Linea
         return $this->Descripcion;
     }
 
-    /**
-     * Set lineaId
-     *
-     * @param integer $lineaId
-     * @return linea
-     */
-    public function setLineaId($lineaId)
-    {
-        $this->lineaId = $lineaId;
-
-        return $this;
-    }
-
-    /**
-     * Get lineaId
-     *
-     * @return integer
-     */
-    public function getLineaId()
-    {
-        return $this->lineaId;
-    }
 
     /**
      * Set Estado
@@ -135,9 +113,9 @@ class Linea
      * @param integer $estado
      * @return linea
      */
-    public function setEstado($estado)
+    public function setEstado($Estado)
     {
-        $this->Estado = $estado;
+        $this->Estado = $Estado;
 
         return $this;
     }
@@ -155,5 +133,30 @@ class Linea
     public function __toString()
     {
         return $this->Descripcion;
+    }
+
+
+
+    /**
+     * Set lineaId
+     *
+     * @param integer $lineaId
+     * @return Linea
+     */
+    public function setLineaId($lineaId)
+    {
+        $this->lineaId = $lineaId;
+
+        return $this;
+    }
+
+    /**
+     * Get lineaId
+     *
+     * @return integer
+     */
+    public function getLineaId()
+    {
+        return $this->lineaId;
     }
 }
