@@ -1,5 +1,5 @@
 default:
-    resource: "@SmathDashboardBundle/Controller/index"
+    resource: "@SmathDashboardBundle/Controller/"
     type:     annotation
     prefix:   /
 smath_dashboard:
