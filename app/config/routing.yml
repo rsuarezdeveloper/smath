@@ -1,3 +1,12 @@
+default:
+    resource: "@SmathDashboardBundle/Controller/index"
+    type:     annotation
+    prefix:   /
+smath_dashboard:
+    resource: "@SmathDashboardBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 smath_empresa:
     resource: "@SmathEmpresaBundle/Controller/"
     type:     annotation
