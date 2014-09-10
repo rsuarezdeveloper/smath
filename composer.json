@@ -60,6 +60,10 @@
         },
         "branch-alias": {
             "dev-master": "2.5-dev"
+        },
+        "heroku": {
+            "document-root": "web",
+            "index-document": "app.php"
         }
     }
 }
