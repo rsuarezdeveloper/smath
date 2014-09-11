@@ -22,9 +22,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "knplabs/knp-paginator-bundle": "~2.4",
-        "ext-intl": "*",
-        "sensio/generator-bundle": "~2.3",
-        "ext-mbstring": "*"
+        "sensio/generator-bundle": "~2.3"
     },
     "require-dev": {
     },
