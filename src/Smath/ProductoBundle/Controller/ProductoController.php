@@ -48,7 +48,7 @@ class ProductoController extends Controller
 
         $qb = $em->getRepository('SmathProductoBundle:Producto')->createQueryBuilder('p')
         	   ->add('select','p.id, p.Descripcion, p.Estado, p.Referencia, p.Nombre, l.Descripcion linea')
-        	   ->leftJoin('p.Linea','l')
+        	   ->leftJoin('p.linea','l')
         	   ->orderBy('l.Descripcion','ASC');
         $entities=$qb->getQuery()->getResult();
 		$fields=array(
