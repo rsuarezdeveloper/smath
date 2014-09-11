@@ -52,6 +52,9 @@
 		<!--<link rel="apple-touch-startup-image" href="{{asset('img/splash/ipad-landscape.png')}}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
 		<link rel="apple-touch-startup-image" href="{{asset('img/splash/ipad-portrait.png')}}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 		<link rel="apple-touch-startup-image" href="{{asset('img/splash/iphone.png')}}" media="screen and (max-device-width: 320px)"> -->
+		<!-- jqGrid -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/jquery-ui-1.10.0.custom.css')}}">
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/jquery.jqGrid/css/ui.jqgrid.css')}}">
 {% block stylesheets %}{% endblock %}
     </head>
     <body class="">
@@ -284,6 +287,10 @@
 
 		<!-- Full Calendar -->
 		<script src="{{asset('js/plugin/fullcalendar/jquery.fullcalendar.min.js')}}"></script>
+
+       <!-- jqGrid -->
+       <script src="{{asset('js/jquery.jqGrid/js/jquery.jqGrid.min.js')}}"></script>
+       <script src="{{asset('js/jquery.jqGrid/js/i18n/grid.locale-es.js')}}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

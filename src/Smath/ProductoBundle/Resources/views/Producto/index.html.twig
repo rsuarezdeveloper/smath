@@ -1,47 +1,68 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Producto list</h1>
+<div class="page-header">
+    <h1>Maestro de Productos</h1>
+</div>
+<table id="list"></table>
+<div id="pager"></div>
+{% endblock %}
+{% block javascripts%}
+<script>
+    $(document).ready(function(){
+         $('#list').jqGrid({
+                url:'{{path('producto_list')}}',
+				datatype: "json",
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Referencia</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('producto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.Referencia }}</td>
-                <td>{{ entity.Nombre }}</td>
-                <td>{{ entity.Descripcion }}</td>
-                <td>{{ entity.Estado }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('producto_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('producto_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                colNames: ['Id', 'Linea', 'Referencia','Descripcion',  'Nombre', 'Estado', 'Editar'],
+                jsonReader : {
+				      root: "rows",
+				      page: "page",
+				      total: "total",
+				      records: "records",
+				      repeatitems: false,
+				      //cell: "row",
+				      id: "id"
+				      },
+                colModel: [
+                    { name: 'id', index: 'id',jsonmap:"id",key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
+                    { name: 'linea', index: 'linea',jsonmap:"status", width: 100,  search:true, align:'left' },
+                    { name: 'referencia', index: 'referencia', width: 120,  align:'left' },
+                    { name: 'descripcion', index: 'descripcion', width: 120, align:'left' },
+                    { name: 'nombre', index: 'nombre', width: 70 },
+                    { name: 'estado', index: 'estado', width: 70 },
+                    { name: 'actions', index: 'id',jsonmap:"id", width: 80,align:'center',search:false, sort:false, formatter:editar },
 
-        <ul>
-        <li>
-            <a href="{{ path('producto_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+                    ],
+                pager: '#pager',
+                rowNum: 20,
+
+                rowList: [20,30, 50, 70, 100],
+                sortname: 'id',
+                sortorder: 'desc',
+                viewrecords: true,
+                gridview:true,
+                autowidth: true,
+                height: '100%',
+                /*loadComplete: function() {
+					    $("tr.jqgrow:odd").css("background", "#FCF8F4");
+					}*/
+                });
+
+                $(".ui-pg-input").attr("style","width:10px;height:20px");
+                $(".ui-pg-selbox").attr("style","width:60px; height:20px; ");
+
+                function dateF(cellvalue, options, rowObject){
+                	 return cellvalue.date.toString('yyyy-mm-dd');
+                }
+                function editar(cellvalue, options, rowObject){
+                    html = '<a href="{{path('producto_edit',{id:'__id'})}}" class="btn btn-mini"><i class="fa fa-edit"></i></a>'.replace('__id',cellvalue);
+                    return html;
+
+                }
+    });
+    $(document).ready(function(){
+        	$("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false, defaultSearch:'cn'});
+        });
+</script>
+{%endblock%}
