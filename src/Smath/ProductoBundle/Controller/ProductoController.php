@@ -52,7 +52,7 @@ class ProductoController extends Controller
         	   ->orderBy('l.Descripcion','ASC');
         $entities=$qb->getQuery()->getResult();
 		$fields=array(
-			'id'=>'d.id',
+			'id'=>'p.id',
 			'descripcion' => 'p.Descripcion',
             'estado'=>'p.Estado',
             'referencia'=>'p.Referencia',
