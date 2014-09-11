@@ -47,17 +47,17 @@ class ProductoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $qb = $em->getRepository('SmathProductoBundle:Producto')->createQueryBuilder('p')
-        	   ->add('select','p.id, p.Descripcion, p.estado, p.referencia, p.nombre, l.descripcion linea')
-        	   ->leftJoin('p.linea','l')
-        	   ->orderBy('l.descripcion','ASC');
+        	   ->add('select','p.id, p.Descripcion, p.Estado, p.Referencia, p.Nombre, l.Descripcion linea')
+        	   ->leftJoin('p.Linea','l')
+        	   ->orderBy('l.Descripcion','ASC');
         $entities=$qb->getQuery()->getResult();
 		$fields=array(
 			'id'=>'d.id',
 			'descripcion' => 'p.Descripcion',
-            'estado'=>'p.estado',
-            'referencia'=>'p.referencia',
-            'nombre'=>'p.nombre',
-            'linea'=>'l.descripcion'
+            'estado'=>'p.Estado',
+            'referencia'=>'p.Referencia',
+            'nombre'=>'p.Nombre',
+            'linea'=>'l.Descripcion'
 			);
 
 		///Aplicamos filtros
