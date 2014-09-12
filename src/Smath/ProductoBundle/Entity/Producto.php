@@ -54,8 +54,18 @@ class Producto
      * @ORM\Column(name="estado", type="smallint")
      */
     private $Estado;
-
-
+    /**
+     *@var float
+     *
+     *@ORM\Column(name="precioUnidadComercial", type="float",nullable=true)
+     */
+    private $precioUnidadComercial;
+    /**
+     *@var float
+     *
+     *@ORM\Column(name="precioFormaFarmaceutica", type="float",nullable=true)
+     */
+    private $precioFormaFarmaceutica;
     /**
      * Get id
      *
@@ -183,5 +193,51 @@ class Producto
 
     public function __toString(){
          return $this->Nombre;
+    }
+
+    /**
+     * Set precioUnidadComercial
+     *
+     * @param float $precioUnidadComercial
+     * @return Producto
+     */
+    public function setPrecioUnidadComercial($precioUnidadComercial)
+    {
+        $this->precioUnidadComercial = $precioUnidadComercial;
+
+        return $this;
+    }
+
+    /**
+     * Get precioUnidadComercial
+     *
+     * @return float
+     */
+    public function getPrecioUnidadComercial()
+    {
+        return $this->precioUnidadComercial;
+    }
+
+    /**
+     * Set precioFormaFarmaceutica
+     *
+     * @param float $precioFormaFarmaceutica
+     * @return Producto
+     */
+    public function setPrecioFormaFarmaceutica($precioFormaFarmaceutica)
+    {
+        $this->precioFormaFarmaceutica = $precioFormaFarmaceutica;
+
+        return $this;
+    }
+
+    /**
+     * Get precioFormaFarmaceutica
+     *
+     * @return float
+     */
+    public function getPrecioFormaFarmaceutica()
+    {
+        return $this->precioFormaFarmaceutica;
     }
 }

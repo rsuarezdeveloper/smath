@@ -23,7 +23,7 @@ class Producto
 
      /**
      * @ORM\ManyToOne(targetEntity="Smath\ProductoBundle\Entity\Linea",cascade={"persist"})
-     * @ORM\JoinColumn(name="linea", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Linea", referencedColumnName="id")
      */
     private $linea;
 
@@ -54,8 +54,18 @@ class Producto
      * @ORM\Column(name="estado", type="smallint")
      */
     private $Estado;
-
-
+    /**
+     *@var float
+     *
+     *@ORM\Column(name="precioUnidadComercial", type="float",nullable=true)
+     */
+    private $precioUnidadComercial;
+    /**
+     *@var float
+     *
+     *@ORM\Column(name="precioFormaFarmaceutica", type="float",nullable=true)
+     */
+    private $precioFormaFarmaceutica;
     /**
      * Get id
      *
@@ -174,13 +184,13 @@ class Producto
     /**
      * Get linea
      *
-     * @return \Smath\ProductoBundle\Entity\Linea 
+     * @return \Smath\ProductoBundle\Entity\Linea
      */
     public function getLinea()
     {
         return $this->linea;
     }
-    
+
     public function __toString(){
          return $this->Nombre;
     }
