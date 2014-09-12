@@ -23,7 +23,7 @@ class Cliente
 
      /**
      * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\Cliente",cascade={"persist"})
-     * @ORM\JoinColumn(name="clienteId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="clienteId", referencedColumnName="id", nullable=true)
      */
     private $clienteId;
 
@@ -63,7 +63,7 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono", type="string", length=50)
+     * @ORM\Column(name="telefono", type="string", length=50, nullable=true)
      */
     private $telefono;
 
