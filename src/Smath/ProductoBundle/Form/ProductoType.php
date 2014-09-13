@@ -16,10 +16,10 @@ class ProductoType extends AbstractType
     {
         $builder
             ->add('Referencia')
-            ->add('Nombre')
-            ->add('Descripcion')
-            ->add('Estado')
-            ->add('Linea')
+            ->add('Nombre','textarea')
+            ->add('Descripcion','textarea')
+            ->add('Estado','checkbox')
+            ->add('Linea','entity',array('class'=>'Smath\ProductoBundle\Entity\Linea'))
         ;
     }
 

@@ -49,9 +49,9 @@ class Producto
     private $Descripcion;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="estado", type="smallint")
+     * @ORM\Column(name="estado", type="boolean")
      */
     private $Estado;
     /**
@@ -145,28 +145,7 @@ class Producto
         return $this->Descripcion;
     }
 
-    /**
-     * Set Estado
-     *
-     * @param integer Estado
-     * @return producto
-     */
-    public function setEstado($Estado)
-    {
-        $this->Estado = $Estado;
-
-        return $this;
-    }
-
-    /**
-     * Get Estado
-     *
-     * @return integer
-     */
-    public function getEstado()
-    {
-        return $this->Estado;
-    }
+    
 
     /**
      * Set linea
@@ -193,5 +172,51 @@ class Producto
 
     public function __toString(){
          return $this->Nombre;
+    }
+
+    /**
+     * Set precioUnidadComercial
+     *
+     * @param float $precioUnidadComercial
+     * @return Producto
+     */
+    public function setPrecioUnidadComercial($precioUnidadComercial)
+    {
+        $this->precioUnidadComercial = $precioUnidadComercial;
+
+        return $this;
+    }
+
+    /**
+     * Get precioUnidadComercial
+     *
+     * @return float
+     */
+    public function getPrecioUnidadComercial()
+    {
+        return $this->precioUnidadComercial;
+    }
+
+    /**
+     * Set precioFormaFarmaceutica
+     *
+     * @param float $precioFormaFarmaceutica
+     * @return Producto
+     */
+    public function setPrecioFormaFarmaceutica($precioFormaFarmaceutica)
+    {
+        $this->precioFormaFarmaceutica = $precioFormaFarmaceutica;
+
+        return $this;
+    }
+
+    /**
+     * Get precioFormaFarmaceutica
+     *
+     * @return float
+     */
+    public function getPrecioFormaFarmaceutica()
+    {
+        return $this->precioFormaFarmaceutica;
     }
 }

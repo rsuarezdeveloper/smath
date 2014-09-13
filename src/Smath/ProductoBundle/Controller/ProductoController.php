@@ -256,7 +256,7 @@ class ProductoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Guardar'));
 
         return $form;
     }
@@ -284,7 +284,7 @@ class ProductoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('producto_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('producto'));
         }
 
         return array(
@@ -331,7 +331,7 @@ class ProductoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('producto_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar','attr'=>array('class'=>'btn btn-danger')))
             ->getForm()
         ;
     }

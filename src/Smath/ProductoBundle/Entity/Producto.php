@@ -49,9 +49,9 @@ class Producto
     private $Descripcion;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="estado", type="smallint")
+     * @ORM\Column(name="estado", type="boolean")
      */
     private $Estado;
     /**
@@ -145,28 +145,7 @@ class Producto
         return $this->Descripcion;
     }
 
-    /**
-     * Set Estado
-     *
-     * @param integer Estado
-     * @return producto
-     */
-    public function setEstado($Estado)
-    {
-        $this->Estado = $Estado;
 
-        return $this;
-    }
-
-    /**
-     * Get Estado
-     *
-     * @return integer
-     */
-    public function getEstado()
-    {
-        return $this->Estado;
-    }
 
     /**
      * Set linea
@@ -239,5 +218,28 @@ class Producto
     public function getPrecioFormaFarmaceutica()
     {
         return $this->precioFormaFarmaceutica;
+    }
+
+    /**
+     * Set Estado
+     *
+     * @param boolean $estado
+     * @return Producto
+     */
+    public function setEstado($estado)
+    {
+        $this->Estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get Estado
+     *
+     * @return boolean
+     */
+    public function getEstado()
+    {
+        return $this->Estado;
     }
 }
