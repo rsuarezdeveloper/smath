@@ -166,7 +166,7 @@ class PuntoVentaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear'));
 
         return $form;
     }
@@ -255,7 +255,7 @@ class PuntoVentaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Guardar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
