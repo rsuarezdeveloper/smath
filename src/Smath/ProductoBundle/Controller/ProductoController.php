@@ -46,7 +46,7 @@ class ProductoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathProductoBundle:Producto')->createQueryBuilder('p')
-        	   ->add('select','p.id, p.Descripcion, p.Estado, p.Referencia, p.Nombre, l.Descripcion linea,p.precioUnidadComercial, p.precioFormaFarmaceutica')
+        	   ->add('select','p.id, p.Descripcion, p.Estado, p.Referencia, p.Nombre, l.Descripcion linea, p.precioUnidadComercial, p.precioFormaFarmaceutica')
         	   ->leftJoin('p.linea','l')
         	   ->orderBy('l.Descripcion','ASC');
         $entities=$qb->getQuery()->getResult();

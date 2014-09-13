@@ -58,8 +58,8 @@
                     { name: 'descripcion', index: 'descripcion',jsonmap:'Descripcion' ,width: 120, align:'left' },
                     { name: 'nombre', index: 'nombre',jsonmap:'Nombre', width: 150 },
                     { name: 'estado', index: 'estado', jsonmap:'Estado',width: 30, formatter:status, align:'center' },
-                    { name: 'precioUnidadComercial', index: 'precioUnidadComercial', jsonmap:'precioUnidadComercial',width: 30,  align:'right' },
-                    { name: 'precioFormaFarmaceutica', index: 'precioFormaFarmaceutica', jsonmap:'precioUnidadComercial',width: 30,  align:'right' },
+                    { name: 'precioUnidadComercial', index: 'precioUnidadComercial', jsonmap:'precioUnidadComercial',width: 30,  align:'right',formatter: currency },
+                    { name: 'precioFormaFarmaceutica', index: 'precioFormaFarmaceutica', jsonmap:'precioUnidadComercial',width: 30,  align:'right',formatter: currency },
                     { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
 
                     ],
@@ -84,6 +84,12 @@
                 function dateF(cellvalue, options, rowObject){
                 	 return cellvalue.date.toString('yyyy-mm-dd');
                 }
+                function currency(cellvalue, options, rowObject){
+                    if(null==cellvalue) cellvalue=0;
+                    return cellvalue.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                }
+
+
                 function status(cellvalue, options, rowObject){
                 	 html = cellvalue ==1 ? '<i class="fa fa-check-square-o" style="color:green"></i>' :"";
                     return html;
