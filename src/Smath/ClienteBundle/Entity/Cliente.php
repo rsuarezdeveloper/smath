@@ -29,7 +29,7 @@ class Cliente
 
      /**
      * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\TipoCliente",cascade={"persist"})
-     * @ORM\JoinColumn(name="tipoCliente", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tipoCliente", referencedColumnName="id", nullable=true)
      */
     private $tipoCliente;
 
@@ -42,7 +42,7 @@ class Cliente
 
     /**
      * @ORM\ManyToOne(targetEntity="Smath\BaseBundle\Entity\TipoDocumento",cascade={"persist"})
-     * @ORM\JoinColumn(name="tipoDocumento", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tipoDocumento", referencedColumnName="id", nullable=true)
      */
     private $tipoDocumento;
 

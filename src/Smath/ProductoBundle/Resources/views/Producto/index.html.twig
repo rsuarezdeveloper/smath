@@ -1,9 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-<!-- MAIN CONTENT -->
-<div id="content">
-
     <!-- row -->
     <div class="row">
 
@@ -35,7 +32,6 @@
         <!-- end row -->
     </section>
     <!-- end widget grid -->
-</div>
 <!-- END MAIN CONTENT -->
 {% endblock %}
 {% block javascripts%}
@@ -45,7 +41,7 @@
                 url:'{{path('producto_list')}}',
 				datatype: "json",
 
-                colNames: ['Id', 'Línea', 'Referencia','Descripción',  'Nombre', 'Estado', 'Editar'],
+                colNames: ['Id', 'Línea', 'Referencia','Descripción',  'Nombre', 'Activo', 'Pr. Un. Com.','Pr. F. Farm','Editar'],
                 jsonReader : {
 				      root: "rows",
 				      page: "page",
@@ -62,6 +58,8 @@
                     { name: 'descripcion', index: 'descripcion',jsonmap:'Descripcion' ,width: 120, align:'left' },
                     { name: 'nombre', index: 'nombre',jsonmap:'Nombre', width: 150 },
                     { name: 'estado', index: 'estado', jsonmap:'Estado',width: 30, formatter:status, align:'center' },
+                    { name: 'precioUnidadComercial', index: 'precioUnidadComercial', jsonmap:'precioUnidadComercial',width: 30,  align:'right' },
+                    { name: 'precioFormaFarmaceutica', index: 'precioFormaFarmaceutica', jsonmap:'precioUnidadComercial',width: 30,  align:'right' },
                     { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
 
                     ],
@@ -87,7 +85,7 @@
                 	 return cellvalue.date.toString('yyyy-mm-dd');
                 }
                 function status(cellvalue, options, rowObject){
-                	 html = cellvalue ==1 ? '<i class="fa fa-check-square-o"></i>' :"";
+                	 html = cellvalue ==1 ? '<i class="fa fa-check-square-o" style="color:green"></i>' :"";
                     return html;
                 }
                 function editar(cellvalue, options, rowObject){
