@@ -76,21 +76,21 @@
 					<div class="btn-group btn-group-justified" data-toggle="buttons">
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="ajax/notify/mail.html">
-							Msgs (14) </label>
+							Mensajes (14) </label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="ajax/notify/notifications.html">
-							notify (3) </label>
+							Notificaciones (3) </label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="ajax/notify/tasks.html">
-							Tasks (4) </label>
+							Tareas (4) </label>
 					</div>
 
 					<!-- notification content -->
 					<div class="ajax-notifications custom-scroll">
 
 						<div class="alert alert-transparent">
-							<h4>Click a button to show messages here</h4>
-							This blank page message helps protect your privacy, or you can show the first message here automatically.
+							<h4>De click en una opci&oacute;n para ver mensajes aqu&iacute;</h4>
+							Esta p&aacute;gina en blanco ayuda a proteger su privcacidad
 						</div>
 
 						<i class="fa fa-lock fa-4x fa-border"></i>
@@ -99,7 +99,7 @@
 					<!-- end notification content -->
 
 					<!-- footer: refresh area -->
-					<span> Last updated on: 12/12/2013 9:43AM
+					<span> Ultima actualizaci&oacute;n: 12/09/2013 9:43AM
 						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
 							<i class="fa fa-refresh"></i>
 						</button>
@@ -125,7 +125,7 @@
 				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
 					<li class="">
 						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-							<img src="{{asset('img/avatars/sunny.png')}}" alt="John Doe" class="online" />
+							<img src="{{asset('img/avatars/sunny.png')}}" alt="{{app.user.nombre}}" class="online" />
 						</a>
 						<ul class="dropdown-menu pull-right">
 							<li>
@@ -141,7 +141,7 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Pantalla <u>C</u>ompleta</a>
 							</li>
 							<li class="divider"></li>
 							<li>
@@ -221,6 +221,9 @@
 							</li>
 							<li>
 								<a href="{{path('producto')}}">Productos</a>
+							</li>
+							<li>
+								<a href="{{path('puntoventa')}}">Puntos de Venta</a>
 							</li>
 						</ul>
 					</li>
