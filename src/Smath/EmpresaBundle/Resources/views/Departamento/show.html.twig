@@ -1,8 +1,18 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Departamento</h1>
+    <!-- row -->
+    <div class="row">
 
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Ver Departamento <span>>
+                SmathSales </span></h1>
+        </div>
+        <!-- end col -->
+        <!-- right side of the page with the sparkline graphs -->
+    </div>
+    <!-- end row -->
     <table class="record_properties">
         <tbody>
             <tr>
@@ -24,6 +34,10 @@
             <tr>
                 <th>Estado</th>
                 <td>{{ entity.estado }}</td>
+            </tr>
+            <tr>
+                <th>Compañia</th>
+                <td>{{ entity.compania }}</td>
             </tr>
         </tbody>
     </table>
