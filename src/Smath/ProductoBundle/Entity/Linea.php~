@@ -106,7 +106,7 @@ class Linea
         return $this->Descripcion;
     }
 
-  
+
     /**
      * Set Estado
      *
@@ -135,5 +135,28 @@ class Linea
         return $this->Descripcion;
     }
 
-    
+
+
+    /**
+     * Set lineaId
+     *
+     * @param integer $lineaId
+     * @return Linea
+     */
+    public function setLineaId($lineaId)
+    {
+        $this->lineaId = $lineaId;
+
+        return $this;
+    }
+
+    /**
+     * Get lineaId
+     *
+     * @return integer
+     */
+    public function getLineaId()
+    {
+        return $this->lineaId;
+    }
 }

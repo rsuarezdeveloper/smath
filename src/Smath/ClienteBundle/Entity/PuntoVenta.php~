@@ -57,9 +57,23 @@ class PuntoVenta
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono", type="string", length=255)
+     * @ORM\Column(name="telefono1", type="string", length=255)
      */
-    private $telefono;
+    private $telefono1;
+    
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono2", type="string", length=255)
+     */
+    private $telefono2;
+    
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono3", type="string", length=255)
+     */
+    private $telefono3;
 
     /**
      * @var string
@@ -82,7 +96,88 @@ class PuntoVenta
      */
     private $longitud;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigoPunto", type="string", length=255)
+     */
+    private $codigoPunto;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigoZonal", type="string", length=255)
+     */
+    private $codigoZonal;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreZonal", type="string", length=255)
+     */
+    private $nombreZonal;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="estrato", type="integer")
+     */
+    private $estrato;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreAdministrador", type="string", length=255)
+     */
+    private $nombreAdministrador;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="celular", type="string", length=255)
+     */
+    private $celular;
+    
+      /**
+     * @var date
+     *
+     * @ORM\Column(name="fechaApertura", type="date")
+     */
+    private $fechaApertura;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\TipoServicio",cascade={"persist"})
+     * @ORM\JoinColumn(name="tipoServicio", referencedColumnName="id")
+     */
+    
+    private $tipoServicio;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\TipoHorario",cascade={"persist"})
+     * @ORM\JoinColumn(name="tipoHorarioNormal", referencedColumnName="id")
+     */
+    private $tipoHorarioNormal;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\TipoHorario",cascade={"persist"})
+     * @ORM\JoinColumn(name="tipoHorarioDominical", referencedColumnName="id")
+     */
+    private $tipoHorarioDominical;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\FormatoPuntoVenta",cascade={"persist"})
+     * @ORM\JoinColumn(name="formatoPuntoVenta", referencedColumnName="id")
+     */
+    private $formatoPuntoVenta;
+    
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean")
+     */
+    private $estado;
+    
     /**
      * Get id
      *
@@ -164,28 +259,7 @@ class PuntoVenta
         return $this->direccion;
     }
 
-    /**
-     * Set telefono
-     *
-     * @param string $telefono
-     * @return PuntoVenta
-     */
-    public function setTelefono($telefono)
-    {
-        $this->telefono = $telefono;
-
-        return $this;
-    }
-
-    /**
-     * Get telefono
-     *
-     * @return string
-     */
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
+    
 
     /**
      * Set correoelectronico
@@ -254,5 +328,51 @@ class PuntoVenta
     public function getLongitud()
     {
         return $this->longitud;
+    }
+
+    /**
+     * Set cliente
+     *
+     * @param \Smath\ClienteBundle\Entity\Cliente $cliente
+     * @return PuntoVenta
+     */
+    public function setCliente(\Smath\ClienteBundle\Entity\Cliente $cliente = null)
+    {
+        $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    /**
+     * Get cliente
+     *
+     * @return \Smath\ClienteBundle\Entity\Cliente
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * Set geoUbicacion
+     *
+     * @param \Smath\BaseBundle\Entity\GeoUbicacion $geoUbicacion
+     * @return PuntoVenta
+     */
+    public function setGeoUbicacion(\Smath\BaseBundle\Entity\GeoUbicacion $geoUbicacion = null)
+    {
+        $this->geoUbicacion = $geoUbicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get geoUbicacion
+     *
+     * @return \Smath\BaseBundle\Entity\GeoUbicacion
+     */
+    public function getGeoUbicacion()
+    {
+        return $this->geoUbicacion;
     }
 }
