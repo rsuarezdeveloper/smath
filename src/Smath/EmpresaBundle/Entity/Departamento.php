@@ -182,4 +182,9 @@ class Departamento
     {
         return $this->compania;
     }
+
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 }
