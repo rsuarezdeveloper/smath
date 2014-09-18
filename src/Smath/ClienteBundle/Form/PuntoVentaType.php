@@ -18,7 +18,7 @@ class PuntoVentaType extends AbstractType
             ->add('nombre')
             ->add('numerodocumento')
             ->add('direccion')
-            ->add('telefono')
+            ->add('telefono1')
             ->add('correoelectronico')
             ->add('latitud')
             ->add('longitud')

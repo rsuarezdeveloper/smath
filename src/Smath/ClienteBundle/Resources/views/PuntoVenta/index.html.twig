@@ -40,7 +40,7 @@
                 url:'{{path('puntoventa_list')}}',
 				datatype: "json",
 
-                colNames: ['Id', 'Cliente', 'Nombre','No Documento',  'Dirección', 'Telefono', 'E-mail','Editar'],
+                colNames: ['Id', 'Cliente', 'Nombre','No Documento',  'Dirección', 'Telefono1', 'E-mail','Editar'],
                 jsonReader : {
 				      root: "rows",
 				      page: "page",
@@ -56,7 +56,7 @@
                     { name: 'nombre', index: 'nombre',jsonmap:'nombre', width: 80,  align:'left' },
                     { name: 'numerodocumento', index: 'numerodocumento',jsonmap:'numerodocumento' ,width: 60, align:'left' },
                     { name: 'direccion', index: 'direccion',jsonmap:'direccion', width: 150 },
-                    { name: 'telefono', index: 'telefono', jsonmap:'telefono',width: 60, align:'center' },
+                    { name: 'telefono1', index: 'telefono1', jsonmap:'telefono1',width: 60, align:'center' },
                     { name: 'correoelectronico', index: 'correoelectronico', jsonmap:'correoelectronico',width: 130,  align:'left' },
                     { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
 
