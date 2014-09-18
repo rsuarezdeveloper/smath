@@ -46,7 +46,7 @@ class PuntoVentaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathClienteBundle:PuntoVenta')->createQueryBuilder('pv')
-        	   ->add('select','pv.id, c.razonSocial cliente, pv.nombre, pv.numerodocumento, pv.direccion, pv.telefono, pv.correoelectronico')
+        	   ->add('select','pv.id, c.razonSocial cliente, pv.nombre, pv.numerodocumento, pv.direccion, pv.telefono1, pv.correoelectronico')
         	   ->leftJoin('pv.cliente','c')
         	   ;
         $entities=$qb->getQuery()->getResult();
@@ -56,7 +56,7 @@ class PuntoVentaController extends Controller
             'nombre'=>'pv.nombre',
             'numerodocumento'=>'pv.numerodocumento',
             'direccion'=>'pv.direccion',
-            'telefono'=>'pv.telefono',
+            'telefono1'=>'pv.telefono1',
             'correoelectronico' => 'pv.correoelectronico'
 			);
 
