@@ -720,4 +720,9 @@ class PuntoVenta
     {
         return $this->formatoPuntoVenta;
     }
+
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 }
