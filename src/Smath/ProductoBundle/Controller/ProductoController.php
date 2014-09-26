@@ -37,7 +37,7 @@ class ProductoController extends Controller
         );
     }
     /**
-     * Lists all Dos entities.
+     * Lists all producto entities.
      *
      * @Route("/list", name="producto_list")
      * @Method("GET")
