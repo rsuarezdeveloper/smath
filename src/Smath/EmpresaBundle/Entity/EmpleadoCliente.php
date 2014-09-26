@@ -29,7 +29,7 @@ class EmpleadoCliente
 
     /**
      * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\PuntoVenta",cascade={"persist"})
-     * @ORM\JoinColumn(name="puntoventa", referencedColumnName="id")
+     * @ORM\JoinColumn(name="puntoVenta", referencedColumnName="id")
      */
     private $puntoVenta;
 

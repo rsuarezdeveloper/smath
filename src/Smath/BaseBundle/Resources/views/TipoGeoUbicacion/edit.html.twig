@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets%}
+<style>
+    table tr th{width:100px;}
+</style>
+{%endblock%}
+{% block body -%}
+    <!-- row -->
+    <div class="row">
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Editar Tipo GeoUbicacion <span>>
+                SmathSales </span></h1>
+        </div>
+        <!-- end col -->
+        <!-- right side of the page with the sparkline graphs -->
+    </div>
+    <!-- end row -->
+    {{ form_start(edit_form,{'attr':{'class':'form-inline'}}) }}
+        <table class="table table-condensed">
+            <tr>
+                <th>Nombre</th>
+                <td>{{form_widget(edit_form.nombre)}}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{form_widget(edit_form.estado)}}</td>
+            </tr>
+        </table>
+        <div style="display:none">{{form_rest(edit_form)}}</div>
+        <a href="{{ path('tipogeoubicacion') }}" class="btn btn-info">
+           Cancelar
+        </a> <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+     {{ form_end(edit_form) }}
+    {% if is_granted('ROLE_ADMIN')%}
+    {{ form(delete_form) }}
+   {% endif %}
+{% endblock %}

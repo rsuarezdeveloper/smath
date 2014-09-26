@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets%}
+<style>
+    table tr th{width:100px;}
+</style>
+{%endblock%}
+{% block body -%}
+    <!-- row -->
+    <div class="row">
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Crear Empleado/Cliente <span>>
+                SmathSales </span></h1>
+        </div>
+        <!-- end col -->
+        <!-- right side of the page with the sparkline graphs -->
+    </div>
+    <!-- end row -->
+    {{ form_start(form,{'attr':{'class':'form-inline'}}) }}
+        <table class="table table-condensed">
+            <tr>
+                <th>Fecha Asignacion</th>
+                <td>{{form_widget(form.fechaAsignacion)}}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{form_widget(form.estado)}}</td>
+            </tr>
+            <tr>
+                <th>Meta Visitas Mes</th>
+                <td>{{form_widget(form.metaVisitasMes)}}</td>
+            </tr>
+            <tr>
+                <th>Meta Venta Mes</th>
+                <td>{{form_widget(form.metaVentasMes)}}</td>
+            </tr>
+            <tr>
+                <th>Cliente</th>
+                <td>{{form_widget(form.cliente)}}</td>
+            </tr>
+            <tr>
+                <th>Punto de Venta</th>
+                <td>{{form_widget(form.puntoVenta)}}</td>
+            </tr>
+            <tr>
+                <th>Empleado</th>
+                <td>{{form_widget(form.empleado)}}</td>
+            </tr>
+        </table>
+        <div style="display:none">{{form_rest(form)}}</div>
+        <a href="{{ path('empleadocliente') }}" class="btn btn-info">
+           Cancelar
+        </a> <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+     {{ form_end(form) }}
+{% endblock %}

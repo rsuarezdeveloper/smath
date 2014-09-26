@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <!-- row -->
+    <div class="row">
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Ver Compañia/Cliente <span>>
+                SmathSales </span></h1>
+        </div>
+        <!-- end col -->
+        <!-- right side of the page with the sparkline graphs -->
+    </div>
+    <!-- end row -->
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechaingreso</th>
+                <td>{{ entity.fechaIngreso|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+            <tr>
+                <th>Cliente</th>
+                <td>{{ entity.cliente }}</td>
+            </tr>
+            <tr>
+                <th>Compañia</th>
+                <td>{{ entity.compania }}</td>
+            </tr>
+            <tr>
+                <th>Empleado</th>
+                <td>{{ entity.empleado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('companiacliente') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('companiacliente_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
