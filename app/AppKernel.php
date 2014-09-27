@@ -23,7 +23,8 @@ class AppKernel extends Kernel
             new Smath\BaseBundle\SmathBaseBundle(),
             new Smath\EmpresaBundle\SmathEmpresaBundle(),
             new Smath\DashboardBundle\SmathDashboardBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Smath\CalendarioVisitaBundle\SmathCalendarioVisitaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

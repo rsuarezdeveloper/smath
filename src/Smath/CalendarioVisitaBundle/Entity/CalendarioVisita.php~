@@ -1,0 +1,130 @@
+<?php
+
+namespace Smath\CalendarioVisitaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CalendarioVisita
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class CalendarioVisita
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Smath\EmpresaBundle\Entity\Empleado",cascade={"persist"})
+     * @ORM\JoinColumn(name="empleado", referencedColumnName="id")
+     */
+    private $empleado;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\PuntoVenta",cascade={"persist"})
+     * @ORM\JoinColumn(name="puntoVenta", referencedColumnName="id")
+     */
+    private $puntoVenta;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaProgramada", type="datetime")
+     */
+    private $fechaProgramada;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaVisita", type="datetime")
+     */
+    private $fechaVisita;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Smath\CalendarioVisitaBundle\Entity\TipoVisita",cascade={"persist"})
+     * @ORM\JoinColumn(name="tipoVisita", referencedColumnName="id")
+     */
+    private $tipoVisita;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordenSugerido", type="integer")
+     */
+    private $ordenSugerido;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordenFinal", type="integer")
+     */
+    private $ordenFinal;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="atendida", type="boolean")
+     */
+    private $atendida;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="reprogramada", type="boolean")
+     */
+    private $reprogramada;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CalendarioVisita",cascade={"persist"})
+     * @ORM\JoinColumn(name="calendarioVisita", referencedColumnName="id")
+     */
+    private $calendarioVisita;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observaciones", type="text")
+     */
+    private $observaciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreQuienAtendio", type="string", length=255)
+     */
+    private $nombreQuienAtendio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="foto", type="string", length=255)
+     */
+    private $foto;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="visitado", type="boolean")
+     */
+    private $visitado;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+}

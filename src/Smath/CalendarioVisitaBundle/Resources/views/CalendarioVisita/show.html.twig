@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>CalendarioVisita</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechaprogramada</th>
+                <td>{{ entity.fechaProgramada|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechavisita</th>
+                <td>{{ entity.fechaVisita|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ordensugerido</th>
+                <td>{{ entity.ordenSugerido }}</td>
+            </tr>
+            <tr>
+                <th>Ordenfinal</th>
+                <td>{{ entity.ordenFinal }}</td>
+            </tr>
+            <tr>
+                <th>Atendida</th>
+                <td>{{ entity.atendida }}</td>
+            </tr>
+            <tr>
+                <th>Reprogramada</th>
+                <td>{{ entity.reprogramada }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ entity.observaciones }}</td>
+            </tr>
+            <tr>
+                <th>Nombrequienatendio</th>
+                <td>{{ entity.nombreQuienAtendio }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ entity.foto }}</td>
+            </tr>
+            <tr>
+                <th>Visitado</th>
+                <td>{{ entity.visitado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('calendariovisita') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('calendariovisita_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
