@@ -27,12 +27,9 @@ class CalendarioVisitaController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('SmathCalendarioVisitaBundle:CalendarioVisita')->findAll();
 
         return array(
-            'entities' => $entities,
+            'citas' => "",
         );
     }
     /**
@@ -43,8 +40,21 @@ class CalendarioVisitaController extends Controller
      * @Template()
      */
     public function mapaAction(){
+        $user = $this->get('security.context')->getToken()->getUser();
+        $empleado = $user->getEmpleado();
+        $hoy = new \DateTime();
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('SmathCalendarioVisitaBundle:CalendarioVisita')->createQueryBuilder('c')
+            ->leftJoin('c.empleado','e')
+            //->leftJoin('c.puntoVenta','pv')
+            ;
+        $qb->Where("c.fechaProgramada LIKE '".$hoy->format('Y-m-d')."%'");
+        if(null!=$empleado){
+            $qb->andWhere('e.id='.$empleado->getId());
+        }
+        $citas = $qb->getQuery()->getResult();
         return array(
-            'mapa'=>'mapa'
+            'citas' => $citas,
         );
     }
 

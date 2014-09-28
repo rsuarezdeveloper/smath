@@ -30,6 +30,12 @@ class User extends BaseUser
     protected $nombre="";
 
     /**
+     * @ORM\ManyToOne(targetEntity="Smath\EmpresaBundle\Entity\Empleado",cascade={"persist"})
+     * @ORM\JoinColumn(name="empleado", referencedColumnName="id")
+     */
+    protected $empleado;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -60,5 +66,28 @@ class User extends BaseUser
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set empleado
+     *
+     * @param \Smath\EmpresaBundle\Entity\Empleado $empleado
+     * @return User
+     */
+    public function setEmpleado(\Smath\EmpresaBundle\Entity\Empleado $empleado = null)
+    {
+        $this->empleado = $empleado;
+
+        return $this;
+    }
+
+    /**
+     * Get empleado
+     *
+     * @return \Smath\EmpresaBundle\Entity\Empleado
+     */
+    public function getEmpleado()
+    {
+        return $this->empleado;
     }
 }
