@@ -449,4 +449,12 @@ class CalendarioVisita
     {
         return $this->calendarioVisita;
     }
+    /**
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return "{$this->id}";
+    }
 }

@@ -91,4 +91,12 @@ class TipoVisita
     {
         return $this->estado;
     }
+    /**
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 }

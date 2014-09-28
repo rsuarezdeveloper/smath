@@ -3,6 +3,7 @@
 namespace Smath\CalendarioVisitaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -196,17 +197,28 @@ class CalendarioVisitaController extends Controller
      * Edits an existing CalendarioVisita entity.
      *
      * @Route("/{id}", name="calendariovisita_update")
-     * @Method("PUT")
+     * @Method("POST")
      * @Template("SmathCalendarioVisitaBundle:CalendarioVisita:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
+        $user = $this->get('security.context')->getToken()->getUser();
+        $empleado = $user->getEmpleado();
         $entity = $em->getRepository('SmathCalendarioVisitaBundle:CalendarioVisita')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find CalendarioVisita entity.');
+        }
+        if($request->isXMLHttpRequest()){
+            $observaciones = $request->get('observaciones');
+            $entity->setObservaciones($observaciones);
+            $entity->setFechaVisita(new \DateTime());
+            $entity->setVisitado(true);
+            $em->persist($entity);
+            $em->flush();
+            $response = new Response(json_encode(array('success'=>true)));
+
         }
 
         $deleteForm = $this->createDeleteForm($id);
