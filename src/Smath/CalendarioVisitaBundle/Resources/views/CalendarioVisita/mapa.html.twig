@@ -44,22 +44,27 @@
                                         {%if citas%}
 										<h5 class="todo-group-title"><i class="fa fa-warning"></i> Citas Pendientes (<small class="num-of-tasks">{{citas|length}}</small>)</h5>
 										<ul id="sortable1" class="todo">
+
                                             {%for cita in citas if not cita.visitado%}
 											<li>
 												<span class="handle"> </span>
 												<p>
-													<strong>Cita #{{cita.id}}</strong> - {{cita.puntoVenta.nombre}} [<a href="javascript:void(0);" class="font-xs diligenciar_cita" cita="{{cita.id}}">Diligenciar</a>] <span class="text-muted">{{cita.puntoVenta.nombreAdministrador}} </span>
+                                                <strong>Cita #{{cita.id}}</strong> - {{cita.puntoVenta.nombre}} [<a href="javascript:void(0);" class="font-xs diligenciar_cita" cita="{{cita.id}}">Diligenciar</a>] <span class="text-muted">{{cita.puntoVenta.nombreAdministrador}} </span>
                                                     											<span class="date">{{cita.fechaProgramada|date('Y-m-d H:i:s')}}</span>
-													<span id="div_cita_{{cita.id}}" style="display:none">
-													    <textarea name="obs_cita_{{cita.id}}" id="obs_cita_{{cita.id}}" cols="30" rows="10" placeholder="Diligencie aca su información"></textarea>
-													    <br>
-													    <button class="btn btn-success btn_guardar_cita" cita="{{cita.id}}" > Guardar</button>
 
+
+													<span id="div_cita_{{cita.id}}" style="display:none">
+													    <label class="textarea">
+													    <textarea name="obs_cita_{{cita.id}}" id="obs_cita_{{cita.id}}" cols="30" rows="10" placeholder="Diligencie aca su información" class="textarea-resizable"></textarea>
+                                                        </label>
+													        <button class="btn btn-success btn_guardar_cita" cita="{{cita.id}}" > Guardar</button>
 													</span>
+
 
 												</p>
 											</li>
                                             {%endfor%}
+
 										</ul>
 
 

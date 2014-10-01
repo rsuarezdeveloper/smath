@@ -81,8 +81,9 @@
 {% block javascripts %}
 <script>
     $(document).ready(function(){
-        $("#hr1").html('<i class="fa fa-refresh fa-spin"></i> Cargando');
+        $("#hr1,#hr5").html('<i class="fa fa-refresh fa-spin"></i> Cargando');
         $("#hr1").load("{{path('calendariovisita_mapa')}}");
+        $("#hr5").load("{{path('calendariovisita_misclientes')}}");
     });
 </script>
 {%endblock%}

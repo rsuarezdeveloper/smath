@@ -1,0 +1,18 @@
+<table class="table table-bordered table-condensed">
+    <tr>
+        <th>Nit</th>
+        <th>Cliente</th>
+    </tr>
+    {%for c in clientes%}
+    <tr>
+        <td>{{c.numeroDocumento}}</td>
+        <td>{{c.razonSocial}}</td>
+    </tr>
+    {%else%}
+        <tr>
+            <td colspan="2">
+                <div class="alert alert-danger">No tiene clientes Asignados A&uacute;n</div>
+            </td>
+        </tr>
+    {%endfor%}
+</table>
