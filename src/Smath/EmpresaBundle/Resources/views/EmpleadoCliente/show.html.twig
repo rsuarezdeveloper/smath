@@ -20,20 +20,8 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Fecha Asignacion</th>
-                <td>{{ entity.fechaAsignacion|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Activo</th>
-                <td>{{ entity.estado }}</td>
-            </tr>
-            <tr>
-                <th>Meta Visitas Mes</th>
-                <td>{{ entity.metaVisitasMes }}</td>
-            </tr>
-            <tr>
-                <th>Meta Ventas Mes</th>
-                <td>{{ entity.metaVentasMes }}</td>
+                <th>Empleado</th>
+                <td>{{ entity.empleado }}</td>
             </tr>
             <tr>
                 <th>Cliente</th>
@@ -44,8 +32,20 @@
                 <td>{{ entity.puntoVenta }}</td>
             </tr>
             <tr>
-                <th>Empleado</th>
-                <td>{{ entity.empleado }}</td>
+                <th>Fecha Asignacion</th>
+                <td>{{ entity.fechaAsignacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Meta Visitas Mes</th>
+                <td>{{ entity.metaVisitasMes }}</td>
+            </tr>
+            <tr>
+                <th>Meta Ventas Mes</th>
+                <td>{{ entity.metaVentasMes }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ entity.estado }}</td>
             </tr>
         </tbody>
     </table>

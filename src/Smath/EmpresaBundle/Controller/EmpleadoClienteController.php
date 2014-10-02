@@ -46,9 +46,9 @@ class EmpleadoClienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathEmpresaBundle:EmpleadoCliente')->createQueryBuilder('ec')
-        	   ->add('select','ec.id, ec.fechaAsignacion, ec.estado, ec.metaVisitasMes, ec.metaVentasMes, c.razonSocial cliente, e.nombre empleado') #pv.nombre puntoVenta,
+        	   ->add('select','ec.id, ec.fechaAsignacion, ec.estado, ec.metaVisitasMes, ec.metaVentasMes, c.razonSocial cliente, e.nombre empleado ,pv.nombre puntoVenta') #pv.nombre puntoVenta,
         	   ->leftJoin('ec.cliente','c')
-               #->leftJoin('ec.puntoventa','pv')
+               ->leftJoin('ec.puntoVenta','pv')
                ->leftJoin('ec.empleado','e')
         	   ->orderBy('e.nombre','ASC');
         $entities=$qb->getQuery()->getResult();
@@ -59,7 +59,7 @@ class EmpleadoClienteController extends Controller
             'metaVisitasMes'=>'ec.metaVisitasMes',
             'metaVentasMes'=>'ec.metaVentasMes',
             'cliente'=>'c.razonSocial',
-            #'puntoVenta'=>'pv.nombre',
+            'puntoVenta'=>'pv.nombre',
             'empleado'=>'e.nombre'
 			);
 

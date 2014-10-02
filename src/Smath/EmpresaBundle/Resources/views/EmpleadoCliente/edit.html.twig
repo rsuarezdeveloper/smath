@@ -20,20 +20,8 @@
     {{ form_start(edit_form,{'attr':{'class':'form-inline'}}) }}
         <table class="table table-condensed">
             <tr>
-                <th>Fecha Asignacion</th>
-                <td>{{form_widget(edit_form.fechaAsignacion)}}</td>
-            </tr>
-            <tr>
-                <th>Activo</th>
-                <td>{{form_widget(edit_form.estado)}}</td>
-            </tr>
-            <tr>
-                <th>Meta Visitas Mes</th>
-                <td>{{form_widget(edit_form.metaVisitasMes)}}</td>
-            </tr>
-            <tr>
-                <th>Meta Venta Mes</th>
-                <td>{{form_widget(edit_form.metaVentasMes)}}</td>
+                <th>Empleado</th>
+                <td>{{form_widget(edit_form.empleado)}}</td>
             </tr>
             <tr>
                 <th>Cliente</th>
@@ -44,8 +32,20 @@
                 <td>{{form_widget(edit_form.puntoVenta)}}</td>
             </tr>
             <tr>
-                <th>Empleado</th>
-                <td>{{form_widget(edit_form.empleado)}}</td>
+                <th>Fecha Asignacion</th>
+                <td>{{form_widget(edit_form.fechaAsignacion)}}</td>
+            </tr>
+            <tr>
+                <th>Meta Visitas Mes</th>
+                <td>{{form_widget(edit_form.metaVisitasMes)}}</td>
+            </tr>
+            <tr>
+                <th>Meta Venta Mes</th>
+                <td>{{form_widget(edit_form.metaVentasMes)}}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{form_widget(edit_form.estado)}}</td>
             </tr>
         </table>
         <div style="display:none">{{form_rest(edit_form)}}</div>

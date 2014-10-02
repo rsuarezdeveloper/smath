@@ -41,7 +41,7 @@
                 url:'{{path('empleadocliente_list')}}',
 				datatype: "json",
 
-                colNames: ['Id', 'Fecha Asignacion', 'Activo', 'Meta Visitas Mes', 'Meta Venta Mes', 'Cliente', 'Empleado','Editar'],
+                colNames: ['Id', 'Empleado', 'Cliente', 'Punto Venta','Fecha Asignacion', 'Meta Visitas Mes', 'Meta Venta Mes', 'Activo','Editar'],
                 jsonReader : {
 				      root: "rows",
 				      page: "page",
@@ -53,13 +53,13 @@
 				      },
                 colModel: [
                     { name: 'id', index: 'id',jsonmap:"id",key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
-                    { name: 'fechaAsignacion', index: 'fechaAsignacion',jsonmap:"fechaAsignacion", width: 80,  search:true, align:'left', formatter: dateF },
-                    { name: 'estado', index: 'estado', jsonmap:'estado',width: 30, formatter:status, align:'center' },
-                    { name: 'metaVisitasMes', index: 'metaVisitasMes',jsonmap:"metaVisitasMes", width: 80,  search:true, align:'right' },
-                    { name: 'metaVentasMes', index: 'metaVentasMes',jsonmap:"metaVentasMes", width: 80,  search:true, align:'right' },
-                    { name: 'cliente', index: 'cliente',jsonmap:'cliente', width: 120,  align:'left' },
-
                     { name: 'empleado', index: 'empleado',jsonmap:'empleado', width: 100 },
+                    { name: 'cliente', index: 'cliente',jsonmap:'cliente', width: 120,  align:'left' },
+                    { name: 'puntoVenta', index: 'puntoVenta',jsonmap:'puntoVenta', width: 120,  align:'left' },
+                    { name: 'fechaAsignacion', index: 'fechaAsignacion',jsonmap:"fechaAsignacion", width: 80,  search:true, align:'left', formatter: dateF },
+                    { name: 'metaVisitasMes', index: 'metaVisitasMes',jsonmap:"metaVisitasMes", width: 80,  search:true, align:'right' },
+                    { name: 'metaVentasMes', index: 'metaVentasMes',jsonmap:"metaVentasMes", width: 80,  search:true, align:'right',formatter: currency },
+                    { name: 'estado', index: 'estado', jsonmap:'estado',width: 30, formatter:status, align:'center' },
                     { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
 
                     ],
