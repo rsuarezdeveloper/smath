@@ -49,16 +49,16 @@
 
                     </div><!--fin hr1 -->
                     <div id="hr2" class="tab-pane fade">
-                            <h4 class="alert alert-warning"> Checkout the <a href="general-elements.html">General Elements</a> page for more tab options </h4>
-                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                            <h4 class="alert alert-warning"> Mensajes internos </h4>
+                            Listado de mensajes internos enviados por el coodinador o administrador.
                     </div>
                     <div id="hr3" class="tab-pane fade">
-                            <h4 class="alert alert-warning">Omar yec <a href="general-elements.html">General Elements</a> page for more tab options </h4>
-                            toca dominar esta vaina porque sino nos lleva el que nos trajo.....
+                            <h4 class="alert alert-warning">Calendario de visitas programadas </h4>
+                            Calendario completo de visitas programadas
                     </div>
                     <div id="hr4" class="tab-pane fade">
-                            <h4 class="alert alert-warning">Omar yec <a href="general-elements.html">General Elements</a> page for more tab options </h4>
-                            toca dominar esta vaina porque sino nos lleva el que nos trajo.....
+                            <h4 class="alert alert-warning">Mi ruta de hoy </h4>
+                            Listado de visitas para hoy.....
                     </div>
                     <div id="hr5" class="tab-pane fade">
                             <h4 class="alert alert-warning">Omar yec <a href="general-elements.html">General Elements</a> page for more tab options </h4>
@@ -81,8 +81,9 @@
 {% block javascripts %}
 <script>
     $(document).ready(function(){
-        $("#hr1,#hr5").html('<i class="fa fa-refresh fa-spin"></i> Cargando');
+        $("#hr1,#hr3,#hr5").html('<i class="fa fa-refresh fa-spin"></i> Cargando');
         $("#hr1").load("{{path('calendariovisita_mapa')}}");
+        $("#hr3").load("{{path('calendariovisita_calendario')}}");
         $("#hr5").load("{{path('calendariovisita_misclientes')}}");
     });
 </script>
