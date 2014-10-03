@@ -62,6 +62,33 @@ class CalendarioVisitaController extends Controller
     /**
      * Finds and displays a CalendarioVisita entity.
      *
+     * @Route("/calendario", name="calendariovisita_calendario")
+     * @Method("GET")
+     * @Template()
+     */
+    public function calendarioAction(){
+        $user = $this->get('security.context')->getToken()->getUser();
+        $empleado = $user->getEmpleado();
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('SmathEmpresaBundle:EmpleadoCliente')->createQueryBuilder('ec')
+            ->add('select','c.razonSocial, c.numeroDocumento')
+            ->leftJoin('ec.cliente','c')
+            ->leftJoin('ec.empleado','e')
+            //->leftJoin('c.puntoVenta','pv')
+            ;
+        //$qb->Where("c.fechaProgramada LIKE '".$hoy->format('Y-m-d')."%'");
+        if(null!=$empleado){
+            $qb->Where('e.id='.$empleado->getId());
+        }
+        //die($qb->getQuery()->getSQL());
+        $clientes = $qb->getQuery()->getResult();
+        return array(
+            'clientes' => $clientes,
+        );
+    }
+    /**
+     * Finds and displays a CalendarioVisita entity.
+     *
      * @Route("/misclientes", name="calendariovisita_misclientes")
      * @Method("GET")
      * @Template()
