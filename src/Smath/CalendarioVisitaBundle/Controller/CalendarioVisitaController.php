@@ -70,20 +70,19 @@ class CalendarioVisitaController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
         $empleado = $user->getEmpleado();
         $em = $this->getDoctrine()->getManager();
-        $qb = $em->getRepository('SmathEmpresaBundle:EmpleadoCliente')->createQueryBuilder('ec')
-            ->add('select','c.razonSocial, c.numeroDocumento')
-            ->leftJoin('ec.cliente','c')
-            ->leftJoin('ec.empleado','e')
-            //->leftJoin('c.puntoVenta','pv')
+        $qb = $em->getRepository('SmathCalendarioVisitaBundle:CalendarioVisita')->createQueryBuilder('ca')
+            ->add('select','ca.fechaProgramada, ca.ordenSugerido')
+            ->leftJoin('ca.puntoVenta','pv')
+            ->leftJoin('ca.empleado','e')
             ;
-        //$qb->Where("c.fechaProgramada LIKE '".$hoy->format('Y-m-d')."%'");
+        $qb->Where("ca.fechaProgramada LIKE '".$hoy->format('Y-m-d')."%'");
         if(null!=$empleado){
             $qb->Where('e.id='.$empleado->getId());
         }
         //die($qb->getQuery()->getSQL());
-        $clientes = $qb->getQuery()->getResult();
+        $calendario = $qb->getQuery()->getResult();
         return array(
-            'clientes' => $clientes,
+            'calendario' => $calendario,
         );
     }
     /**
