@@ -144,7 +144,7 @@
  *  日本語                         ['ja-JP']
  *  Lingua latīna     ['la']
  */
-	voice_command_lang = 'en-US',
+	voice_command_lang = 'es-CO',
 /*
  * 	Use localstorage to remember on/off (best used with HTML Version)
  */

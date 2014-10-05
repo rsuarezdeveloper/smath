@@ -39,10 +39,10 @@
 
 		<!-- Specifying a Webpage Icon for Web Clip
 			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-		<link rel="apple-touch-icon" href="{{asset('img/splash/sptouch-icon-iphone.png')}}">
+		<!--<link rel="apple-touch-icon" href="{{asset('img/splash/sptouch-icon-iphone.png')}}">
 		<link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/splash/touch-icon-ipad.png')}}">
 		<link rel="apple-touch-icon" sizes="120x120" href="{{asset('img/splash/touch-icon-iphone-retina.png')}}">
-		<link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/splash/touch-icon-ipad-retina.png')}}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/splash/touch-icon-ipad-retina.png')}}"> -->
 
 		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -108,8 +108,36 @@
 
 				</div>
 				<!-- END AJAX-DROPDOWN -->
-			</div>
 
+			</div>
+            {%if is_granted('ROLE_ADMIN')%}
+            <!-- projects dropdown -->
+			<div class="project-context hidden-xs">
+
+				<span class="label">Admin</span>
+				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Maestros <i class="fa fa-angle-down"></i></span>
+
+				<!-- Suggestion: populate this list with fetch and push technique -->
+				<ul class="dropdown-menu">
+					<li>
+						<a href="{{path('cliente')}}">Clientes</a>
+					</li>
+					<li>
+						<a href="{{path('producto')}}">Productos</a>
+					</li>
+					<li>
+						<a href="{{path('puntoventa')}}">Puntos de Venta</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="{{path('empleado')}}">Empleados</a>
+					</li>
+				</ul>
+				<!-- end dropdown-menu-->
+
+			</div>
+			<!-- end projects dropdown -->
+            {%endif%}
 
 			<!-- pulled right: nav area -->
 			<div class="pull-right">
@@ -125,19 +153,15 @@
 				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
 					<li class="">
 						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-							<img src="{{asset('img/avatars/sunny.png')}}" alt="{{app.user.nombre}}" class="online" />
+							<img src="{{asset('img/avatars/male.png')}}" alt="{{app.user.nombre}}" class="online" />
 						</a>
 						<ul class="dropdown-menu pull-right">
 							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+								<a href="{{path('fos_user_change_password')}}" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Cambiar Clave</a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+								<a href="{{path('fos_user_profile_edit')}}" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>erfil</a>
 							</li>
 							<li class="divider"></li>
 							<li>
@@ -176,86 +200,8 @@
 
 		</header>
 		<!-- END HEADER -->
-       <!-- Left panel : Navigation area -->
-		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-		<aside id="left-panel">
-
-			<!-- User info -->
-			<div class="login-info">
-				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
-
-					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="{{asset('img/avatars/male.png')}}" alt="Yo" class="online" />
-						<span>
-							{{app.user.nombre}}
-						</span>
-						<i class="fa fa-angle-down"></i>
-					</a>
-
-				</span>
-			</div>
-			<!-- end user info -->
-
-			<!-- NAVIGATION : This navigation is also responsive
-
-			To make this navigation dynamic please make sure to link the node
-			(the reference to the nav > ul) after page load. Or the navigation
-			will not initialize.
-			-->
-			<nav>
-				<!-- NOTE: Notice the gaps after each icon usage <i></i>..
-				Please note that these links work a bit different than
-				traditional href="" links. See documentation for details.
-				-->
-
-				<ul>
-					<li class="active">
-						<a href="{{path('smath_dashboard_default_index')}}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
-					</li>
-                    {%if is_granted('ROLE_ADMIN') %}
-                    <li>
-				        <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Datos Maestros</span></a>
-						<ul>
-							<li>
-								<a href="{{path('cliente')}}">Clientes</a>
-							</li>
-							<li>
-								<a href="{{path('producto')}}">Productos</a>
-							</li>
-							<li>
-								<a href="{{path('puntoventa')}}">Puntos de Venta</a>
-							</li>
-						</ul>
-					</li>
-                    {%endif%}
-					<li>
-						<a href="{{path('calendariovisita')}}"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Calendario</span></a>
-					</li>
-				</ul>
-			</nav>
-			<span class="minifyme" data-action="minifyMenu">
-				<i class="fa fa-arrow-circle-left hit"></i>
-			</span>
-
-		</aside>
-		<!-- END NAVIGATION -->
-       <!-- MAIN PANEL -->
+        <!-- MAIN PANEL -->
 		<div id="main" role="main">
-
-			<!-- RIBBON -->
-			<div id="ribbon">
-
-				<!-- breadcrumb
-				<ol class="breadcrumb">
-					<li>Home</li><li>Dashboard</li>
-				</ol>
-				<!-- end breadcrumb -->
-
-
-
-			</div>
-			<!-- END RIBBON -->
-
 			<!-- MAIN CONTENT -->
 			<div id="content">
 				<!-- widget grid -->
@@ -347,6 +293,7 @@
 
 		<!-- Full Calendar -->
 		<script src="{{asset('js/plugin/fullcalendar/jquery.fullcalendar.min.js')}}"></script>
+        <script src="{{asset('js/plugin/fullcalendar/fullcalendar.es.js')}}"></script>
 
        <!-- jqGrid -->
        <script src="{{asset('js/plugin/jqgrid/jquery.jqGrid.min.js')}}"></script>
