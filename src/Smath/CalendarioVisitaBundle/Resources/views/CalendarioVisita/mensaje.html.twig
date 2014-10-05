@@ -1,0 +1,22 @@
+<table class="table table-bordered table-condensed">
+    <tr>
+        <th>To</th>
+        <th>From</th>
+        <th>Mensaje</th>
+        <th>Fecha</th>
+    </tr>
+    {%for m in mensajes%}
+    <tr>
+        <td>{{m.NombreDe}}</td>
+        <td>{{m.NombrePara}}</td>
+        <td>{{m.mensaje}}</td>
+        <td>{{m.fecha|date("Y-m-d H:i:s")}}</td>
+    </tr>
+    {%else%}
+        <tr>
+            <td colspan="2">
+                <div class="alert alert-danger">No tiene mensajes</div>
+            </td>
+        </tr>
+    {%endfor%}
+</table>
