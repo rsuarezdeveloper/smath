@@ -1,4 +1,5 @@
-$.fullCalendar.setDefaults({
+
+$.fullCalendar.setDefaults=function({
     allDayText: 'Todo el día',
     axisFormat: 'H:mm',
 	titleFormat: {
