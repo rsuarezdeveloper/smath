@@ -160,6 +160,7 @@ class CalendarioVisitaController extends Controller
             $qb->Where('et.id='.$empleado->getId().' OR ef.id='.$empleado->getId());
             #$qb->andWhere('et.id='.$empleado->getId().' OR ef.id='.$empleado->getId());
         }
+        $qb->orderBy('m.fecha', 'DESC');
         //die($qb->getQuery()->getSQL());
         $mensajes = $qb->getQuery()->getResult();
         return array(

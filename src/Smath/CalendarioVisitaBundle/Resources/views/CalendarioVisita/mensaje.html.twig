@@ -1,22 +1,20 @@
-<table class="table table-bordered table-condensed">
-    <tr>
-        <th>To</th>
-        <th>From</th>
-        <th>Mensaje</th>
-        <th>Fecha</th>
-    </tr>
-    {%for m in mensajes%}
-    <tr>
-        <td>{{m.NombreDe}}</td>
-        <td>{{m.NombrePara}}</td>
-        <td>{{m.mensaje}}</td>
-        <td>{{m.fecha|date("Y-m-d H:i:s")}}</td>
-    </tr>
-    {%else%}
-        <tr>
-            <td colspan="2">
-                <div class="alert alert-danger">No tiene mensajes</div>
-            </td>
-        </tr>
-    {%endfor%}
-</table>
+{%for m in mensajes%}
+    <ul>
+        <li class="message">
+            <img src="{{asset('img/avatars/male.png')}}" class="online" alt="">
+            <div class="message-text">
+                <time>
+                    {{m.fecha|date("Y-m-d H:i:s")}}
+                </time> <a href="javascript:void(0);" class="username">{{m.NombreDe}}</a> {{m.mensaje}}
+            </div>
+        </li>
+    </ul>
+{%else%}
+    <div class="alert alert-danger">
+    <h4>
+        <i class="fa fa-warning"></i>
+        Atenci&oacute;n!
+    </h4>
+    No tiene mensajes
+    </div>
+{%endfor%}

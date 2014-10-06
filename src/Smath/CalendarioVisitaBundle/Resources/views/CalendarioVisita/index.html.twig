@@ -74,10 +74,10 @@
 							<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
 								<header>
 									<span class="widget-icon"> <i class="fa fa-comments txt-color-white"></i> </span>
-									<h2> SmartChat </h2>
+									<h2> Mensajes </h2>
 									<div class="widget-toolbar">
 										<!-- add: non-hidden - to disable auto hide -->
-										<div class="btn-group">
+										<!-- <div class="btn-group">
 											<button class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
 												Status <i class="fa fa-caret-down"></i>
 											</button>
@@ -96,7 +96,7 @@
 													<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Log Off</a>
 												</li>
 											</ul>
-										</div>
+										</div> -->
 									</div>
 								</header>
 								<!-- widget div-->
@@ -112,7 +112,7 @@
 									<div class="widget-body widget-hide-overflow no-padding">
 										<!-- content goes here -->
 										<!-- CHAT CONTAINER -->
-										<div id="chat-container">
+										<!-- <div id="chat-container">
 											<span class="chat-list-open-close"><i class="fa fa-user"></i><b>!</b></span>
 											<div class="chat-list-body custom-scroll">
 												<ul id="chat-users">
@@ -153,10 +153,10 @@
 													</form>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<!-- CHAT BODY -->
 										<div id="chat-body" class="chat-body custom-scroll">
-											<ul>
+											<!--<ul>
 												<li class="message">
 													<img src="{{asset('img/avatars/5.png')}}" class="online" alt="">
 													<div class="message-text">
@@ -164,7 +164,7 @@
 															2014-01-13
 														</time> <a href="javascript:void(0);" class="username">Sadi Orlaf</a> Hey did you meet the new board of director? He's a bit of an arse if you ask me...anyway here is the report you requested. I am off to launch with Lisa and Andrew, you wanna join?
 														<p class="chat-file row">
-															<b class="pull-left col-sm-6"> <!--<i class="fa fa-spinner fa-spin"></i>--> <i class="fa fa-file"></i> report-2013-demographic-report-annual-earnings.xls </b>
+															<b class="pull-left col-sm-6"> <!!--<i class="fa fa-spinner fa-spin"></i>--!!> <i class="fa fa-file"></i> report-2013-demographic-report-annual-earnings.xls </b>
 															<span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-default">cancel</a> <a href="javascript:void(0);" class="btn btn-xs btn-success">save</a> </span>
 														</p>
 														<p class="chat-file row">
@@ -180,23 +180,23 @@
 														</time> <a href="javascript:void(0);" class="username">John Doe</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i>
 													</div>
 												</li>
-											</ul>
+											</ul> -->
 										</div>
 										<!-- CHAT FOOTER -->
 										<div class="chat-footer">
 											<!-- CHAT TEXTAREA -->
-											<div class="textarea-div">
+											<!-- <div class="textarea-div">
 												<div class="typearea">
 													<textarea placeholder="Write a reply..." id="textarea-expand" class="custom-scroll"></textarea>
 												</div>
-											</div>
+											</div> -->
 											<!-- CHAT REPLY/SEND -->
-											<span class="textarea-controls">
+											<!-- <span class="textarea-controls">
 												<button class="btn btn-sm btn-primary pull-right">
 													Reply
 												</button> <span class="pull-right smart-form" style="margin-top: 3px; margin-right: 10px;"> <label class="checkbox pull-right">
 														<input type="checkbox" name="subscription" id="subscription">
-														<i></i>Press <strong> ENTER </strong> to send </label> </span> <a href="javascript:void(0);" class="pull-left"><i class="fa fa-camera fa-fw fa-lg"></i></a> </span>
+														<i></i>Press <strong> ENTER </strong> to send </label> </span> <a href="javascript:void(0);" class="pull-left"><i class="fa fa-camera fa-fw fa-lg"></i></a> </span> -->
 										</div>
 										<!-- end content -->
 									</div>
@@ -215,6 +215,7 @@
     $(document).ready(function(){
         //$("#hr1,#hr3,#hr5").html('<i class="fa fa-refresh fa-spin"></i> Cargando');
         $("#div-todo").load("{{path('calendariovisita_mapa')}}");
+        $("#chat-body").load("{{path('calendariovisita_mensaje')}}");
         $("#calendario").load("{{path('calendariovisita_calendario')}}");
         $("#mapa_visitas").load("{{path('calendariovisita_gmap')}}");
         //$("#hr3").load("{{path('calendariovisita_calendario')}}");
