@@ -53,9 +53,9 @@ No tiene visitas asignadas por el momento, pongase en contacto con su supervisor
 <script>
     $(document).ready(function(){
         $(".diligenciar_cita").click(function(){
-            //var cita = $(this).attr('cita');
-            //$("#div_cita_"+cita).toggle();
-            $("#citaModal").modal('show');
+            var cita = $(this).attr('cita');
+            $("#div_cita_"+cita).toggle();
+            //$("#citaModal").modal('show');
         });
         $(".btn_guardar_cita").click(function(){
             var cita = $(this).attr('cita');
@@ -64,7 +64,7 @@ No tiene visitas asignadas por el momento, pongase en contacto con su supervisor
             var path ="{{path('calendariovisita_update',{id:'__id'})}}".replace('__id',cita);
             $.post(path,{observaciones:observaciones, method:'PUT'},function(response){
                 $("#div-todo").load("{{path('calendariovisita_mapa')}}");
-                countTasks();
+                //countTasks();
             })
         });
     })
