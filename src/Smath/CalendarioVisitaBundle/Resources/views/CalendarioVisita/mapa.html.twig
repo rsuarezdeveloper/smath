@@ -1,29 +1,28 @@
 {%if citas%}
-<h5 class="todo-group-title"><i class="fa fa-warning"></i> Citas Pendientes (<small class="num-of-tasks">{{citas|length}}</small>)</h5>
-<ul id="sortable1" class="todo">
-    {%for cita in citas if not cita.visitado%}
+<h5 class="todo-group-title"><i class="fa fa-warning"></i> Citas Pendientes (<small class="num-of-tasks">0</small>)</h5>
+<ul  class="todo">
+{%for cita in citas if not cita.visitado%}
     <li>
-        <span class="handle"> </span>
-        <p>
-        <strong>Cita #{{cita.id}}</strong> - {{cita.puntoVenta.nombre}} [<a href="javascript:void(0);" class="font-xs diligenciar_cita" cita="{{cita.id}}">Diligenciar</a>] <span class="text-muted">{{cita.puntoVenta.nombreAdministrador}} </span>
-                                                        <span class="date">{{cita.fechaProgramada|date('Y-m-d H:i:s')}}</span>
-
-
-            <span id="div_cita_{{cita.id}}" style="display:none">
-                <label class="textarea">
-                <textarea name="obs_cita_{{cita.id}}" id="obs_cita_{{cita.id}}" cols="30" rows="10" placeholder="Diligencie aca su información" class="textarea-resizable"></textarea>
-                </label>
-                    <button class="btn btn-success btn_guardar_cita" cita="{{cita.id}}" > Guardar</button>
-            </span>
-
-
+        <span class="handle"></span>
+        <p><strong>Cita #{{cita.id}}</strong> - {{cita.puntoVenta.nombre}} [<a href="javascript:void(0);" class="font-xs diligenciar_cita" cita="{{cita.id}}" >Diligenciar</a>] <span class="text-muted">{{cita.puntoVenta.nombreAdministrador}} </span>
+<span class="date">{{cita.fechaProgramada|date('Y-m-d H:i:s')}}</span>
+         <div class="textarea-div" id="div_cita_{{cita.id}}" style="display:none">
+                    <div class="typearea">
+                        <textarea placeholder="Diligencie aca su información" name="obs_cita_{{cita.id}}" id="obs_cita_{{cita.id}}"  class="custom-scroll"></textarea>
+                    </div>
+                     <!-- CHAT REPLY/SEND -->
+                    <div class="textarea-controls">
+                        <button class=" btn_guardar_cita btn btn-sm btn-primary pull-right" cita="{{cita.id}}">
+                            Guardar
+                        </button>
+                    </div>
+            </div>
         </p>
     </li>
-    {%endfor%}
-
+{%endfor%}
 </ul>
 <h5 class="todo-group-title"><i class="fa fa-check"></i> Visitas Completadas (<small class="num-of-tasks">0</small>)</h5>
-<ul id="sortable1" class="todo">
+<ul class="todo">
     {%for cita in citas if cita.visitado%}
     <li>
         <span class="handle"> </span>
@@ -43,20 +42,27 @@
 </h4>
 No tiene visitas asignadas por el momento, pongase en contacto con su supervisor si cree que esto es incorrecto.</div>
 {%endif%}
-
+<div id="citaModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="citaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
 {%block javascripts%}
 <script>
     $(document).ready(function(){
         $(".diligenciar_cita").click(function(){
             var cita = $(this).attr('cita');
-            $("#div_cita_"+cita).toggle();
+            //$("#div_cita_"+cita).toggle();
+            $("#citaModal").modal('show');
         });
         $(".btn_guardar_cita").click(function(){
             var cita = $(this).attr('cita');
             var observaciones=$("#obs_cita_"+cita).val();
             $(this).parent().prepend('<i class="fa fa-refresh fa-spin"></i> Guardando... <BR>');
             var path ="{{path('calendariovisita_update',{id:'__id'})}}".replace('__id',cita);
-            $.post(path,{observaciones:observaciones, __method:'PUT'},function(response){
+            $.post(path,{observaciones:observaciones, method:'PUT'},function(response){
                 $("#div-todo").load("{{path('calendariovisita_mapa')}}");
                 countTasks();
             })

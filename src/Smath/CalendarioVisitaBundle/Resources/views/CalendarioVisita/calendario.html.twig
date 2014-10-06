@@ -1,78 +1,74 @@
-<div class="col-sm-12 col-md-12 col-lg-9">
+<!-- new widget -->
+<div class="jarviswidget jarviswidget-color-blueDark">
 
-						<!-- new widget -->
-						<div class="jarviswidget jarviswidget-color-blueDark">
+    <!-- widget options:
+    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-							<!-- widget options:
-							usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+    data-widget-colorbutton="false"
+    data-widget-editbutton="false"
+    data-widget-togglebutton="false"
+    data-widget-deletebutton="false"
+    data-widget-fullscreenbutton="false"
+    data-widget-custombutton="false"
+    data-widget-collapsed="true"
+    data-widget-sortable="false"
 
-							data-widget-colorbutton="false"
-							data-widget-editbutton="false"
-							data-widget-togglebutton="false"
-							data-widget-deletebutton="false"
-							data-widget-fullscreenbutton="false"
-							data-widget-custombutton="false"
-							data-widget-collapsed="true"
-							data-widget-sortable="false"
+    -->
+    <header>
+        <span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
+        <h2> My Events </h2>
+        <div class="widget-toolbar">
+            <!-- add: non-hidden - to disable auto hide -->
+            <div class="btn-group">
+                <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
+                    Mostrar <i class="fa fa-caret-down"></i>
+                </button>
+                <ul class="dropdown-menu js-status-update pull-right">
+                    <li>
+                        <a href="javascript:void(0);" id="mt">Mes</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" id="ag">Agenda</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" id="td">Hoy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
-							-->
-							<header>
-								<span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
-								<h2> My Events </h2>
-								<div class="widget-toolbar">
-									<!-- add: non-hidden - to disable auto hide -->
-									<div class="btn-group">
-										<button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-											Mostrar <i class="fa fa-caret-down"></i>
-										</button>
-										<ul class="dropdown-menu js-status-update pull-right">
-											<li>
-												<a href="javascript:void(0);" id="mt">Mes</a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" id="ag">Agenda</a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" id="td">Hoy</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</header>
+    <!-- widget div-->
+    <div>
 
-							<!-- widget div-->
-							<div>
+        <div class="widget-body no-padding">
+            <!-- content goes here -->
+            <div class="widget-body-toolbar">
 
-								<div class="widget-body no-padding">
-									<!-- content goes here -->
-									<div class="widget-body-toolbar">
+                <div id="calendar-buttons">
 
-										<div id="calendar-buttons">
+                    <div class="btn-group">
+                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div id="calendar"></div>
 
-											<div class="btn-group">
-												<a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-												<a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
-											</div>
-										</div>
-									</div>
-									<div id="calendar"></div>
+            <!-- end content -->
+        </div>
 
-									<!-- end content -->
-								</div>
-
-							</div>
-							<!-- end widget div -->
-						</div>
-						<!-- end widget -->
-
-					</div>
+    </div>
+    <!-- end widget div -->
+</div>
+<!-- end widget -->
+{%block javascripts%}
 <script type="text/javascript">
 
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
 
 		$(document).ready(function() {
 
-			pageSetUp();
 
 
 			    "use strict";
@@ -291,20 +287,4 @@
 		})
 
 		</script>
-
-		<!-- Your GOOGLE ANALYTICS CODE Below -->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-				_gaq.push(['_trackPageview']);
-
-			(function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
-
-		</script>
+    {%endblock%}

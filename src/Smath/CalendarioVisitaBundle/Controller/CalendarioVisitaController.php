@@ -113,6 +113,33 @@ class CalendarioVisitaController extends Controller
         );
     }
     /**
+     * Finds and displays a CalendarioVisita entity.
+     *
+     * @Route("/mensaje", name="calendariovisita_mensaje")
+     * @Method("GET")
+     * @Template()
+     */
+    public function mensajeAction(){
+        $user = $this->get('security.context')->getToken()->getUser();
+        $empleado = $user->getEmpleado();
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('SmathCalendarioVisitaBundle:Mensaje')->createQueryBuilder('m')
+            ->add('select','m.mensaje, m.fecha, m.leido, et.nombre as NombreDe, ef.nombre as NombrePara')
+            ->leftJoin('m.empleado','et')
+            ->leftJoin('m.empleadoId','ef')
+            ;
+        //$qb->Where("c.fechaProgramada LIKE '".$hoy->format('Y-m-d')."%'");
+        if(null!=$empleado){
+            $qb->Where('et.id='.$empleado->getId().' OR ef.id='.$empleado->getId());
+            #$qb->andWhere('et.id='.$empleado->getId().' OR ef.id='.$empleado->getId());
+        }
+        //die($qb->getQuery()->getSQL());
+        $mensajes = $qb->getQuery()->getResult();
+        return array(
+            'mensajes' => $mensajes,
+        );
+    }
+    /**
      * Creates a new CalendarioVisita entity.
      *
      * @Route("/", name="calendariovisita_create")
