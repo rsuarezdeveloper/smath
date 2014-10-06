@@ -120,6 +120,32 @@ class CalendarioVisitaController extends Controller
     /**
      * Finds and displays a CalendarioVisita entity.
      *
+     * @Route("/gmap", name="calendariovisita_gmap")
+     * @Method("GET")
+     * @Template()
+     */
+    public function gmapAction(){
+        $user = $this->get('security.context')->getToken()->getUser();
+        $empleado = $user->getEmpleado();
+        $hoy = new \DateTime();
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('SmathCalendarioVisitaBundle:CalendarioVisita')->createQueryBuilder('c')
+            ->leftJoin('c.empleado','e')
+            ->leftJoin('c.puntoVenta','pv')
+            ;
+        $qb->Where("c.fechaProgramada LIKE '".$hoy->format('Y-m-d')."%'");
+        if(null!=$empleado){
+            $qb->andWhere('e.id='.$empleado->getId());
+        }
+        //die($qb->getQuery()->getSQL());
+        $citas = $qb->getQuery()->getResult();
+        return array(
+            'citas' => $citas,
+        );
+    }
+    /**
+     * Finds and displays a CalendarioVisita entity.
+     *
      * @Route("/mensaje", name="calendariovisita_mensaje")
      * @Method("GET")
      * @Template()
@@ -138,6 +164,7 @@ class CalendarioVisitaController extends Controller
             $qb->Where('et.id='.$empleado->getId().' OR ef.id='.$empleado->getId());
             #$qb->andWhere('et.id='.$empleado->getId().' OR ef.id='.$empleado->getId());
         }
+        $qb->orderBy('m.fecha', 'DESC');
         //die($qb->getQuery()->getSQL());
         $mensajes = $qb->getQuery()->getResult();
         return array(
