@@ -67,11 +67,13 @@ class CalendarioVisitaController extends Controller
      * @Template()
      */
     public function calendarioAction(){
+
         $user = $this->get('security.context')->getToken()->getUser();
         $empleado = $user->getEmpleado();
+        $hoy = new \DateTime();
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathCalendarioVisitaBundle:CalendarioVisita')->createQueryBuilder('ca')
-            ->add('select','ca.fechaProgramada, ca.ordenSugerido')
+            ->add('select','ca.id,ca.fechaProgramada, ca.ordenSugerido,pv.nombre,pv.direccion,pv.telefono1,pv.correoelectronico,pv.latitud,pv.longitud')
             ->leftJoin('ca.puntoVenta','pv')
             ->leftJoin('ca.empleado','e')
             ;
@@ -79,8 +81,11 @@ class CalendarioVisitaController extends Controller
         if(null!=$empleado){
             $qb->Where('e.id='.$empleado->getId());
         }
+
         //die($qb->getQuery()->getSQL());
+
         $calendario = $qb->getQuery()->getResult();
+
         return array(
             'calendario' => $calendario,
         );
