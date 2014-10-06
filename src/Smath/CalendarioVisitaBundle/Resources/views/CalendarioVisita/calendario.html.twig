@@ -191,7 +191,7 @@
                         {%for ca in calendario%}
                         {
 			            title: '{{ca.nombre}}',
-			            start: new Date({{ca.fechaProgramada |date("Y") }}, {{ca.fechaProgramada |date("n") }}, {{ca.fechaProgramada |date("j") }}, 10, 30),
+			            start: "{{ca.fechaProgramada |date("Y-m-d") }} 08:00",
 			            allDay: false,
 			            className: ["event", "bg-color-darken"]
 			             }{% if not loop.last %} , {% endif%}
