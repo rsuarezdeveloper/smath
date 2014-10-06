@@ -28,7 +28,7 @@
         <span class="handle"> </span>
         <p>
             <strong>Cita #{{cita.id}}</strong> - {{cita.puntoVenta.nombre}}  <span class="text-muted">{{cita.puntoVenta.nombreAdministrador}} </span>
-            <span class="date">Jan 1, 2014</span>
+            <span class="date">{{cita.fechaVisita|date('Y-m-d H:i:s')}}</span>
             <span>{{cita.observaciones|raw}}</span>
         </p>
     </li>
