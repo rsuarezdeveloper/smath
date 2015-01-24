@@ -41,7 +41,7 @@
                 url:'{{path('producto_list')}}',
 				datatype: "json",
 
-                colNames: ['Id', 'Línea', 'Referencia','Descripción',  'Nombre', 'Activo', 'Pr. Un. Com.','Pr. F. Farm','Editar'],
+                colNames: ['Id', 'Línea', 'Referencia','Descripción',  'Nombre', 'Activo', 'Pr. Un. Com.','Pr. F. Farm',''],
                 jsonReader : {
 				      root: "rows",
 				      page: "page",
@@ -60,7 +60,7 @@
                     { name: 'estado', index: 'estado', jsonmap:'Estado',width: 30, formatter:status, align:'center' },
                     { name: 'precioUnidadComercial', index: 'precioUnidadComercial', jsonmap:'precioUnidadComercial',width: 30,  align:'right',formatter: currency },
                     { name: 'precioFormaFarmaceutica', index: 'precioFormaFarmaceutica', jsonmap:'precioUnidadComercial',width: 30,  align:'right',formatter: currency },
-                    { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
+                    { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sortable:false, formatter:editar },
 
                     ],
                 pager: '#pager',
