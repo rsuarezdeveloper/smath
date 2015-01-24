@@ -218,10 +218,6 @@ class Contacto
         return $this->estado;
     }
 
-
-
-
-
     /**
      * Set tipoContacto
      *

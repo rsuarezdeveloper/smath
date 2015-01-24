@@ -244,7 +244,7 @@
 		<script src="{{asset('js/app.config.js')}}"></script>
 
 		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-		<script src="{{asset('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js')}}"></script>
+		<!--<script src="{{asset('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js')}}"></script>-->
 
 		<!-- BOOTSTRAP JS -->
 		<script src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
@@ -291,16 +291,19 @@
 		<!-- MAIN APP JS FILE -->
 		<script src="{{asset('js/app.min.js')}}"></script>
 
+		<!-- GENERAL SCRIPTS JS -->
+		<script src="{{asset('js/scripts.js')}}"></script>
+
 		<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
 		<!-- Voice command : plugin -->
-		<script src="{{asset('js/speech/voicecommand.min.js')}}"></script>
+		<!--<script src="{{asset('js/speech/voicecommand.min.js')}}"></script>-->
 
 		<!-- PAGE RELATED PLUGIN(S) -->
 
 		<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-		<script src="{{asset('js/plugin/flot/jquery.flot.cust.min.js')}}"></script>
+		<!--<script src="{{asset('js/plugin/flot/jquery.flot.cust.min.js')}}"></script>
 		<script src="{{asset('js/plugin/flot/jquery.flot.resize.min.js')}}"></script>
-		<script src="{{asset('js/plugin/flot/jquery.flot.tooltip.min.js')}}"></script>
+		<script src="{{asset('js/plugin/flot/jquery.flot.tooltip.min.js')}}"></script>-->
 
 		<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
 		<script src="{{asset('js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
@@ -314,6 +317,6 @@
        <script src="{{asset('js/plugin/jqgrid/jquery.jqGrid.min.js')}}"></script>
        <script src="{{asset('js/jquery.jqGrid/js/i18n/grid.locale-es.js')}}"></script>
        <script src="https://maps.googleapis.com/maps/api/js"></script>
-        {% block javascripts %}{% endblock %}
+       {% block javascripts %}{% endblock %}
     </body>
 </html>
