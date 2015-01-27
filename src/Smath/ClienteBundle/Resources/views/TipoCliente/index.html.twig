@@ -19,54 +19,15 @@
         </div>
     </section>
     <!-- end widget grid -->
-
-
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Estado</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('tipocliente_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nombre }}</td>
-                <td>{{ entity.estado }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('tipocliente_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('tipocliente_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('tipocliente_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
 {% endblock %}
 {% block javascripts%}
 <script>
 $(document).ready(function(){
     $('#list').jqGrid({
 
-        url: '{{path('producto_list')}}',
+        url: '{{path('tipocliente_list')}}',
         datatype: 'json',
-        colNames: ['Id', 'Línea', 'Referencia', 'Descripción', 'Nombre', 'Activo', 'Pr. Com.','Pr. Farm.', ''],
+        colNames: ['Id', 'Nombre', 'Activo', ''],
         jsonReader : {
             root: 'rows',
             page: 'page',
@@ -78,13 +39,8 @@ $(document).ready(function(){
         },
         colModel: [
             {name:'id', index:'id', jsonmap:'id', key:true, width:20, sorttype:'int', search:false, align:'center', hidden:true},
-            {name:'linea', index:'linea', jsonmap:'linea', width:100,  search:true, align:'left'},
-            {name:'referencia', index:'referencia', jsonmap:'referencia', width:50,  align:'left'},
-            {name:'descripcion', index:'descripcion', jsonmap:'descripcion', width:120, align:'left'},
-            {name:'nombre', index:'nombre', jsonmap:'nombre', width:120},
+            {name:'nombre', index:'nombre', jsonmap:'nombre', width:100,  search:true, align:'left'},
             {name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center'},
-            {name:'precioUnidadComercial', index:'precioUnidadComercial', jsonmap:'precioUnidadComercial', width:40, align:'right', formatter:currency},
-            {name:'precioFormaFarmaceutica', index:'precioFormaFarmaceutica', jsonmap:'precioUnidadComercial', width:40,  align:'right', formatter:currency},
             {name:'actions', index:'id', jsonmap:'id', width:30, align:'center',search:false, sortable:false, formatter:editar},
         ],
         pager: '#pager',
@@ -118,7 +74,7 @@ $(document).ready(function(){
         return html;
     }
     function editar(cellvalue, options, rowObject){
-        html = '<a href="{{path('producto_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id',cellvalue);
+        html = '<a href="{{path('tipocliente_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id',cellvalue);
         return html;
     }
 

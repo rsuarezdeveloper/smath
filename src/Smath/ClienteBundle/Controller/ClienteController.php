@@ -288,7 +288,7 @@ class ClienteController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cliente', array('id' => $id)));
+            return $this->redirect($this->generateUrl('cliente'));
         }
 
         return array(

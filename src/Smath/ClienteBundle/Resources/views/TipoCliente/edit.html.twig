@@ -1,16 +1,33 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>TipoCliente edit</h1>
+	
+	<div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-edit"></i> Editar Tipo Cliente </h1>
+        </div>
+    </div>
+    
+    {{ form_start(edit_form, {'attr': {'role':'form', 'class': 'form-inline'}}) }}
+        <table class="table table-condensed">
+            <tr>
+                <th>Nombre</th>
+                <td>{{form_widget(edit_form.nombre, {'attr': {'class': 'form-control'}})}}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{form_widget(edit_form.estado)}}</td>
+            </tr>
+        </table>
+        <div style="display:none">{{form_rest(edit_form)}}</div>
+        <button type="button" id="button-delete" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete</button>
+        <a href="{{ path('tipocliente') }}" class="btn btn-info">Cancelar</a> 
+        <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+    {{ form_end(edit_form) }}
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('tipocliente') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ form_start(delete_form, {'attr': {'id':'delete-form'}}) }}
+            <div style="display:none">{{ form_widget(delete_form) }}</div>
+        {{form_end(delete_form)}}
+    {% endif %}
 {% endblock %}

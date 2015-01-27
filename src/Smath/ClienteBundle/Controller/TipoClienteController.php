@@ -3,6 +3,7 @@
 namespace Smath\ClienteBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,27 +40,21 @@ class TipoClienteController extends Controller
     /**
      * Lists all producto entities.
      *
-     * @Route("/list", name="producto_list")
+     * @Route("/list", name="tipocliente_list")
      * @Method("GET")
      */
     public function listAction () 
     {
     
         $em = $this->getDoctrine()->getManager();
-        $qb = $em->getRepository('SmathProductoBundle:TipoCliente')->createQueryBuilder('p')
-               ->add('select','p.id, p.descripcion, p.estado, p.referencia, p.nombre, l.descripcion linea, p.precioUnidadComercial, p.precioFormaFarmaceutica')
-               ->leftJoin('p.linea', 'l')
-               ->orderBy('l.descripcion','ASC');
+        $qb = $em->getRepository('SmathClienteBundle:TipoCliente')->createQueryBuilder('tc')
+               ->add('select','tc.id, tc.nombre, tc.estado')
+               ->orderBy('tc.nombre','ASC');
         $entities = $qb->getQuery()->getResult();
         $fields = array(
-            'id' => 'p.id',
-            'descripcion' => 'p.descripcion',
-            'estado' => 'p.estado',
-            'referencia' => 'p.referencia',
-            'nombre' => 'p.nombre',
-            'linea' => 'l.descripcion',
-            'precioUnidadComercial' => 'p.precioUnidadComercial',
-            'precioFormaFarmaceutica' => 'p.precioFormaFarmaceutica'
+            'id' => 'tc.id',
+            'descripcion' => 'tc.nombre',
+            'estado' => 'tc.estado',
         );
 
         ///Aplicamos filtros
@@ -146,7 +141,7 @@ class TipoClienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipocliente_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('tipocliente', array('id' => $entity->getId())));
         }
 
         return array(
@@ -286,7 +281,7 @@ class TipoClienteController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipocliente_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tipocliente'));
         }
 
         return array(
