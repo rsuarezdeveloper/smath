@@ -23,6 +23,7 @@ class ClienteType extends AbstractType
             ->add('clienteId')
             ->add('tipoCliente')
             ->add('tipoDocumento')
+            ->add('estado')
         ;
     }
 

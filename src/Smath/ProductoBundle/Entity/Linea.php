@@ -26,14 +26,14 @@ class Linea
      *
      * @ORM\Column(name="codigo", type="integer")
      */
-    private $Codigo;
+    private $codigo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=45)
      */
-    private $Descripcion;
+    private $descripcion;
 
     /**
      * @var integer
@@ -47,7 +47,7 @@ class Linea
      *
      * @ORM\Column(name="estado", type="smallint")
      */
-    private $Estado;
+    private $estado;
 
 
     /**
@@ -66,9 +66,9 @@ class Linea
      * @param integer $Codigo
      * @return linea
      */
-    public function setCodigo($Codigo)
+    public function setCodigo($codigo)
     {
-        $this->Codigo = $Codigo;
+        $this->codigo = $codigo;
 
         return $this;
     }
@@ -80,7 +80,7 @@ class Linea
      */
     public function getCodigo()
     {
-        return $this->Codigo;
+        return $this->codigo;
     }
 
     /**
@@ -89,9 +89,9 @@ class Linea
      * @param string $Descripcion
      * @return linea
      */
-    public function setDescripcion($Descripcion)
+    public function setDescripcion($descripcion)
     {
-        $this->Descripcion = $Descripcion;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
@@ -103,7 +103,7 @@ class Linea
      */
     public function getDescripcion()
     {
-        return $this->Descripcion;
+        return $this->descripcion;
     }
 
 
@@ -113,9 +113,9 @@ class Linea
      * @param integer $estado
      * @return linea
      */
-    public function setEstado($Estado)
+    public function setEstado($estado)
     {
-        $this->Estado = $Estado;
+        $this->estado = $estado;
 
         return $this;
     }
@@ -127,12 +127,12 @@ class Linea
      */
     public function getEstado()
     {
-        return $this->Estado;
+        return $this->estado;
     }
 
     public function __toString()
     {
-        return $this->Descripcion;
+        return $this->descripcion;
     }
 
 

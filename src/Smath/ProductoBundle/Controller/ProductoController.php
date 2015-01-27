@@ -46,23 +46,23 @@ class ProductoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathProductoBundle:Producto')->createQueryBuilder('p')
-        	   ->add('select','p.id, p.Descripcion, p.Estado, p.Referencia, p.Nombre, l.Descripcion linea, p.precioUnidadComercial, p.precioFormaFarmaceutica')
-        	   ->leftJoin('p.linea','l')
-        	   ->orderBy('l.Descripcion','ASC');
-        $entities=$qb->getQuery()->getResult();
-		$fields=array(
-			'id'=>'p.id',
-			'descripcion' => 'p.Descripcion',
-            'estado'=>'p.Estado',
-            'referencia'=>'p.Referencia',
-            'nombre'=>'p.Nombre',
-            'linea'=>'l.Descripcion',
+        	   ->add('select','p.id, p.descripcion, p.estado, p.referencia, p.nombre, l.descripcion linea, p.precioUnidadComercial, p.precioFormaFarmaceutica')
+        	   ->leftJoin('p.linea', 'l')
+        	   ->orderBy('l.descripcion','ASC');
+        $entities = $qb->getQuery()->getResult();
+		$fields = array(
+			'id' => 'p.id',
+			'descripcion' => 'p.descripcion',
+            'estado' => 'p.estado',
+            'referencia' => 'p.referencia',
+            'nombre' => 'p.nombre',
+            'linea' => 'l.descripcion',
             'precioUnidadComercial' => 'p.precioUnidadComercial',
             'precioFormaFarmaceutica' => 'p.precioFormaFarmaceutica'
 		);
 
 		///Aplicamos filtros
-	    $request=$this->get('request');
+	    $request = $this->get('request');
 	    if ($request->get('_search') && $request->get('_search') == "true" && $request->get('filters')) {
             $f = $request->get('filters');
             $f = json_decode(str_replace("\\", "", $f), true);
@@ -71,10 +71,10 @@ class ProductoController extends Controller
                 $searchField = $fields[$rule['field']];
                 $searchString = $rule['data'];
 
-                if($rule['field']=='fecha'){
+                if($rule['field'] == 'fecha'){
                 
                     $daterange = explode("|", $searchString);
-                    if(count($daterange)==1){
+                    if(count($daterange) == 1){
                     	$dateValue = "'" . trim(str_replace(" ", "", $daterange[0])) . "'";
                         $qb->andWhere($searchField." =".$dateValue);
                     } else {
@@ -85,13 +85,11 @@ class ProductoController extends Controller
 
                 } else {
                     if("null" != $searchString){
-                    	$qb->andWhere($qb->expr()->like($searchField, $qb->expr()->literal("%".$searchString."%")));
+                    	$qb->andWhere($qb->expr()->like($searchField, $qb->expr()->literal("%" . $searchString . "%")));
                     }
                 }
             }
-
         }
-
 
 	    //Ordenamiento de columnas
 	    //sidx	id
@@ -145,7 +143,7 @@ class ProductoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('producto_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('producto', array('id' => $entity->getId())));
         }
 
         return array(
@@ -295,8 +293,15 @@ class ProductoController extends Controller
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id) {
+        
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
+
+        $sql = "DELETE FROM ProductoProveedor WHERE producto = $id";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -321,10 +326,11 @@ class ProductoController extends Controller
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id) {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('producto_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Borrar','attr'=>array('class'=>'btn btn-danger')))
+            ->add('submit', 'submit', array('label' => 'Borrar','attr' => array('class' => 'btn btn-danger')))
             ->getForm()
         ;
     }

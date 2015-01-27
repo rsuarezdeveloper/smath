@@ -32,28 +32,28 @@ class Producto
      *
      * @ORM\Column(name="referencia", type="string", length=45)
      */
-    private $Referencia;
+    private $referencia;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=45)
      */
-    private $Nombre;
+    private $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=150)
      */
-    private $Descripcion;
+    private $descripcion;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="estado", type="boolean")
      */
-    private $Estado;
+    private $estado;
     /**
      *@var float
      *
@@ -82,9 +82,9 @@ class Producto
      * @param string $Referencia
      * @return producto
      */
-    public function setReferencia($Referencia)
+    public function setReferencia($referencia)
     {
-        $this->Referencia = $Referencia;
+        $this->referencia = $referencia;
 
         return $this;
     }
@@ -96,7 +96,7 @@ class Producto
      */
     public function getReferencia()
     {
-        return $this->Referencia;
+        return $this->referencia;
     }
 
     /**
@@ -105,9 +105,9 @@ class Producto
      * @param string $Nombre
      * @return producto
      */
-    public function setNombre($Nombre)
+    public function setNombre($nombre)
     {
-        $this->Nombre = $Nombre;
+        $this->nombre = $nombre;
 
         return $this;
     }
@@ -119,7 +119,7 @@ class Producto
      */
     public function getNombre()
     {
-        return $this->Nombre;
+        return $this->nombre;
     }
 
     /**
@@ -128,9 +128,9 @@ class Producto
      * @param string $Descripcion
      * @return producto
      */
-    public function setDescripcion($Descripcion)
+    public function setDescripcion($descripcion)
     {
-        $this->Descripcion = $Descripcion;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
@@ -142,7 +142,7 @@ class Producto
      */
     public function getDescripcion()
     {
-        return $this->Descripcion;
+        return $this->descripcion;
     }
 
 
@@ -171,7 +171,7 @@ class Producto
     }
 
     public function __toString(){
-         return $this->Nombre;
+         return $this->nombre;
     }
 
     /**
@@ -228,7 +228,7 @@ class Producto
      */
     public function setEstado($estado)
     {
-        $this->Estado = $estado;
+        $this->estado = $estado;
 
         return $this;
     }
@@ -240,6 +240,6 @@ class Producto
      */
     public function getEstado()
     {
-        return $this->Estado;
+        return $this->estado;
     }
 }

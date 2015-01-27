@@ -49,8 +49,8 @@ class PuntoVentaController extends Controller
         	   ->add('select','pv.id, c.razonSocial cliente, pv.nombre, pv.numerodocumento, pv.direccion, pv.telefono1, pv.correoelectronico')
         	   ->leftJoin('pv.cliente','c')
         	   ;
-        $entities=$qb->getQuery()->getResult();
-		$fields=array(
+        $entities = $qb->getQuery()->getResult();
+		$fields = array(
 			'id'=>'pv.id',
 			'cliente' => 'c.razonSocial',
             'nombre'=>'pv.nombre',
@@ -61,35 +61,33 @@ class PuntoVentaController extends Controller
 			);
 
 		///Aplicamos filtros
-	    $request=$this->get('request');
-	    if ( $request->get('_search') && $request->get('_search') == "true" && $request->get('filters') )
-            {
-                    $f=$request->get('filters');
-                    $f=json_decode(str_replace("\\","",$f),true);
-                    $rules=$f['rules'];
-                    foreach($rules as $rule){
-                            $searchField=$fields[$rule['field']];
-                            $searchString=$rule['data'];
-                            if($rule['field']=='fecha'){
-                            $daterange=explode("|", $searchString);
-                            if(count($daterange)==1){
-                            	$dateValue="'".trim(str_replace(" ","",$daterange[0]))."'";
-	                            $qb->andWhere($searchField." =".$dateValue);
-                            }else{
-                            	$minValue="'".trim(str_replace(" ","",$daterange[0]))."'";
-                            	$maxValue="'".trim(str_replace(" ","",$daterange[1]))."'";
-	                            $qb->andWhere($qb->expr()->between($searchField,$minValue , $maxValue));
-                            }
+	    $request = $this->get('request');
+	    if ( $request->get('_search') && $request->get('_search') == "true" && $request->get('filters') ) {
+            $f = $request->get('filters');
+            $f = json_decode(str_replace("\\", "", $f), true);
+            $rules = $f['rules'];
+            foreach($rules as $rule) {
+                $searchField = $fields[$rule['field']];
+                $searchString = $rule['data'];
+                if($rule['field'] == 'fecha'){
 
-                            }else{
-                                if("null"!=$searchString){
-                                	$qb->andWhere($qb->expr()->like($searchField, $qb->expr()->literal("%".$searchString."%")));
-                                }
-                            }
+                    $daterange = explode("|", $searchString);
+                    if(count($daterange) == 1){
+                    	$dateValue = "'" . trim(str_replace(" ", "", $daterange[0])) . "'";
+                        $qb->andWhere($searchField . " =" . $dateValue);
+                    } else {
+                    	$minValue = "'" . trim(str_replace(" ", "", $daterange[0])) . "'";
+                    	$maxValue = "'" . trim(str_replace(" ", "", $daterange[1])) . "'";
+                        $qb->andWhere($qb->expr()->between($searchField, $minValue, $maxValue));
                     }
 
+                } else {
+                    if("null" != $searchString){
+                    	$qb->andWhere($qb->expr()->like($searchField, $qb->expr()->literal("%" . $searchString . "%")));
+                    }
+                }
             }
-
+        }
 
 	    //Ordenamiento de columnas
 	    //sidx	id

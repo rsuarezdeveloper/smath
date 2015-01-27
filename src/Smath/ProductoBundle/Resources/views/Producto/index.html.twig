@@ -1,26 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <!-- row -->
+    
     <div class="row">
-
-        <!-- col -->
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Productos <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Maestro de Productos</h1>
         </div>
-        <!-- end col -->
-        <!-- right side of the page with the sparkline graphs -->
     </div>
-    <!-- end row -->
-    <!--
-    The ID "widget-grid" will start to initialize all widgets below
-    You do not need to use widgets if you dont want to. Simply remove
-    the <section></section> and you can use wells or panels instead
-    -->
+    
     <!-- widget grid -->
     <section id="widget-grid" class="">
-        <!-- row -->
         <div class="row">
             <!-- NEW WIDGET START -->
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -29,10 +18,8 @@
             </article>
             <!-- WIDGET END -->
         </div>
-        <!-- end row -->
     </section>
     <!-- end widget grid -->
-<!-- END MAIN CONTENT -->
 {% endblock %}
 {% block javascripts%}
 <script>
@@ -41,7 +28,7 @@ $(document).ready(function(){
 
         url: '{{path('producto_list')}}',
 		datatype: 'json',
-        colNames: ['Id', 'Línea', 'Referencia', 'Descripción', 'Nombre', 'Activo', 'Pr. Com.','Pr. Farm.', ''],
+        colNames: ['Id', 'Línea', 'Referencia', 'Descripción', 'Nombre', 'Pr. Com.', 'Pr. Farm.', 'Activo', ''],
         jsonReader : {
             root: 'rows',
             page: 'page',
@@ -54,12 +41,12 @@ $(document).ready(function(){
         colModel: [
             {name:'id', index:'id', jsonmap:'id', key:true, width:20, sorttype:'int', search:false, align:'center', hidden:true},
             {name:'linea', index:'linea', jsonmap:'linea', width:100,  search:true, align:'left'},
-            {name:'referencia', index:'referencia', jsonmap:'Referencia', width:50,  align:'left'},
-            {name:'descripcion', index:'descripcion', jsonmap:'Descripcion', width:120, align:'left'},
-            {name:'nombre', index:'nombre', jsonmap:'Nombre', width:150},
-            {name:'estado', index:'estado', jsonmap:'Estado', width:30, formatter:status, align:'center'},
+            {name:'referencia', index:'referencia', jsonmap:'referencia', width:50,  align:'left'},
+            {name:'descripcion', index:'descripcion', jsonmap:'descripcion', width:120, align:'left'},
+            {name:'nombre', index:'nombre', jsonmap:'nombre', width:120},
             {name:'precioUnidadComercial', index:'precioUnidadComercial', jsonmap:'precioUnidadComercial', width:40, align:'right', formatter:currency},
             {name:'precioFormaFarmaceutica', index:'precioFormaFarmaceutica', jsonmap:'precioUnidadComercial', width:40,  align:'right', formatter:currency},
+            {name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center'},
             {name:'actions', index:'id', jsonmap:'id', width:30, align:'center',search:false, sortable:false, formatter:editar},
         ],
         pager: '#pager',

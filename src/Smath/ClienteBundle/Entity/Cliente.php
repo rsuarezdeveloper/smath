@@ -74,6 +74,13 @@ class Cliente
      */
     private $correoElectronico;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean")
+     */
+    private $estado;
+
 
     /**
      * Get id
@@ -274,5 +281,28 @@ class Cliente
 
     public function __toString(){
          return $this->razonSocial;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param boolean $estado
+     * @return Cliente
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return boolean 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }

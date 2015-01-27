@@ -23,13 +23,13 @@ class Cliente
 
      /**
      * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\Cliente",cascade={"persist"})
-     * @ORM\JoinColumn(name="clienteId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="clienteId", referencedColumnName="id", nullable=true)
      */
     private $clienteId;
 
      /**
      * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\TipoCliente",cascade={"persist"})
-     * @ORM\JoinColumn(name="tipoCliente", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tipoCliente", referencedColumnName="id", nullable=true)
      */
     private $tipoCliente;
 
@@ -42,7 +42,7 @@ class Cliente
 
     /**
      * @ORM\ManyToOne(targetEntity="Smath\BaseBundle\Entity\TipoDocumento",cascade={"persist"})
-     * @ORM\JoinColumn(name="tipoDocumento", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tipoDocumento", referencedColumnName="id", nullable=true)
      */
     private $tipoDocumento;
 
@@ -63,7 +63,7 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono", type="string", length=50)
+     * @ORM\Column(name="telefono", type="string", length=50, nullable=true)
      */
     private $telefono;
 
@@ -74,11 +74,18 @@ class Cliente
      */
     private $correoElectronico;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean")
+     */
+    private $estado;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -101,14 +108,14 @@ class Cliente
     /**
      * Get razonSocial
      *
-     * @return string 
+     * @return string
      */
     public function getRazonSocial()
     {
         return $this->razonSocial;
     }
 
-    
+
     /**
      * Set numeroDocumento
      *
@@ -125,7 +132,7 @@ class Cliente
     /**
      * Get numeroDocumento
      *
-     * @return string 
+     * @return string
      */
     public function getNumeroDocumento()
     {
@@ -148,7 +155,7 @@ class Cliente
     /**
      * Get direccion
      *
-     * @return string 
+     * @return string
      */
     public function getDireccion()
     {
@@ -171,7 +178,7 @@ class Cliente
     /**
      * Get telefono
      *
-     * @return string 
+     * @return string
      */
     public function getTelefono()
     {
@@ -194,7 +201,7 @@ class Cliente
     /**
      * Get correoElectronico
      *
-     * @return string 
+     * @return string
      */
     public function getCorreoElectronico()
     {
@@ -217,7 +224,7 @@ class Cliente
     /**
      * Get clienteId
      *
-     * @return \Smath\ClienteBundle\Entity\Cliente 
+     * @return \Smath\ClienteBundle\Entity\Cliente
      */
     public function getClienteId()
     {
@@ -240,12 +247,39 @@ class Cliente
     /**
      * Get tipoCliente
      *
-     * @return \Smath\ClienteBundle\Entity\TipoCliente 
+     * @return \Smath\ClienteBundle\Entity\TipoCliente
      */
     public function getTipoCliente()
     {
         return $this->tipoCliente;
     }
 
-    
+
+
+    /**
+     * Set tipoDocumento
+     *
+     * @param \Smath\BaseBundle\Entity\TipoDocumento $tipoDocumento
+     * @return Cliente
+     */
+    public function setTipoDocumento(\Smath\BaseBundle\Entity\TipoDocumento $tipoDocumento = null)
+    {
+        $this->tipoDocumento = $tipoDocumento;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoDocumento
+     *
+     * @return \Smath\BaseBundle\Entity\TipoDocumento
+     */
+    public function getTipoDocumento()
+    {
+        return $this->tipoDocumento;
+    }
+
+    public function __toString(){
+         return $this->razonSocial;
+    }
 }

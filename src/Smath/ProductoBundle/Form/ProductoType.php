@@ -15,11 +15,13 @@ class ProductoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Referencia')
-            ->add('Nombre','textarea')
-            ->add('Descripcion','textarea')
-            ->add('Estado','checkbox')
-            ->add('Linea','entity',array('class'=>'Smath\ProductoBundle\Entity\Linea'))
+            ->add('referencia')
+            ->add('nombre')
+            ->add('descripcion')
+            ->add('estado', 'checkbox')
+            ->add('precioUnidadComercial')
+            ->add('precioFormaFarmaceutica')
+            ->add('linea', 'entity', array('class'=>'Smath\ProductoBundle\Entity\Linea'))
         ;
     }
 
