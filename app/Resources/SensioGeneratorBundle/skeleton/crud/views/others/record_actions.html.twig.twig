@@ -1,0 +1,11 @@
+<div class="form-actions">
+        <a href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}" class="btn btn-mini">
+            Cancelar        </a>
+{% if ('edit' in actions) and (not hide_edit) %}
+        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { 'id': entity.id }) }}" }}" class="btn btn-primary btn-mini">
+            Editar
+        </a>
+{% endif %}
+{% if ('delete' in actions) and (not hide_delete) %}
+{{ '{{ form(delete_form) }}' }}
+{% endif %}

@@ -1,0 +1,3 @@
+{%- for action in record_actions %}
+<a href="{{ "{{ path('" ~ route_name_prefix ~ "_" ~ action ~ "', { 'id': entity.id }) }}" }}" >{% if action=='edit' %}<i class="icon-edit"></i> {%else%} {%if action=='show' %}<i class="icon-zoom-in"></i>{%else%} {{action}}{%endif%} {%endif%}</a>
+{%- endfor %}
