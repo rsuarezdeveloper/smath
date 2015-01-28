@@ -15,10 +15,10 @@ class LineaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Codigo')
-            ->add('Descripcion')
-            ->add('lineaId')
-            ->add('estado')
+            ->add('codigo')
+            ->add('descripcion')
+            ->add('lineaId', 'entity', array('class'=>'Smath\ProductoBundle\Entity\Linea'))
+            ->add('estado', 'checkbox')
         ;
     }
 

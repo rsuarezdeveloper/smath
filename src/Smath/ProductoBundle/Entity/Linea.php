@@ -22,9 +22,9 @@ class Linea
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="codigo", type="integer")
+     * @ORM\Column(name="codigo", type="string", length=45)
      */
     private $codigo;
 
@@ -43,9 +43,9 @@ class Linea
     private $lineaId;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="estado", type="smallint")
+     * @ORM\Column(name="estado", type="boolean")
      */
     private $estado;
 
@@ -63,7 +63,7 @@ class Linea
     /**
      * Set Codigo
      *
-     * @param integer $Codigo
+     * @param string $codigo
      * @return linea
      */
     public function setCodigo($codigo)
@@ -76,7 +76,7 @@ class Linea
     /**
      * Get Codigo
      *
-     * @return integer
+     * @return string
      */
     public function getCodigo()
     {
@@ -86,7 +86,7 @@ class Linea
     /**
      * Set Descripcion
      *
-     * @param string $Descripcion
+     * @param string $descripcion
      * @return linea
      */
     public function setDescripcion($descripcion)

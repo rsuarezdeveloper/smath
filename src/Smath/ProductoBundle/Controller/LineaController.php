@@ -3,6 +3,7 @@
 namespace Smath\ProductoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,6 +36,34 @@ class LineaController extends Controller
             'entities' => $entities,
         );
     }
+
+    /**
+     * Lists all linea entities.
+     *
+     * @Route("/list", name="linea_list")
+     * @Method("GET")
+     */
+    public function listAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('SmathProductoBundle:Linea')->createQueryBuilder('l')
+            ->add('select','l.id, l.codigo, l.descripcion, l.estado')
+            ->orderBy('l.descripcion','ASC');
+        $entities = $qb->getQuery()->getResult();
+        $fields = array(
+            'id' => 'l.id',
+            'codigo' => 'l.codigo',
+            'descripcion' => 'l.descripcion',
+            'estado' => 'l.estado',
+        );
+
+        $paginator = $this->get('knp_paginator');
+        $r = $this->get('smath_helpers')->jqGridJson($request, $em, $qb, $fields, $paginator);
+        
+        $response = new Response();    
+        return $response->setContent($r);
+    }
+
     /**
      * Creates a new Linea entity.
      *
@@ -53,7 +82,7 @@ class LineaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('linea_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('linea', array('id' => $entity->getId())));
         }
 
         return array(
@@ -193,7 +222,7 @@ class LineaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('linea_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('linea', array('id' => $id)));
         }
 
         return array(

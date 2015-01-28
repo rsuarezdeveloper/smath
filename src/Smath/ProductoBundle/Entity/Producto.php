@@ -57,13 +57,13 @@ class Producto
     /**
      *@var float
      *
-     *@ORM\Column(name="precioUnidadComercial", type="float",nullable=true)
+     *@ORM\Column(name="precioUnidadComercial", type="float", nullable=true)
      */
     private $precioUnidadComercial;
     /**
      *@var float
      *
-     *@ORM\Column(name="precioFormaFarmaceutica", type="float",nullable=true)
+     *@ORM\Column(name="precioFormaFarmaceutica", type="float", nullable=true)
      */
     private $precioFormaFarmaceutica;
     /**
@@ -79,7 +79,7 @@ class Producto
     /**
      * Set Referencia
      *
-     * @param string $Referencia
+     * @param string $referencia
      * @return producto
      */
     public function setReferencia($referencia)
@@ -102,7 +102,7 @@ class Producto
     /**
      * Set Nombre
      *
-     * @param string $Nombre
+     * @param string $nombre
      * @return producto
      */
     public function setNombre($nombre)
@@ -125,7 +125,7 @@ class Producto
     /**
      * Set Descripcion
      *
-     * @param string $Descripcion
+     * @param string $descripcion
      * @return producto
      */
     public function setDescripcion($descripcion)

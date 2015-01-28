@@ -38,12 +38,12 @@ class TipoClienteController extends Controller
     }
     
     /**
-     * Lists all producto entities.
+     * Lists all tipocliente entities.
      *
      * @Route("/list", name="tipocliente_list")
      * @Method("GET")
      */
-    public function listAction () 
+    public function listAction (Request $request) 
     {
     
         $em = $this->getDoctrine()->getManager();
@@ -57,70 +57,11 @@ class TipoClienteController extends Controller
             'estado' => 'tc.estado',
         );
 
-        ///Aplicamos filtros
-        $request = $this->get('request');
-        if ($request->get('_search') && $request->get('_search') == "true" && $request->get('filters')) {
-            $f = $request->get('filters');
-            $f = json_decode(str_replace("\\", "", $f), true);
-            $rules = $f['rules'];
-            foreach($rules as $rule){
-                $searchField = $fields[$rule['field']];
-                $searchString = $rule['data'];
-
-                if($rule['field'] == 'fecha'){
-                
-                    $daterange = explode("|", $searchString);
-                    if(count($daterange) == 1){
-                        $dateValue = "'" . trim(str_replace(" ", "", $daterange[0])) . "'";
-                        $qb->andWhere($searchField." =".$dateValue);
-                    } else {
-                        $minValue = "'" . trim(str_replace(" ", "", $daterange[0])) . "'";
-                        $maxValue = "'" . trim(str_replace(" ", "", $daterange[1])) . "'";
-                        $qb->andWhere($qb->expr()->between($searchField,$minValue , $maxValue));
-                    }
-
-                } else {
-                    if("null" != $searchString){
-                        $qb->andWhere($qb->expr()->like($searchField, $qb->expr()->literal("%" . $searchString . "%")));
-                    }
-                }
-            }
-        }
-
-        //Ordenamiento de columnas
-        //sidx  id
-        //sord  desc
-        $sidx = $this->get('request')->query->get('sidx', 'id');
-        $sord = $this->get('request')->query->get('sord', 'DESC');
-        $qb->orderBy($fields[$sidx],$sord);
-
-
-        $query=$qb->getQuery()->getResult();
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $this->get('request')->query->get('page', 1)/*page number*/,
-            $this->get('request')->query->get('rows', 10)/*limit per page*/
-        );
-        /*return array(
-            'entities' => $entities,
-            'pagination'=>$pagination
-        );*/
-        $response = new Response();
-        $pdata = $pagination->getPaginationData();
-        $r = array();
-        $r['records'] = count($query);
-        $r['page'] = $this->get('request')->query->get('page', 1);
-        $r['rows'] = array();
-        $r['total'] = $pdata['pageCount'];
-
-        foreach($pagination as $row){
-            $line = $row;
-            $r['rows'][] = $line;
-        }
-        $response->setContent(json_encode($r));
-        return $response;
-
+        $r = $this->get('smath_helpers')->jqGridJson($request, $em, $qb, $fields, $paginator);
+        
+        $response = new Response();    
+        return $response->setContent($r);
     }
 
     /**
@@ -141,7 +82,7 @@ class TipoClienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipocliente', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('tipocliente'));
         }
 
         return array(

@@ -1,15 +1,36 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Linea creation</h1>
 
-    {{ form(form) }}
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-plus-square-o"></i> Nuevo Tipo Producto / Linea</h1>
+        </div>
+    </div>
+    
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form-inline'}}) }}
+        <table class="table table-condensed">
+            <tr>
+                <th>C&oacute;digo</th>
+                <td>{{form_widget(form.codigo, {'attr': {'class': 'form-control'}})}}</td>
+            </tr>
+            <tr>
+                <th>Descrpci&oacute;n</th>
+                <td>{{form_widget(form.descripcion, {'attr': {'class': 'form-control'}})}}</td>
+            </tr>
+            <tr>
+                <th>L&iacute;nea</th>
+                <td>{{form_widget(form.lineaId)}}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{form_widget(form.estado)}}</td>
+            </tr>
+        </table>
+        <div style="display:none">{{form_rest(form)}}</div>
+        <button type="button" id="button-delete" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete</button>
+        <a href="{{ path('producto') }}" class="btn btn-info">Cancelar</a> 
+        <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+    {{ form_end(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('linea') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

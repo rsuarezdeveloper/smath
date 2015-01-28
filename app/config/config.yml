@@ -84,7 +84,7 @@ knp_paginator:
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
 # Service
-#services:
-#    jqgrid_json:
-#        class:        Acme\HelloBundle\Mailer
-#        arguments:    [sendmail]
+services:
+    smath_helpers:
+        class:        Acme\UtilBundle\Controller\SmathHelpers
+        arguments:    [test]

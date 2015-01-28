@@ -8,52 +8,53 @@
     <!-- row -->
     <div class="row">
 
-        <!-- col -->
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Editar Empleado <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-edit"></i> Editar Empleado</h1>
         </div>
-        <!-- end col -->
-        <!-- right side of the page with the sparkline graphs -->
+
     </div>
     <!-- end row -->
-    {{ form_start(edit_form,{'attr':{'class':'form-inline'}}) }}
+    {{ form_start(edit_form, {'attr':{'class':'form-inline'}}) }}
         <table class="table table-condensed">
             <tr>
                 <th>Codigo</th>
-                <td>{{form_widget(edit_form.codigo)}}</td>
+                <td>{{form_widget(edit_form.codigo, {'attr':{'class':'form-control'}})}}</td>
             </tr>
             <tr>
                 <th>Nombre</th>
-                <td>{{form_widget(edit_form.nombre,{'attr':{'class':'form-control'}})}}</td>
+                <td>{{form_widget(edit_form.nombre, {'attr':{'class':'form-control'}})}}</td>
             </tr>
             <tr>
                 <th>Tel&eacute;fono</th>
-                <td>{{form_widget(edit_form.telefono,{'attr':{'class':'form-control'}})}}</td>
-            </tr>
-            <tr>
-                <th>Activo</th>
-                <td>{{form_widget(edit_form.estado)}}</td>
+                <td>{{form_widget(edit_form.telefono, {'attr':{'class':'form-control'}})}}</td>
             </tr>
             <tr>
                 <th>Departamento</th>
-                <td>{{form_widget(edit_form.departamento)}}</td>
+                <td>{{form_widget(edit_form.departamento, {'attr':{'class':'form-control'}})}}</td>
             </tr>
             <tr>
                 <th>Tipo Empleado</th>
-                <td>{{form_widget(edit_form.tipoEmpleado)}}</td>
+                <td>{{form_widget(edit_form.tipoEmpleado, {'attr':{'class':'form-control'}})}}</td>
             </tr>
             <tr>
-                <th>Geo Ubicacion</th>
-                <td>{{form_widget(edit_form.geoUbicacion)}}</td>
+                <th>Geo Ubicaci&oacute;n</th>
+                <td>{{form_widget(edit_form.geoUbicacion, {'attr':{'class':'form-control'}})}}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{form_widget(edit_form.estado, {'attr':{'class':'form-control'}})}}</td>
             </tr>
         </table>
+
         <div style="display:none">{{form_rest(edit_form)}}</div>
-        <a href="{{ path('empleado') }}" class="btn btn-info">
-           Cancelar
-        </a> <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
-     {{ form_end(edit_form) }}
-    {% if is_granted('ROLE_ADMIN')%}
-    {{ form(delete_form) }}
-   {% endif %}
+        <button type="button" id="button-delete" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete</button>
+        <a href="{{ path('producto') }}" class="btn btn-info">Cancelar</a> 
+        <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+    {{ form_end(edit_form) }}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ form_start(delete_form, {'attr': {'id':'delete-form'}}) }}
+            <div style="display:none">{{ form_widget(delete_form) }}</div>
+        {{form_end(delete_form)}}
+    {% endif %}
 {% endblock %}

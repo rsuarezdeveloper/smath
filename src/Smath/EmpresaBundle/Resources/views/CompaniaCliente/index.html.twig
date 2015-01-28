@@ -1,26 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <!-- row -->
+    
     <div class="row">
-
-        <!-- col -->
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Compañia/Cliente <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Compa&tilde;ia / Cliente</h1>
         </div>
-        <!-- end col -->
-        <!-- right side of the page with the sparkline graphs -->
     </div>
-    <!-- end row -->
-    <!--
-    The ID "widget-grid" will start to initialize all widgets below
-    You do not need to use widgets if you dont want to. Simply remove
-    the <section></section> and you can use wells or panels instead
-    -->
+    
     <!-- widget grid -->
     <section id="widget-grid" class="">
-        <!-- row -->
+    
         <div class="row">
             <!-- NEW WIDGET START -->
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -29,10 +19,9 @@
             </article>
             <!-- WIDGET END -->
         </div>
-        <!-- end row -->
+    
     </section>
     <!-- end widget grid -->
-<!-- END MAIN CONTENT -->
 {% endblock %}
 {% block javascripts%}
 <script>
@@ -52,19 +41,19 @@
 				      id: "id"
 				      },
                 colModel: [
-                    { name: 'id', index: 'id',jsonmap:"id",key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
+                    { name: 'id', index: 'id', jsonmap:'id',key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
                     { name: 'fechaIngreso', index: 'fechaIngreso',jsonmap:"fechaIngreso", width: 80,  search:true, align:'left', formatter: dateF },
                     { name: 'estado', index: 'estado', jsonmap:'estado',width: 30, formatter:status, align:'center' },
                     { name: 'cliente', index: 'cliente',jsonmap:'cliente', width: 120,  align:'left' },
                     { name: 'compania', index: 'compania',jsonmap:'compania' ,width: 80, align:'left' },
                     { name: 'empleado', index: 'empleado',jsonmap:'empleado', width: 100 },
-                    { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
+                    { name: 'actions', index: 'id', jsonmap:'id', width: 30,align:'center',search:false, sortable:false, formatter:editar },
 
                     ],
                 pager: '#pager',
-                rowNum: 50,
+                rowNum: 25,
 
-                rowList: [50, 70, 100, 150, 200],
+                rowList: [25, 50, 100, 150, 200],
                 sortname: 'id',
                 sortorder: 'desc',
                 viewrecords: true,
@@ -93,7 +82,7 @@
                     return html;
                 }
                 function editar(cellvalue, options, rowObject){
-                    html = '<a href="{{path('companiacliente_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id',cellvalue);
+                    html = '<a href="{{path('companiacliente_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id', cellvalue);
                     return html;
 
                 }

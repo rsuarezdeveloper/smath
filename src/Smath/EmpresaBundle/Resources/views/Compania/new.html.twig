@@ -10,17 +10,16 @@
 
         <!-- col -->
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Crear Compañia <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-plus-square-o"></i> Crear Compañia</h1>
         </div>
         <!-- end col -->
         <!-- right side of the page with the sparkline graphs -->
     </div>
     <!-- end row -->
-    {{ form_start(form,{'attr':{'class':'form-inline'}}) }}
+    {{ form_start(form, {'attr':{'class':'form-inline'}}) }}
         <table class="table table-condensed">
             <tr>
-                <th>Codigo</th>
+                <th>C&oacute;digo</th>
                 <td>{{form_widget(form.codigo)}}</td>
             </tr>
             <tr>
@@ -36,11 +35,11 @@
                 <td>{{form_widget(form.estado)}}</td>
             </tr>
             <tr>
-                <th>Compañia</th>
+                <th>Compa&tilde;ia</th>
                 <td>{{form_widget(form.companiaId)}}</td>
             </tr>
             <tr>
-                <th>Geo Ubicacion</th>
+                <th>Geo Ubicaci&oacute;n</th>
                 <td>{{form_widget(form.geoUbicacion)}}</td>
             </tr>
         </table>

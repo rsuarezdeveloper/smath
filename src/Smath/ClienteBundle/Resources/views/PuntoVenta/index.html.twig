@@ -1,25 +1,15 @@
 {% extends '::base.html.twig' %}
 {% block body -%}
-    <!-- row -->
-    <div class="row">
 
-        <!-- col -->
+    <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-institution"></i> Maestro de Puntos de Venta <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-institution"></i> Maestro de Puntos de Venta</h1>
         </div>
-        <!-- end col -->
-        <!-- right side of the page with the sparkline graphs -->
     </div>
-    <!-- end row -->
-    <!--
-    The ID "widget-grid" will start to initialize all widgets below
-    You do not need to use widgets if you dont want to. Simply remove
-    the <section></section> and you can use wells or panels instead
-    -->
+
     <!-- widget grid -->
     <section id="widget-grid" class="">
-        <!-- row -->
+        
         <div class="row">
             <!-- NEW WIDGET START -->
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -28,7 +18,7 @@
             </article>
             <!-- WIDGET END -->
         </div>
-        <!-- end row -->
+        
     </section>
     <!-- end widget grid -->
 <!-- END MAIN CONTENT -->
@@ -40,25 +30,16 @@ $(document).ready(function(){
     $('#list').jqGrid({
         url:'{{path('puntoventa_list')}}',
 		datatype: 'json',
-        colNames: ['Id', 'Cliente', 'Nombre', 'No. Documento',  'Dirección', 'Telefono1', 'E-mail',''],
-        jsonReader : {
-            root: 'rows',
-            page: 'page',
-            total: 'total',
-            records: 'records',
-            repeatitems: false,
-            //cell: 'row',
-            id: 'id'
-		},
+        colNames: ['Id', 'Cliente', 'Nombre', 'No. Documento', 'Direcci&oacute;n', 'Telefono1', 'E-mail', ''],
         colModel: [
             {name:'id', index:'id', jsonmap:'id', key:true, width:20, sorttype:'int', search:false, align:'center', hidden:true},
-            {name: 'cliente', index: 'cliente',jsonmap:"cliente", width:100, search:true, align:'left'},
+            {name:'cliente', index: 'cliente',jsonmap:'cliente', width:100, search:true, align:'left'},
             {name: 'nombre', index: 'nombre',jsonmap:'nombre', width:80, align:'left'},
-            {name: 'numerodocumento', index: 'numerodocumento', jsonmap:'numerodocumento', width:60, align:'left'},
-            {name: 'direccion', index:'direccion', jsonmap:'direccion', width:150},
-            {name: 'telefono1', index:'telefono1', jsonmap:'telefono1', width:60, align:'center'},
-            {name: 'correoelectronico', index: 'correoelectronico', jsonmap:'correoelectronico', width:130, align:'left'},
-            {name: 'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar},
+            {name:'numerodocumento', index:'numerodocumento', jsonmap:'numerodocumento', width:60, align:'left'},
+            {name:'direccion', index:'direccion', jsonmap:'direccion', width:150},
+            {name:'telefono1', index:'telefono1', jsonmap:'telefono1', width:60, align:'center'},
+            {name:'correoelectronico', index: 'correoelectronico', jsonmap:'correoelectronico', width:130, align:'left'},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar},
             ],
             pager: '#pager',
             rowNum: 25,

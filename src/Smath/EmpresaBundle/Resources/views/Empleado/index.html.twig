@@ -1,26 +1,18 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <!-- row -->
+    
     <div class="row">
 
-        <!-- col -->
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Empleados <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Empleados</h1>
         </div>
-        <!-- end col -->
-        <!-- right side of the page with the sparkline graphs -->
+
     </div>
-    <!-- end row -->
-    <!--
-    The ID "widget-grid" will start to initialize all widgets below
-    You do not need to use widgets if you dont want to. Simply remove
-    the <section></section> and you can use wells or panels instead
-    -->
+    
     <!-- widget grid -->
     <section id="widget-grid" class="">
-        <!-- row -->
+        
         <div class="row">
             <!-- NEW WIDGET START -->
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -29,7 +21,7 @@
             </article>
             <!-- WIDGET END -->
         </div>
-        <!-- end row -->
+        
     </section>
     <!-- end widget grid -->
 <!-- END MAIN CONTENT -->
@@ -37,104 +29,102 @@
 {% block javascripts%}
 <script>
     $(document).ready(function(){
-         $('#list').jqGrid({
-                url:'{{path('empleado_list')}}',
-				datatype: "json",
+        $('#list').jqGrid({
+            url:'{{path('empleado_list')}}',
+			datatype: 'json',
 
-                colNames: ['Id', 'Codigo', 'Nombre','Telefono',  'Activo', 'Departamento', 'Tipo Empleado','Geo Ubicacion','Editar'],
-                jsonReader : {
-				      root: "rows",
-				      page: "page",
-				      total: "total",
-				      records: "records",
-				      repeatitems: false,
-				      //cell: "row",
-				      id: "id"
-				      },
-                colModel: [
-                    { name: 'id', index: 'id',jsonmap:"id",key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
-                    { name: 'codigo', index: 'codigo',jsonmap:"codigo", width: 80,  search:true, align:'left' },
-                    { name: 'nombre', index: 'nombre',jsonmap:'nombre', width: 120,  align:'left' },
-                    { name: 'telefono', index: 'telefono',jsonmap:'telefono' ,width: 80, align:'left' },
-                    { name: 'estado', index: 'estado', jsonmap:'estado',width: 30, formatter:status, align:'center' },
-                    { name: 'departamento', index: 'departamento',jsonmap:'departamento', width: 100 },
-                    { name: 'tipoEmpleado', index: 'tipoEmpleado', jsonmap:'tipoEmpleado',width: 100,  align:'right' },
-                    { name: 'geoUbicacion', index: 'geoUbicacion', jsonmap:'geoUbicacion',width: 100,  align:'right' },
-                    { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
+            colNames: ['Id', 'C&oacute;digo', 'Nombre', 'Telefono', 'Departamento', 'Tipo Empleado', 'Geo Ubicaci&oacute;n', 'Activo', ''],
+            jsonReader : {
+		      root: "rows",
+		      page: "page",
+		      total: "total",
+		      records: "records",
+		      repeatitems: false,
+		      //cell: "row",
+		      id: "id"
+            },
+            colModel: [
+                { name:'id', index:'id', jsonmap:'id', key: true, width:20, search:false, align:'center',hidden:true },
+                { name:'codigo', index:'codigo', jsonmap:'codigo', width:80,  search:true, align:'left' },
+                { name:'nombre', index:'nombre', jsonmap:'nombre', width:120,  align:'left' },
+                { name:'telefono', index:'telefono', jsonmap:'telefono' ,width:80, align:'left' },
+                { name:'departamento', index:'departamento', jsonmap:'departamento', width:100 },
+                { name:'tipoEmpleado', index:'tipoEmpleado', jsonmap:'tipoEmpleado',width:100,  align:'left' },
+                { name:'geoUbicacion', index:'geoUbicacion', jsonmap:'geoUbicacion',width:100,  align:'left' },
+                { name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center' },
+                { name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar },
 
-                    ],
-                pager: '#pager',
-                rowNum: 50,
+                ],
+            pager: '#pager',
+            rowNum: 25,
 
-                rowList: [50, 70, 100, 150, 200],
-                sortname: 'id',
-                sortorder: 'desc',
-                viewrecords: true,
-                gridview:true,
-                autowidth: true,
-                height: '100%',
-                /*loadComplete: function() {
-					    $("tr.jqgrow:odd").css("background", "#FCF8F4");
-					}*/
-                });
-
-                $(".ui-pg-input").attr("style","width:10px;height:20px");
-                $(".ui-pg-selbox").attr("style","width:60px; height:20px; ");
-
-                function dateF(cellvalue, options, rowObject){
-                	 return cellvalue.date.toString('yyyy-mm-dd');
-                }
-                function currency(cellvalue, options, rowObject){
-                    if(null==cellvalue) cellvalue=0;
-                    return cellvalue.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-                }
-
-
-                function status(cellvalue, options, rowObject){
-                	 html = cellvalue ==1 ? '<i class="fa fa-check-square-o" style="color:green"></i>' :"";
-                    return html;
-                }
-                function editar(cellvalue, options, rowObject){
-                    html = '<a href="{{path('empleado_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id',cellvalue);
-                    return html;
-
-                }
-    });
-    $(document).ready(function(){
-        	$("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false, defaultSearch:'cn'});
-        // remove classes
-                $(".ui-pg-input").attr('style','width:20px')
-				$(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
-				$(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
-				$(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
-				$(".ui-jqgrid-pager").removeClass("ui-state-default");
-				$(".ui-jqgrid").removeClass("ui-widget-content");
-
-				// add classes
-				$(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
-				$(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
-
-				$(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
-				$(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
-				$(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
-				$(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
-				$(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
-				$(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
-				$(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
-				$(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
-
-				$(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
-
-				$(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
-
-				$(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
-
-				$(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+            rowList: [25, 50, 100, 150, 200],
+            sortname: 'id',
+            sortorder: 'desc',
+            viewrecords: true,
+            gridview: true,
+            autowidth: true,
+            height: '100%',
+            /*loadComplete: function() {
+				    $("tr.jqgrow:odd").css("background", "#FCF8F4");
+				}*/
         });
+
+        function dateF(cellvalue, options, rowObject){
+        	 return cellvalue.date.toString('yyyy-mm-dd');
+        }
+        function currency(cellvalue, options, rowObject){
+            if(null==cellvalue) cellvalue=0;
+            return cellvalue.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+        function status(cellvalue, options, rowObject){
+        	 html = cellvalue ==1 ? '<i class="fa fa-check-square-o" style="color:green"></i>' :"";
+            return html;
+        }
+        function editar(cellvalue, options, rowObject){
+            html = '<a href="{{path('empleado_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id', cellvalue);
+            return html;
+        }
+
+    	$("#list").jqGrid('filterToolbar',{stringResult:true, searchOnEnter:false, defaultSearch:'cn'});
+        
+        // remove classes
+
+        $(".ui-pg-input").attr("style","width:10px;height:20px");
+        $(".ui-pg-selbox").attr("style","width:60px; height:20px; ");
+
+        $(".ui-pg-input").attr('style','width:20px')
+		$(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+		$(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+		$(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+		$(".ui-jqgrid-pager").removeClass("ui-state-default");
+		$(".ui-jqgrid").removeClass("ui-widget-content");
+
+		// add classes
+		$(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+		$(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+
+		$(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+		$(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+		$(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+		$(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+		$(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+		$(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+		$(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+		$(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+
+		$(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
+		$(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+
+		$(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
+		$(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+
+		$(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
+		$(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+
+		$(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
+		$(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+});
 </script>
 {%endblock%}
 

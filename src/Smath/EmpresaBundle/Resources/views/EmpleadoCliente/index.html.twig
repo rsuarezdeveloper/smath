@@ -6,8 +6,7 @@
 
         <!-- col -->
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Empleado/Cliente <span>>
-                SmathSales </span></h1>
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Empleado/Cliente</h1>
         </div>
         <!-- end col -->
         <!-- right side of the page with the sparkline graphs -->
@@ -52,7 +51,7 @@
 				      id: "id"
 				      },
                 colModel: [
-                    { name: 'id', index: 'id',jsonmap:"id",key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
+                    { name: 'id', index: 'id', jsonmap:'id',key: true, width: 20, sorttype: "int", search:false, align:'center',hidden:true },
                     { name: 'empleado', index: 'empleado',jsonmap:'empleado', width: 100 },
                     { name: 'cliente', index: 'cliente',jsonmap:'cliente', width: 120,  align:'left' },
                     { name: 'puntoVenta', index: 'puntoVenta',jsonmap:'puntoVenta', width: 120,  align:'left' },
@@ -60,13 +59,13 @@
                     { name: 'metaVisitasMes', index: 'metaVisitasMes',jsonmap:"metaVisitasMes", width: 80,  search:true, align:'right' },
                     { name: 'metaVentasMes', index: 'metaVentasMes',jsonmap:"metaVentasMes", width: 80,  search:true, align:'right',formatter: currency },
                     { name: 'estado', index: 'estado', jsonmap:'estado',width: 30, formatter:status, align:'center' },
-                    { name: 'actions', index: 'id',jsonmap:"id", width: 30,align:'center',search:false, sort:false, formatter:editar },
+                    { name: 'actions', index: 'id', jsonmap:'id', width: 30,align:'center',search:false, sortable:false, formatter:editar },
 
                     ],
                 pager: '#pager',
-                rowNum: 50,
+                rowNum: 25,
 
-                rowList: [50, 70, 100, 150, 200],
+                rowList: [25, 50, 100, 150, 200],
                 sortname: 'id',
                 sortorder: 'desc',
                 viewrecords: true,
@@ -95,7 +94,7 @@
                     return html;
                 }
                 function editar(cellvalue, options, rowObject){
-                    html = '<a href="{{path('empleadocliente_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id',cellvalue);
+                    html = '<a href="{{path('empleadocliente_edit',{id:'__id'})}}" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>'.replace('__id', cellvalue);
                     return html;
 
                 }

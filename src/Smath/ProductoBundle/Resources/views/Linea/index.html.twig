@@ -1,47 +1,47 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Linea list</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Tipo de Productos</h1>
+        </div>
+    </div>
+    
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table id="list"></table>
+                <div id="pager"></div>
+            </article>
+            <!-- WIDGET END -->
+        </div>
+    </section>
+    <!-- end widget grid -->
+{% endblock %}
+{% block javascripts%}
+<script>
+$(document).ready(function(){
+    
+    $('#list').jqGrid({
+        url: '{{path('linea_list')}}',
+        datatype: 'json',
+        colNames: ['Id', 'C&oacute;digo', 'L&iacute;nea', 'Activo', ''],
+        colModel: [
+            {name:'id', index:'id', jsonmap:'id', key:true, width:20, sorttype:'int', search:false, align:'center', hidden:true},
+            {name:'codigo', index:'codigo', jsonmap:'codigo', width:100, search:true, align:'left'},
+            {name:'descripcion', index:'descripcion', jsonmap:'descripcion', width:100, align:'left'},
+            {name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center'},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center',search:false, sortable:false, formatter:editar, formatoptions:{url:'{{path('linea_edit',{id:'__id'})}}'}},
+        ],
+        loadComplete: function() {
+            jqGridLayout()
+        }
+    });
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Codigo</th>
-                <th>Descripcion</th>
-                <th>Lineaid</th>
-                <th>Estado</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('linea_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.Codigo }}</td>
-                <td>{{ entity.Descripcion }}</td>
-                <td>{{ entity.lineaId }}</td>
-                <td>{{ entity.Estado }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('linea_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('linea_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    $('#list').jqGrid('filterToolbar',{stringResult: true, searchOnEnter: false, defaultSearch: 'cn'});
+});
+</script>
+{%endblock%}
 
-        <ul>
-        <li>
-            <a href="{{ path('linea_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}

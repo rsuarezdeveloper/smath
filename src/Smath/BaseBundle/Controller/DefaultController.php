@@ -16,4 +16,10 @@ class DefaultController extends Controller
     {
         return array('name' => $name);
     }
+
+    public function testMe($string) {
+
+    	file_put_contents('testlog', $string);
+    	return 'Hello';
+    }
 }
