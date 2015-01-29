@@ -43,7 +43,7 @@ class LineaController extends Controller
      * @Route("/list", name="linea_list")
      * @Method("GET")
      */
-    public function listAction() {
+    public function listAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathProductoBundle:Linea')->createQueryBuilder('l')

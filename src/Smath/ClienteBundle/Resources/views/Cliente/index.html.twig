@@ -25,6 +25,7 @@
 <script>
 $(document).ready(function() {
 
+    var editUrl = '{{ path('cliente_edit', {id:'__id'}) }}';
     $('#list').jqGrid({
         url: '{{path('cliente_list')}}',
         datatype: 'json',
@@ -39,7 +40,7 @@ $(document).ready(function() {
             {name:'telefono', index:'telefono', jsonmap:'telefono', width:100},
             {name:'correoElectronico', index:'correoElectronico', jsonmap:'correoElectronico', width:100, align:'left'},
             {name:'estado', index:'estado', jsonmap:'estado', width:30, align:'center', formatter:status},
-            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center',search:false, sortable:false, formatter:editar, formatoptions:{url:'{{path('cliente_edit',{id:'__id'})}}'}},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center',search:false, sortable:false, formatter:editar, formatoptions:{url:editUrl}},
         ],
         loadComplete: function() {
             jqGridLayout();

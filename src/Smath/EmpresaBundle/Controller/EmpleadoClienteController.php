@@ -36,13 +36,14 @@ class EmpleadoClienteController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Lists all Dos entities.
      *
      * @Route("/list", name="empleadocliente_list")
      * @Method("GET")
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathEmpresaBundle:EmpleadoCliente')->createQueryBuilder('ec')
@@ -69,6 +70,7 @@ class EmpleadoClienteController extends Controller
         $response = new Response();    
         return $response->setContent($r);
     }
+
     /**
      * Creates a new EmpleadoCliente entity.
      *
@@ -203,6 +205,7 @@ class EmpleadoClienteController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing EmpleadoCliente entity.
      *
@@ -236,6 +239,7 @@ class EmpleadoClienteController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+    
     /**
      * Deletes a EmpleadoCliente entity.
      *

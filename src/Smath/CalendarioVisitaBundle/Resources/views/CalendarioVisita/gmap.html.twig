@@ -2,44 +2,44 @@
 <div id="map_canvas" class="google_maps"></div>
 {%block javascripts%}
 
-    <script>
-      function initialize() {
-        var mapCanvas = document.getElementById('map_canvas');
-        var mapOptions = {
-          center: new google.maps.LatLng(4.5979009, -74.07556360000001),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
+<script>
+  var x = $('#location');
 
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-        {%for cita in citas %}
-        var latLng = new google.maps.LatLng({{cita.puntoVenta.latitud}},{{cita.puntoVenta.longitud}});
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map,
-          title: '{{cita.puntoVenta}}'
-        });
-        {%endfor%}
-        }
-        var x = $("#location");
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.html( "La Geolocalización no esta soportada por su dispositivo");
-            }
-        }
+  function initialize() {
+    var mapCanvas = document.getElementById('map_canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(4.5979009, -74.07556360000001),
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
 
-        function showPosition(position) {
-            x.html(" Su posicion actual es Latitud: " + position.coords.latitude +
-            ", Longitud: " + position.coords.longitude);
-        }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
 
-
-      $(document).ready(function(){
-        initialize();
-        getLocation();
+    {%for cita in citas %}
+      var latLng = new google.maps.LatLng({{cita.puntoVenta.latitud}}, {{cita.puntoVenta.longitud}});
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        title: '{{cita.puntoVenta}}'
       });
-    </script>
+    {%endfor%}
+  }
+  
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+          x.html('La Geolocalización no esta soportada por su dispositivo');
+      }
+  }
 
+  function showPosition(position) {
+    x.html('Su posicion actual es Latitud: ' + position.coords.latitude + ', Longitud: ' + position.coords.longitude);
+  }
+
+  $(document).ready(function(){
+    initialize();
+    getLocation();
+  });
+</script>
 {%endblock%}

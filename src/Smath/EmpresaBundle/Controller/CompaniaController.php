@@ -42,7 +42,7 @@ class CompaniaController extends Controller
      * @Route("/list", name="compania_list")
      * @Method("GET")
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathEmpresaBundle:Compania')->createQueryBuilder('c')
