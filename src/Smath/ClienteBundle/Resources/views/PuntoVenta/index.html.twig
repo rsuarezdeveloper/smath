@@ -32,15 +32,15 @@ $(document).ready(function(){
     $('#list').jqGrid({
         url:'{{path('puntoventa_list')}}',
 		datatype: 'json',
-        colNames: ['Id', 'Cliente', 'Nombre', 'No. Documento', 'Direcci&oacute;n', 'Telefono1', 'E-mail', ''],
+        colNames: ['Id', 'Cliente', 'Punto de Venta', 'Direcci&oacute;n', 'Telefono1', 'E-mail', 'Activo', ''],
         colModel: [
-            {name:'id', index:'id', jsonmap:'id', key:true, width:20, sorttype:'int', search:false, align:'center', hidden:true},
-            {name:'cliente', index: 'cliente',jsonmap:'cliente', width:100, search:true, align:'left'},
-            {name: 'nombre', index: 'nombre',jsonmap:'nombre', width:80, align:'left'},
-            {name:'numerodocumento', index:'numerodocumento', jsonmap:'numerodocumento', width:60, align:'left'},
+            {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
+            {name:'cliente', index: 'cliente',jsonmap:'cliente', width:100, search:true},
+            {name:'nombre', index: 'nombre',jsonmap:'nombre', width:80},
             {name:'direccion', index:'direccion', jsonmap:'direccion', width:150},
             {name:'telefono1', index:'telefono1', jsonmap:'telefono1', width:60, align:'center'},
-            {name:'correoelectronico', index: 'correoelectronico', jsonmap:'correoelectronico', width:130, align:'left'},
+            {name:'correoElectronico', index: 'correoElectronico', jsonmap:'correoElectronico', width:130},
+            {name:'estado', index:'estado', jsonmap:'estado', width:30, align:'center', formatter:status},
             {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions: {url: editUrl }},
         ],
         loadComplete: jqGridLayout  

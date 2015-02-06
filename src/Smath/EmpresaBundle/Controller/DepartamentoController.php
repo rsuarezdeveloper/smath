@@ -46,17 +46,13 @@ class DepartamentoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathEmpresaBundle:Departamento')->createQueryBuilder('d')
-        	   ->add('select','d.id, d.codigo, d.nombre, d.telefono, d.estado, c.nombre compania')
-        	   ->leftJoin('d.compania','c')
+        	   ->add('select','d.id, d.nombre, d.estado')
         	   ->orderBy('d.nombre','ASC');
         $entities=$qb->getQuery()->getResult();
 		$fields = array(
 			'id' => 'd.id',
-			'codigo' => 'd.codigo',
             'nombre' => 'd.nombre',
-            'telefono' => 'd.telefono',
             'estado' => 'd.estado',
-            'compania' => 'c.nombre'
 		);
 
         $paginator = $this->get('knp_paginator');

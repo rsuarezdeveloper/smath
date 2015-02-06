@@ -18,7 +18,7 @@ class LineaType extends AbstractType
             ->add('codigo')
             ->add('descripcion')
             ->add('lineaId', 'entity', array('class'=>'Smath\ProductoBundle\Entity\Linea'))
-            ->add('estado', 'checkbox')
+            ->add('estado', null, array('data' => true, 'required' => false))
         ;
     }
 

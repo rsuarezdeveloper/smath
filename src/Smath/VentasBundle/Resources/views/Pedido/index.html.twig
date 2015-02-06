@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Pedidos</h1>
+        </div>
+
+    </div>
+    
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+        
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table id="list"></table>
+                <div id="pager"></div>
+            </article>
+            <!-- WIDGET END -->
+        </div>
+        
+    </section>
+    <!-- end widget grid -->
+<!-- END MAIN CONTENT -->
+{% endblock %}
+{% block javascripts%}
+<script>
+$(document).ready(function(){
+    var editUrl = '{{ path('pedido_edit', {id:'__id'}) }}';
+    $('#list').jqGrid({
+        url:'{{path('pedido_list')}}',
+        datatype: 'json',
+
+        colNames: ['Id', 'Cliente', 'Pundo de Venta', 'Empleado', 'Creado', 'Entrega', 'Valor', ''],
+        colModel: [
+            {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
+            {name:'razonSocial', index:'razonSocial', jsonmap:'razonSocial', width:80},
+            {name:'puntoVenta', index:'puntoVenta', jsonmap:'puntoVenta', width:80},
+            {name:'empleado', index:'empleado', jsonmap:'empleado', width:80},
+            {name:'fechaCreacion', index:'fechaCreacion', jsonmap:'fechaCreacion', width:80, formatter:dateF, search:true},
+            {name:'fechaEntrega', index:'fechaEntrega', jsonmap:'fechaEntrega', width:80, formatter:dateF, search:true},
+            {name:'valor', index:'valor', jsonmap:'valor', width:100, align:'right', formatter: currency},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions:{url: editUrl}},
+        ],
+        loadComplete: jqGridLayout
+    });
+    $('#list').jqGrid('filterToolbar',{stringResult:true, searchOnEnter:false, defaultSearch:'cn'});
+});
+</script>
+{%endblock%}

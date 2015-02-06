@@ -1,21 +1,8 @@
 {% extends '::base.html.twig' %}
-{% block stylesheets%}
-<style>
-    table tr th{width:100px;}
-</style>
-{%endblock%}
-{% block body -%}
-    <!-- row -->
-    <div class="row">
 
-        <!-- col -->
-        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Ver Compa&tilde;ia</h1>
-        </div>
-        <!-- end col -->
-        <!-- right side of the page with the sparkline graphs -->
-    </div>
-    <!-- end row -->
+{% block body -%}
+    <h1>Compania</h1>
+
     <table class="record_properties">
         <tbody>
             <tr>
@@ -38,28 +25,14 @@
                 <th>Estado</th>
                 <td>{{ entity.estado }}</td>
             </tr>
-            <tr>
-                <th>Compa&ntilde;ia</th>
-                <td>{{ entity.companiaId }}</td>
-            </tr>
-            <tr>
-                <th>Geo Ubicaci&oacute;n</th>
-                <td>{{ entity.geoUbicacion }}</td>
-            </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('compania') }}">
-            Back to the list
+        <div class="form-actions">
+        <a href="{{ path('compania') }}" class="btn btn-mini">
+            Cancelar        </a>
+        <a href="{{ path('compania_edit', { 'id': entity.id }) }}" class="btn btn-primary btn-mini">
+            Editar
         </a>
-    </li>
-    <li>
-        <a href="{{ path('compania_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{{ form(delete_form) }}
 {% endblock %}

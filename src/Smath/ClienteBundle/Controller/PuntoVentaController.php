@@ -45,22 +45,20 @@ class PuntoVentaController extends Controller
     public function listAction(Request $request)
     {
         
-        //$conn = $this->get('database_connection');
-        //$users = $conn->fetchAll('SELECT * FROM cliente');
-
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathClienteBundle:PuntoVenta')->createQueryBuilder('pv')
-        	   ->add('select','pv.id, c.razonSocial cliente, pv.nombre, pv.numerodocumento, pv.direccion, pv.telefono1, pv.correoelectronico')
-        	   ->leftJoin('pv.cliente','c');
+        	   ->add('select', 'pv.id, c.razonSocial cliente, pv.nombre, pv.numeroDocumento, pv.direccion, pv.telefono1, pv.correoElectronico, pv.estado')
+        	   ->leftJoin('pv.cliente', 'c');
 
 		$fields = array(
 			'id' => 'pv.id',
 			'cliente' => 'c.razonSocial',
             'nombre' => 'pv.nombre',
-            'numerodocumento' => 'pv.numerodocumento',
+            'numeroDocumento' => 'pv.numeroDocumento',
             'direccion' => 'pv.direccion',
             'telefono1' => 'pv.telefono1',
-            'correoelectronico' => 'pv.correoelectronico'
+            'correoElectronico' => 'pv.correoElectronico',
+            'estado' => 'pv.estado',
 		);
         
         $paginator = $this->get('knp_paginator');
@@ -87,7 +85,7 @@ class PuntoVentaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('puntoventa_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('puntoventa'));
         }
 
         return array(
@@ -227,7 +225,7 @@ class PuntoVentaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('puntoventa_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('puntoventa'));
         }
 
         return array(

@@ -32,8 +32,8 @@ $(document).ready(function(){
 
         colNames: ['Id', 'Nombre', 'Activo',''],
         colModel: [
-            {name:'id', index:'id', jsonmap:'id', key:true, width:20, hidden:true},
-            {name:'nombre', index:'nombre',jsonmap:'nombre', width:80, search:true, align:'left'},
+            {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
+            {name:'nombre', index:'nombre',jsonmap:'nombre', width:80, search:true},
             {name:'estado', index:'estado', jsonmap:'estado',width:30, formatter:status, align:'center'},
             {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoption:{url: editUrl}},
         ],

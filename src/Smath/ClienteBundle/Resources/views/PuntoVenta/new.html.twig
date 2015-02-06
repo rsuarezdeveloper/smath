@@ -1,15 +1,44 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>PuntoVenta creation</h1>
+    
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Nuevo Punto de Venta</h1>
+        </div>
+    </div>
+
+    {{ form_start(form,{'attr':{'class':'form-inline'}}) }}
+    	<table class="table table-condensed">
+            <tr>
+                <th>Cliente</th>
+                <td>{{form_widget(form.cliente)}}</td>
+            </tr>
+            <tr>
+                <th>Punto de Venta</th>
+                <td>{{form_widget(form.nombre)}}</td>
+            </tr>
+            <tr>
+                <th>Direcci&oacute;n</th>
+                <td>{{form_widget(form.direccion)}}</td>
+            </tr>
+            <tr>
+                <th>Tel&eacute;fono</th>
+                <td>{{form_widget(form.telefono1)}}</td>
+            </tr>
+            <tr>
+                <th>Correo Electronico</th>
+                <td>{{form_widget(form.correoElectronico)}}</td>
+            </tr>
+        </table>
+        
+        <div style="display:none">{{form_widget(form.estado)}}</div>
+        <div style="display:none">{{form_rest(form)}}</div>        
+        <a href="{{ path('puntoventa') }}" class="btn btn-info">
+           Cancelar
+        </a>
+        <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('puntoventa') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

@@ -15,15 +15,12 @@ class PuntoVentaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('cliente')
             ->add('nombre')
-            ->add('numerodocumento')
             ->add('direccion')
             ->add('telefono1')
-            ->add('correoelectronico')
-            ->add('latitud')
-            ->add('longitud')
-            ->add('cliente')
-            ->add('geoUbicacion')
+            ->add('correoElectronico')
+            ->add('estado', null, array('data' => true, 'required' => false))
         ;
     }
 

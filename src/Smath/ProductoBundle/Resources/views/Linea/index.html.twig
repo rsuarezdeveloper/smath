@@ -3,7 +3,7 @@
 {% block body -%}
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Tipo de Productos</h1>
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Tipo de Producto</h1>
         </div>
     </div>
     
@@ -29,9 +29,9 @@ $(document).ready(function(){
         datatype: 'json',
         colNames: ['Id', 'C&oacute;digo', 'L&iacute;nea', 'Activo', ''],
         colModel: [
-            {name:'id', index:'id', jsonmap:'id', key:true, width:20, sorttype:'int', search:false, align:'center', hidden:true},
-            {name:'codigo', index:'codigo', jsonmap:'codigo', width:100, search:true, align:'left'},
-            {name:'descripcion', index:'descripcion', jsonmap:'descripcion', width:100, align:'left'},
+            {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
+            {name:'codigo', index:'codigo', jsonmap:'codigo', width:100, search:true},
+            {name:'descripcion', index:'descripcion', jsonmap:'descripcion', width:100},
             {name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center'},
             {name:'actions', index:'id', jsonmap:'id', width:30, align:'center',search:false, sortable:false, formatter:editar, formatoptions:{url:'{{path('linea_edit',{id:'__id'})}}'}},
         ],

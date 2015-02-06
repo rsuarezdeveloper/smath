@@ -15,24 +15,12 @@
     {{ form_start(edit_form, {'attr':{'class':'form-inline'}}) }}
         <table class="table table-condensed">
             <tr>
-                <th>Codigo</th>
-                <td>{{form_widget(edit_form.codigo, {'attr':{'class':'form-control'}})}}</td>
-            </tr>
-            <tr>
                 <th>Nombre</th>
                 <td>{{form_widget(edit_form.nombre, {'attr':{'class':'form-control'}})}}</td>
             </tr>
             <tr>
-                <th>Tel&eacute;fono</th>
-                <td>{{form_widget(edit_form.telefono, {'attr':{'class':'form-control'}})}}</td>
-            </tr>
-            <tr>
                 <th>Activo</th>
                 <td>{{form_widget(edit_form.estado, {'attr':{'class':'form-control'}})}}</td>
-            </tr>
-            <tr>
-                <th>Compañia</th>
-                <td>{{form_widget(edit_form.compania, {'attr':{'class':'form-control'}})}}</td>
             </tr>
         </table>
         <div style="display:none">{{form_rest(edit_form)}}</div>

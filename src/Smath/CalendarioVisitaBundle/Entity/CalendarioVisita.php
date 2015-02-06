@@ -43,7 +43,7 @@ class CalendarioVisita
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaVisita", type="datetime")
+     * @ORM\Column(name="fechaVisita", type="datetime", nullable=true)
      */
     private $fechaVisita;
 
@@ -56,62 +56,62 @@ class CalendarioVisita
     /**
      * @var integer
      *
-     * @ORM\Column(name="ordenSugerido", type="integer")
+     * @ORM\Column(name="ordenSugerido", type="integer", nullable=true)
      */
     private $ordenSugerido;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="ordenFinal", type="integer")
+     * @ORM\Column(name="ordenFinal", type="integer", nullable=true)
      */
     private $ordenFinal;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="atendida", type="boolean")
+     * @ORM\Column(name="atendida", type="boolean", nullable=true)
      */
     private $atendida;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="reprogramada", type="boolean")
+     * @ORM\Column(name="reprogramada", type="boolean", nullable=true)
      */
     private $reprogramada;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CalendarioVisita",cascade={"persist"})
-     * @ORM\JoinColumn(name="calendarioVisita", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="CalendarioVisita", cascade={"persist"})
+     * @ORM\JoinColumn(name="calendarioVisita", referencedColumnName="id", nullable=true)
      */
     private $calendarioVisita;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="text")
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
      */
     private $observaciones;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombreQuienAtendio", type="string", length=255)
+     * @ORM\Column(name="nombreQuienAtendio", type="string", length=255, nullable=true)
      */
     private $nombreQuienAtendio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=255)
+     * @ORM\Column(name="foto", type="string", length=255, nullable=true)
      */
     private $foto;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="visitado", type="boolean")
+     * @ORM\Column(name="visitado", type="boolean", nullable=true)
      */
     private $visitado;
 

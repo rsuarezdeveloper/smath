@@ -40,9 +40,8 @@
             </tr>
         </table>
         <div style="display:none">{{form_rest(edit_form)}}</div>
-        <a href="{{ path('companiacliente') }}" class="btn btn-info">
-           Cancelar
-        </a> <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+        <a href="{{ path('companiacliente') }}" class="btn btn-info">Cancelar</a>
+        <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
      {{ form_end(edit_form) }}
     {% if is_granted('ROLE_ADMIN')%}
     {{ form(delete_form) }}

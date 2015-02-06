@@ -36,21 +36,21 @@ class PuntoVenta
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=true)
      */
     private $nombre;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="numerodocumento", type="integer")
+     * @ORM\Column(name="numeroDocumento", type="integer", nullable=true)
      */
-    private $numerodocumento;
+    private $numeroDocumento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="direccion", type="string", length=255)
+     * @ORM\Column(name="direccion", type="string", length=255, nullable=true)
      */
     private $direccion;
 
@@ -64,84 +64,84 @@ class PuntoVenta
       /**
      * @var string
      *
-     * @ORM\Column(name="telefono2", type="string", length=255)
+     * @ORM\Column(name="telefono2", type="string", length=255, nullable=true)
      */
     private $telefono2;
 
       /**
      * @var string
      *
-     * @ORM\Column(name="telefono3", type="string", length=255)
+     * @ORM\Column(name="telefono3", type="string", length=255, nullable=true)
      */
     private $telefono3;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="correoelectronico", type="string", length=255)
+     * @ORM\Column(name="correoElectronico", type="string", length=255, nullable=true)
      */
-    private $correoelectronico;
+    private $correoElectronico;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="latitud", type="float")
+     * @ORM\Column(name="latitud", type="float", nullable=true)
      */
     private $latitud;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="longitud", type="float")
+     * @ORM\Column(name="longitud", type="float", nullable=true)
      */
     private $longitud;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codigoPunto", type="string", length=255)
+     * @ORM\Column(name="codigoPunto", type="string", length=255, nullable=true)
      */
     private $codigoPunto;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codigoZonal", type="string", length=255)
+     * @ORM\Column(name="codigoZonal", type="string", length=255, nullable=true)
      */
     private $codigoZonal;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombreZonal", type="string", length=255)
+     * @ORM\Column(name="nombreZonal", type="string", length=255, nullable=true)
      */
     private $nombreZonal;
 
      /**
      * @var integer
      *
-     * @ORM\Column(name="estrato", type="integer")
+     * @ORM\Column(name="estrato", type="integer", nullable=true)
      */
     private $estrato;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombreAdministrador", type="string", length=255)
+     * @ORM\Column(name="nombreAdministrador", type="string", length=255, nullable=true)
      */
     private $nombreAdministrador;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="celular", type="string", length=255)
+     * @ORM\Column(name="celular", type="string", length=255, nullable=true)
      */
     private $celular;
 
       /**
      * @var date
      *
-     * @ORM\Column(name="fechaApertura", type="date")
+     * @ORM\Column(name="fechaApertura", type="date", nullable=true)
      */
     private $fechaApertura;
 
@@ -214,26 +214,26 @@ class PuntoVenta
     }
 
     /**
-     * Set numerodocumento
+     * Set numeroDocumento
      *
-     * @param integer $numerodocumento
+     * @param integer $numeroDocumento
      * @return PuntoVenta
      */
-    public function setNumerodocumento($numerodocumento)
+    public function setNumeroDocumento($numeroDocumento)
     {
-        $this->numerodocumento = $numerodocumento;
+        $this->numeroDocumento = $numeroDocumento;
 
         return $this;
     }
 
     /**
-     * Get numerodocumento
+     * Get numeroDocumento
      *
      * @return integer
      */
-    public function getNumerodocumento()
+    public function getNumeroDocumento()
     {
-        return $this->numerodocumento;
+        return $this->numeroDocumento;
     }
 
     /**
@@ -262,26 +262,26 @@ class PuntoVenta
 
 
     /**
-     * Set correoelectronico
+     * Set correoElectronico
      *
-     * @param string $correoelectronico
+     * @param string $correoElectronico
      * @return PuntoVenta
      */
-    public function setCorreoelectronico($correoelectronico)
+    public function setCorreoElectronico($correoElectronico)
     {
-        $this->correoelectronico = $correoelectronico;
+        $this->correoElectronico = $correoElectronico;
 
         return $this;
     }
 
     /**
-     * Get correoelectronico
+     * Get correoElectronico
      *
      * @return string
      */
-    public function getCorreoelectronico()
+    public function getCorreoElectronico()
     {
-        return $this->correoelectronico;
+        return $this->correoElectronico;
     }
 
     /**

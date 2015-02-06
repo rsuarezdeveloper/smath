@@ -15,20 +15,20 @@ class CalendarioVisitaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaProgramada')
-            ->add('fechaVisita')
-            ->add('ordenSugerido')
-            ->add('ordenFinal')
-            ->add('atendida')
-            ->add('reprogramada')
+            //->add('fechaProgramada')
+            ->add('fechaVisita', null, array('widget' => 'single_text', 'attr' => array('class' => 'datePicker')))
+            //->add('ordenSugerido')
+            //->add('ordenFinal')
+            //->add('atendida')
+            //->add('reprogramada')
             ->add('observaciones')
-            ->add('nombreQuienAtendio')
-            ->add('foto')
-            ->add('visitado')
+            //->add('nombreQuienAtendio')
+            //->add('foto')
+            //->add('visitado')
             ->add('empleado')
             ->add('puntoVenta')
             ->add('tipoVisita')
-            ->add('calendarioVisita')
+            //->add('calendarioVisita')
         ;
     }
 

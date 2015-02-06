@@ -22,13 +22,9 @@
                 <th>L&iacute;nea</th>
                 <td>{{form_widget(form.lineaId)}}</td>
             </tr>
-            <tr>
-                <th>Activo</th>
-                <td>{{form_widget(form.estado)}}</td>
-            </tr>
         </table>
+        <div style="display:none">{{form_widget(form.estado)}}</div>
         <div style="display:none">{{form_rest(form)}}</div>
-        <button type="button" id="button-delete" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete</button>
         <a href="{{ path('producto') }}" class="btn btn-info">Cancelar</a> 
         <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
     {{ form_end(form) }}

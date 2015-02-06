@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="page-header">
+    	<h1>PedidoProducto</h1>     <a href="{{ path('pedidoproducto_new') }}" class="btn btn-primary btn-mini"> <i class="icon-plus icon-white"></i>
+                Crear Nuevo
+            </a>
+        </div>
+    <table class="data-tbl-simple table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr>                
+
+            	<th>Id</th>                
+
+            	<th>Pedido</th>                
+
+            	<th>Producto</th>                
+
+            	<th>Cantidad</th>                
+
+            	<th>Valortotal</th>                
+
+            	<th>Observaciones</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('pedidoproducto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.pedido }}</td>
+                <td>{{ entity.producto }}</td>
+                <td>{{ entity.cantidad }}</td>
+                <td>{{ entity.valorTotal }}</td>
+                <td>{{ entity.observaciones }}</td>
+                <td style="text-align:center"><a href="{{ path('pedidoproducto_show', { 'id': entity.id }) }}" > <i class="icon-zoom-in"></i> </a><a href="{{ path('pedidoproducto_edit', { 'id': entity.id }) }}" ><i class="icon-edit"></i> </a>                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
+{% block javascripts -%}
+
+{% endblock %}

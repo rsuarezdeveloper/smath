@@ -30,21 +30,21 @@ class Departamento
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", length=255)
+     * @ORM\Column(name="codigo", type="string", length=255, nullable=true)
      */
     private $codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=true)
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono", type="string", length=255)
+     * @ORM\Column(name="telefono", type="string", length=255, nullable=true)
      */
     private $telefono;
 

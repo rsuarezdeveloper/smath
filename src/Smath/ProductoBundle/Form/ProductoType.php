@@ -18,7 +18,7 @@ class ProductoType extends AbstractType
             ->add('referencia')
             ->add('nombre')
             ->add('descripcion')
-            ->add('estado', 'checkbox')
+            ->add('estado', null, array('data' => true, 'required' => false))
             ->add('precioUnidadComercial')
             ->add('precioFormaFarmaceutica')
             ->add('linea', 'entity', array('class'=>'Smath\ProductoBundle\Entity\Linea'))

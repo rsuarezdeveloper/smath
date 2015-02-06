@@ -16,7 +16,7 @@ class TipoClienteType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('estado')
+            ->add('estado', null, array('data' => true, 'required' => false))
         ;
     }
 

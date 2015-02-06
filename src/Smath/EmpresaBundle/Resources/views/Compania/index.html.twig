@@ -1,55 +1,43 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+    <div class="page-header">
+    	<h1>Compania</h1>     <a href="{{ path('compania_new') }}" class="btn btn-primary btn-mini"> <i class="icon-plus icon-white"></i>
+                Crear Nuevo
+            </a>
+        </div>
+    <table class="data-tbl-simple table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr>                
+
+            	<th>Id</th>                
+
+            	<th>Codigo</th>                
+
+            	<th>Nombre</th>                
+
+            	<th>Telefono</th>                
+
+            	<th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('compania_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.codigo }}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.estado }}</td>
+                <td style="text-align:center"><a href="{{ path('compania_show', { 'id': entity.id }) }}" > <i class="icon-zoom-in"></i> </a><a href="{{ path('compania_edit', { 'id': entity.id }) }}" ><i class="icon-edit"></i> </a>                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     
-    <div class="row">
-        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-home"></i> Maestro de Compa&ntilde;ias</span></h1>
-        </div>
-    </div>
-    <!--
-    The ID "widget-grid" will start to initialize all widgets below
-    You do not need to use widgets if you dont want to. Simply remove
-    the <section></section> and you can use wells or panels instead
-    -->
-    <!-- widget grid -->
-    <section id="widget-grid" class="">
-        <div class="row">
-            <!-- NEW WIDGET START -->
-            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <table id="list"></table>
-                <div id="pager"></div>
-            </article>
-            <!-- WIDGET END -->
-        </div>
-    </section>
-    <!-- end widget grid -->
-<!-- END MAIN CONTENT -->
 {% endblock %}
-{% block javascripts%}
-<script>
-$(document).ready(function(){
+{% block javascripts -%}
 
-    var editUrl = '{{ path('compania_edit', {id:'__id'}) }}';
-
-    $('#list').jqGrid({
-        url:'{{path('compania_list')}}',
-		datatype: 'json',
-        colNames: ['Id', 'C&oacute;digo', 'Nombre', 'Tel&eacute;fono', 'Compa&ntilde;ia','Geo Ubicaci&oacute;n', 'Activo', ''],
-        colModel: [
-            {name:'id', index:'id', jsonmap:'id', key:true, width:20, hidden:true},
-            {name:'codigo', index:'codigo', jsonmap:'codigo', width:80, search:true, align:'left'},
-            {name:'nombre', index:'nombre', jsonmap:'nombre', width:120, align:'left'},
-            {name:'telefono', index:'telefono', jsonmap:'telefono', width:80, align:'left'},
-            {name:'companiaId', index:'companiaId', jsonmap:'companiaId', width:100 },
-            {name:'geoUbicacion', index:'geoUbicacion', jsonmap:'geoUbicacion', width:100, align:'left'},
-            {name:'estado', index:'estado', jsonmap:'estado',width:30, formatter:status, align:'center'},
-            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions:{url: editUrl}},
-        ],
-        loadComplete: jqGridLayout
-    });
-    $('#list').jqGrid('filterToolbar',{stringResult: true, searchOnEnter:false, defaultSearch:'cn'});
-});
-</script>
-{%endblock%}
-
+{% endblock %}

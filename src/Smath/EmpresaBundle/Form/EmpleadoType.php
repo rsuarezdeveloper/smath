@@ -18,10 +18,10 @@ class EmpleadoType extends AbstractType
             ->add('codigo')
             ->add('nombre')
             ->add('telefono')
-            ->add('estado')
             ->add('tipoEmpleado')
             ->add('departamento')
             ->add('geoUbicacion')
+            ->add('estado', null, array('data' => true, 'required' => false))
         ;
     }
 

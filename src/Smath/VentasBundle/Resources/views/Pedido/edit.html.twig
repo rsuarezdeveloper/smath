@@ -1,0 +1,158 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-edit"></i> Editar Pedido</h1>
+        </div>
+    </div>
+
+    
+    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg pull-right header-btn hidden-mobile">
+    <i class="fa fa-circle-arrow-up fa-lg"></i>Launch form modal</a>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+            <h4>Adicionar Producto</h4>
+          </div>
+          <div class="modal-body">... loading</div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 
+    <div class="modal fade" id="remoteModal" tabindex="-1" role="dialog" aria-labelledby="remoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"></div>
+
+        </div>
+    </div>
+    -->
+
+    {{ form_start(edit_form,{'attr':{'class':'form-inline'}}) }}
+
+
+    	<table class="table table-condensed">
+            <tr>
+                <th>Punto de Venta</th>
+                <td>{{form_widget(edit_form.puntoVenta)}}</td>
+            </tr>
+            <tr>
+                <th>Fecha Entrega</th>
+                <td>{{form_widget(edit_form.fechaEntrega)}}</td>
+            </tr>
+            <tr>
+                <th>Fecha Entrega</th>
+                <td>{{form_widget(edit_form.estado)}}</td>
+            </tr>
+        </table>
+
+       
+        <div style="">{{form_rest(edit_form)}}</div>
+        <a href="{{ path('pedido') }}" class="btn btn-info">Cancelar</a>
+        <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+
+    {{ form(edit_form) }}
+    <br />
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+        
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table id="list"></table>
+                <div id="pager"></div>
+            </article>
+            <!-- WIDGET END -->
+        </div>
+        
+    </section>
+
+{% endblock %}
+{% block javascripts%}
+<script>
+$(document).ready(function(){
+    var editUrl = '{{ path('pedidoproducto_edit', {id:'__id'}) }}';
+    var deleteUrl = '{{ path('pedidoproducto_delete', {id:'__id'}) }}';
+    $('#list').jqGrid({
+        url:'{{path('pedidoproducto_list')}}',
+        datatype: 'json',
+        colNames: ['Id', 'Referencia', 'Producto', 'Cantidad', 'Valor Unidad', 'Valor', ''],
+        colModel: [
+            {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
+            {name:'referencia', index:'referencia', jsonmap:'referencia', width:80, search:true},
+            {name:'nombre', index:'nombre', jsonmap:'nombre', width:120, editable:true},
+            {name:'cantidad', index:'cantidad', jsonmap:'cantidad', width:80, align:'right', editable:true},
+            {name:'valorUnidad', index:'valorUnidad', jsonmap:'valorUnidad', width:100, align: 'right', formatter:currency},
+            {name:'valorTotal', index:'valorTotal', jsonmap:'valorTotal', width:100, align:'right', formatter:currency},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:borrar, formatoptions: {url: deleteUrl}},
+        ],
+        //editurl: '{{ path('pedidoproducto_create', {id:'__id'}) }}',
+        editurl: '{{ path('pedidoproducto_create')}}',
+        loadComplete: jqGridLayout
+    });
+    
+    /*$('#list').jqGrid('navGrid','#pager', {edit:true, add:true, del:true, search:false, refresh:false},
+        {editData: {firstName: 'test'}} // edit
+        {editData: {firstName: 'test'}} // add
+        {editData: {firstName: 'test'}} // del
+    );*/
+
+    $('#list').jqGrid('navGrid','#pager',
+        {edit:false, add:false, del:true}, // general options
+        {}, // edit options
+        {
+            //jqModal:true,
+            //editData:{'_method':'POST'}
+        }, // add options
+        {reloadAfterSubmit:true, jqModal:true, closeOnEscape:true, savekey: [true,13]} // delete options
+  );
+    
+    $('<div id="add_button" class="btn btn-sm btn-primary"><span class="fa fa-plus"></span></div>').appendTo('#list_actions');
+    
+    $('#add_button').click(function(){ 
+
+        $('#modal').modal('show');
+        console.log('modal')
+
+        /*$('#list').jqGrid('editGridRow','new',{
+            height:280, 
+            reloadAfterSubmit:true,
+            closeAfterAdd:true,
+            jqModal:true,
+            editData:{
+                '_method':'POST', 
+                'pedidoId':'{{ pedidoId }}',
+                'smath_ventasbundle_pedido[_token]':$('#smath_ventasbundle_pedido__token').val() 
+            },
+            afterComplete:function (response, postdata, formid) {
+                if(response.responseText != '{"success":"true"}') {
+                    $(document.createElement('div'))
+                        .html('Notice: ' +response.responseText)
+                        .addClass('ui-jqdialog')
+                        .attr('title', 'Warning')
+                        .dialog()
+                }
+            }
+        }); */
+    });
+
+    $('#add_button').css({
+        'background-color':'#275b89',
+        'border-color':'#1f496d',
+        'color':'#fff',
+        'padding-right':'1em',
+        'padding-left':'1em'
+    });
+
+    $('#myModal').on('shown.bs.modal', function() {
+        $("#myModal .modal-body").load("{{path('pedidoproducto_new', {pedidoId: entity.id})}}");
+    });
+});
+</script>
+{%endblock%}

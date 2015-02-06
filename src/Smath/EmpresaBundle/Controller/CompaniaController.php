@@ -3,7 +3,6 @@
 namespace Smath\EmpresaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,37 +34,6 @@ class CompaniaController extends Controller
         return array(
             'entities' => $entities,
         );
-    }
-    /**
-     * Lists all Dos entities.
-     *
-     * @Route("/list", name="compania_list")
-     * @Method("GET")
-     */
-    public function listAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $qb = $em->getRepository('SmathEmpresaBundle:Compania')->createQueryBuilder('c')
-        	   ->add('select','c.id, c.codigo, c.nombre, c.telefono, c.estado, cf.nombre companiaId, gu.nombre geoUbicacion')
-        	   ->leftJoin('c.companiaId','cf')
-               ->leftJoin('c.geoUbicacion','gu')
-        	   ->orderBy('c.nombre','ASC');
-        $entities = $qb->getQuery()->getResult();
-		$fields = array(
-			'id' => 'c.id',
-			'codigo'  =>  'c.codigo',
-            'nombre' => 'c.nombre',
-            'telefono' => 'c.telefono',
-            'estado' => 'c.estado',
-            'companiaId' => 'cf.nombre',
-            'geoUbicacion' => 'gu.nombre'
-		);
-
-        $paginator = $this->get('knp_paginator');
-        $r = $this->get('smath_helpers')->jqGridJson($request, $em, $qb, $fields, $paginator);
-        
-        $response = new Response();    
-        return $response->setContent($r);
     }
     /**
      * Creates a new Compania entity.

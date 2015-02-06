@@ -22,6 +22,14 @@ function editar(cellvalue, options, rowObject) {
 	html = '<a href="' + url + '" role="button" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>';
 	return html;
 }
+function borrar(cellvalue, options, rowObject) {
+	// we are passing the url in formatoptions
+	// id = cellvalue
+	var url = options.colModel.formatoptions.url;
+	url = url.replace('__id', cellvalue);
+	html = '<a href="' + url + '" role="button" class="btn btn-xs btn-default"><i class="fa fa-trash-o"></i></a>';
+	return html;
+}
 function jqGridLayout () {
 
 	// jqGrid formatting
@@ -70,6 +78,8 @@ $(document).ready(function() {
 		$('#delete-form').submit();
 	});
 
+	$('.datePicker').datepicker({minDate: 1, dateFormat: 'yy-mm-dd'});
+	
 	// set jqGrid defaults
 	$.extend($.jgrid.defaults, {
 	    pager: '#pager',
@@ -82,4 +92,5 @@ $(document).ready(function() {
         autowidth: true,
         height: '100%',
 	});
+	$.extend(jQuery.jgrid.del, {mtype: "DELETE"});
 });

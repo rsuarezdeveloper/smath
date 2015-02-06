@@ -1,3 +1,8 @@
+ventas:
+    resource: "@SmathVentasBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 smath_calendario_visita:
     resource: "@SmathCalendarioVisitaBundle/Controller/"
     type:     annotation

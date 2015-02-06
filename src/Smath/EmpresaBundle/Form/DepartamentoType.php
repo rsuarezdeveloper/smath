@@ -15,11 +15,8 @@ class DepartamentoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigo')
             ->add('nombre')
-            ->add('telefono')
-            ->add('estado')
-            ->add('compania')
+            ->add('estado', null, array('data' => true, 'required' => false))
         ;
     }
 

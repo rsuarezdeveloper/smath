@@ -28,7 +28,7 @@
                 <td>{{form_widget(form.numeroDocumento)}}</td>
             </tr>
             <tr>
-                <th>Dirección</th>
+                <th>Direcci&oacute;n</th>
                 <td>{{form_widget(form.direccion)}}</td>
             </tr>
             <tr>
@@ -40,16 +40,11 @@
                 <td>{{form_widget(form.correoElectronico)}}</td>
             </tr>
             <tr>
-                <th>Estado</th>
-                <td>{{ form_widget(form.estado)}}</td>
-            </tr>
-            <tr>
                 <th>Tipo Cliente</th>
                 <td>{{form_widget(form.tipoCliente)}}</td>
             </tr>
         </table>
-
-        <div style="display:none">{{form_rest(form)}}</div>        
+        <div style="display:none">{{form_rest(form)}}</div>
         <a href="{{ path('cliente') }}" class="btn btn-info">Cancelar</a>
         <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
     {{ form_end(form) }}

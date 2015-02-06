@@ -1,0 +1,75 @@
+{{ form_start(form) }}
+    <div class="alert alert-success" role="alert" style="display: none">
+        El producto se adiociono al pedido! Puede adicionar otro producto u oprime "Cancelar"</div>
+    <div class="alert alert-danger" role="alert" style="display:none">Hubo un problema. Intenta de nuevo.</div>
+	<table class="table table-condensed">
+        <tr>
+            <th>Producto</th>
+            <td>{{ form_widget(form.producto) }}</td>
+        </tr>
+        <tr>
+            <th>Cantidad</th>
+            <td>{{ form_widget(form.cantidad) }}</td>
+        </tr>
+        <tr>
+            <th>Observaciones</th>
+            <td>{{ form_widget(form.observaciones) }}</td>
+        </tr>
+    </table>
+	<a href="#" id="close" class="btn btn-info">Cancelar</a>
+    <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Guardar</button>
+    <div style="display:none">
+    	{{ form_widget(form.pedido) }}
+    	{{ form_rest(form)}}
+    </div>
+	
+{{ form_end(form)}}
+{% block javascripts%}
+<script>
+$(function(){
+	$('#closeModal, #close').click(function(){
+        $('#myModal').modal('hide');
+        // reload the grid
+        $('#list').trigger('reloadGrid');
+	});
+
+    // submit modal form via ajax post
+    $('.modal-body form').submit(function(event) {
+        
+        event.preventDefault();
+
+        // post
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize()
+        }).done(function(msg) {
+            
+            if($.parseJSON(msg)){
+
+                // clear form data
+                //$('#smath_ventasbundle_pedidoproducto_producto').prop('selectedIndex', 0);
+                $('#smath_ventasbundle_pedidoproducto_producto').val('');
+                $('#smath_ventasbundle_pedidoproducto_cantidad').val('');
+                $('#smath_ventasbundle_pedidoproducto_observaciones').val('');
+
+                // reload grid to show modification
+                $('#list').trigger('reloadGrid');
+                // show notification 
+                $('.alert-danger').hide();
+                $('.alert-success').show(300).delay(3000).hide('slow');
+                
+            } else {
+                $('.alert-success').hide();
+                $('.alert-danger').show(300);
+            };
+
+            console.log(m.success)
+
+        });
+
+    });
+});
+</script>
+{% endblock %}
+

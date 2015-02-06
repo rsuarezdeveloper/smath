@@ -184,12 +184,15 @@ class CalendarioVisitaController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        $entity->setFechaProgramada(new \DateTime());
+
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('calendariovisita_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('calendariovisita', array('id' => $entity->getId())));
         }
 
         return array(
