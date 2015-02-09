@@ -20,7 +20,7 @@ class ClienteType extends AbstractType
             ->add('direccion')
             ->add('telefono')
             ->add('correoElectronico')
-            ->add('clienteId')
+            //->add('clienteId')
             ->add('tipoCliente')
             ->add('tipoDocumento')
             ->add('estado', null, array('required' => false))

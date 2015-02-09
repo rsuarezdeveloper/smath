@@ -37,6 +37,13 @@ class Pedido
 
     /**
      *
+     * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\Cliente",cascade={"persist"})
+     * @ORM\JoinColumn(name="cliente", referencedColumnName="id")
+     */
+    private $cliente;
+
+    /**
+     *
      * @ORM\ManyToOne(targetEntity="Smath\ClienteBundle\Entity\PuntoVenta",cascade={"persist"})
      * @ORM\JoinColumn(name="puntoVenta", referencedColumnName="id")
      */
@@ -117,6 +124,29 @@ class Pedido
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    /**
+     * Set cliente
+     *
+     * @param integer $cliente
+     * @return Pedido
+     */
+    public function setCliente($cliente)
+    {
+        $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    /**
+     * Get cliente
+     *
+     * @return integer 
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
     }
 
     /**

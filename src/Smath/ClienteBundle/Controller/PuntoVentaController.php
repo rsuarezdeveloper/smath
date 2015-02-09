@@ -276,4 +276,26 @@ class PuntoVentaController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Return json a PuntoVenta where client id = $id .
+     *
+     * @Route("/{id}/select", name="puntoventa_select")
+     * @Method("GET")
+     */
+    public function selectPuntoVenta($id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('SmathClienteBundle:PuntoVenta')->createQueryBuilder('pv')
+            ->add('select', 'pv.id, pv.nombre as option')
+            ->where('pv.cliente = ' . $id)
+            ->andWhere('pv.estado = 1');
+        $result = $qb->getQuery()->getResult();
+        $response = new Response();
+        $response->setContent(json_encode($result));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
 }

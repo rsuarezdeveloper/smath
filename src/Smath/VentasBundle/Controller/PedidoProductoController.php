@@ -39,16 +39,19 @@ class PedidoProductoController extends Controller
     /**
      * Lists all pedidoproducto entities.
      *
-     * @Route("/list", name="pedidoproducto_list")
+     * @Route("/list/{id}", name="pedidoproducto_list")
      * @Method("GET")
      */
-    public function listAction(Request $request) {
+    public function listAction(Request $request, $id) {
+        
+        //* @Route("/list", name="pedidoproducto_list");
 
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('SmathVentasBundle:PedidoProducto')->createQueryBuilder('pp')
             ->add('select','pp.id, prod.nombre, prod.referencia, pp.cantidad, pp.valorUnidad, pp.valorTotal')
             ->join('pp.pedido','p')
-            ->join('pp.producto','prod');
+            ->join('pp.producto','prod')
+            ->where('pp.pedido = ' . $id);
 
         $entities = $qb->getQuery()->getResult();
         $fields = array(

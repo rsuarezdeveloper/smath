@@ -45,16 +45,16 @@ class SmathHelpers extends Controller
 		$sord = $request->get('sord', 'ASC');
 
 		$qb->orderBy($fields[$sidx], $sord);
-	    $query = $qb->getQuery()->getResult();
+	    $result = $qb->getQuery()->getResult();
 		$pagination = $paginator->paginate(
-		    $query,
+		    $result,
 		    $request->get('page', 1) /*page number*/,
 		    $request->get('rows', 10) /*limit per page*/
 		);
         
         $pdata = $pagination->getPaginationData();
         $r = array();
-        $r['records'] = count($query);
+        $r['records'] = count($result);
         $r['page'] = $request->get('page', 1);
         $r['rows'] = array();
         $r['total'] = $pdata['pageCount'];

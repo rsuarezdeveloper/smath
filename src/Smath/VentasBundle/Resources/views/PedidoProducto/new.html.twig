@@ -28,7 +28,7 @@
 <script>
 $(function(){
 	$('#closeModal, #close').click(function(){
-        $('#myModal').modal('hide');
+        $('#newModal').modal('hide');
         // reload the grid
         $('#list').trigger('reloadGrid');
 	});
@@ -48,7 +48,6 @@ $(function(){
             if($.parseJSON(msg)){
 
                 // clear form data
-                //$('#smath_ventasbundle_pedidoproducto_producto').prop('selectedIndex', 0);
                 $('#smath_ventasbundle_pedidoproducto_producto').val('');
                 $('#smath_ventasbundle_pedidoproducto_cantidad').val('');
                 $('#smath_ventasbundle_pedidoproducto_observaciones').val('');
@@ -63,9 +62,6 @@ $(function(){
                 $('.alert-success').hide();
                 $('.alert-danger').show(300);
             };
-
-            console.log(m.success)
-
         });
 
     });

@@ -33,22 +33,28 @@ $(document).ready(function(){
     $('#list').jqGrid({
         url:'{{path('empleado_list')}}',
 		datatype: 'json',
-
         colNames: ['Id', 'C&oacute;digo', 'Nombre', 'Telefono', 'Departamento', 'Tipo Empleado', 'Geo Ubicaci&oacute;n', 'Activo', ''],
         colModel: [
-            { name:'id', index:'id', jsonmap:'id', key:true, hidden:true },
-            { name:'codigo', index:'codigo', jsonmap:'codigo', width:80, search:true },
-            { name:'nombre', index:'nombre', jsonmap:'nombre', width:120 },
-            { name:'telefono', index:'telefono', jsonmap:'telefono', width:80 },
-            { name:'departamento', index:'departamento', jsonmap:'departamento', width:100 },
-            { name:'tipoEmpleado', index:'tipoEmpleado', jsonmap:'tipoEmpleado', width:100 },
-            { name:'geoUbicacion', index:'geoUbicacion', jsonmap:'geoUbicacion', width:100 },
-            { name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center' },
-            { name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions: {url: editUrl}},
+            {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
+            {name:'codigo', index:'codigo', jsonmap:'codigo', width:80, search:true},
+            {name:'nombre', index:'nombre', jsonmap:'nombre', width:120},
+            {name:'telefono', index:'telefono', jsonmap:'telefono', width:80},
+            {name:'departamento', index:'departamento', jsonmap:'departamento', width:100},
+            {name:'tipoEmpleado', index:'tipoEmpleado', jsonmap:'tipoEmpleado', width:100},
+            {name:'geoUbicacion', index:'geoUbicacion', jsonmap:'geoUbicacion', width:100},
+            {name:'estado', index:'estado', jsonmap:'estado', width:30, formatter:status, align:'center'},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions:{url: editUrl}},
         ],
         loadComplete: jqGridLayout
     });
     $('#list').jqGrid('filterToolbar',{stringResult:true, searchOnEnter:false, defaultSearch:'cn'});
+
+    // add button
+    $('<div id="add_button" class="btn btn-sm btn-primary"><span class="fa fa-plus"></span></div>').appendTo('#list_actions');
+
+    $('#add_button').on('click', function(){
+        location.href = '{{ path('empleado_new') }}';
+    });    
 });
 </script>
 {%endblock%}

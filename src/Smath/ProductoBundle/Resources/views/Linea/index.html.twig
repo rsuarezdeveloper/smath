@@ -41,6 +41,13 @@ $(document).ready(function(){
     });
 
     $('#list').jqGrid('filterToolbar',{stringResult: true, searchOnEnter: false, defaultSearch: 'cn'});
+    
+    // add button
+    $('<div id="add_button" class="btn btn-sm btn-primary"><span class="fa fa-plus"></span></div>').appendTo('#list_actions');
+
+    $('#add_button').on('click', function(){
+        location.href = '{{ path('linea_new') }}';
+    });
 });
 </script>
 {%endblock%}

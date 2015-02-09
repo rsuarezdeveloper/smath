@@ -11,6 +11,10 @@
     {{ form_start(form,{'attr':{'class':'form-inline'}}) }}
     	<table class="table table-condensed">
             <tr>
+                <th>Cliente</th>
+                <td>{{form_widget(form.cliente)}}</td>
+            </tr>
+            <tr>
                 <th>Punto de Venta</th>
                 <td>{{form_widget(form.puntoVenta)}}</td>
             </tr>
@@ -28,3 +32,24 @@
     {{ form(form) }}
 
 {% endblock %}
+{% block javascripts%}
+<script>
+$(document).ready(function(){
+    $('#smath_ventasbundle_pedido_cliente').on('change', function(){
+        var target = $('#smath_ventasbundle_pedido_puntoVenta');
+        $.ajax({
+            type: 'GET',
+            url: '{{ path('puntoventa_select', {id: '__id'}) }}'.replace('__id', $(this).val()),
+            dataType: 'json',
+            success: function( json ) {
+                target.find('option').remove();
+                target.append($('<option>', {value:'', text:'-- Seleccione --'}));
+                $.each(json, function(i, v) {
+                    target.append($('<option>', {value:i, text:v.option}));
+                });
+            }
+        });
+    });
+});
+</script>
+{%endblock%}

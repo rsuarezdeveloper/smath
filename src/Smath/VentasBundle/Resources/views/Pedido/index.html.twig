@@ -29,11 +29,10 @@
 {% block javascripts%}
 <script>
 $(document).ready(function(){
-    var editUrl = '{{ path('pedido_edit', {id:'__id'}) }}';
-    $('#list').jqGrid({
-        url:'{{path('pedido_list')}}',
-        datatype: 'json',
 
+    $('#list').jqGrid({
+        url:'{{ path('pedido_list', {id:'__id'}) }}',
+        datatype: 'json',
         colNames: ['Id', 'Cliente', 'Pundo de Venta', 'Empleado', 'Creado', 'Entrega', 'Valor', ''],
         colModel: [
             {name:'id', index:'id', jsonmap:'id', key:true, hidden:true},
@@ -43,11 +42,18 @@ $(document).ready(function(){
             {name:'fechaCreacion', index:'fechaCreacion', jsonmap:'fechaCreacion', width:80, formatter:dateF, search:true},
             {name:'fechaEntrega', index:'fechaEntrega', jsonmap:'fechaEntrega', width:80, formatter:dateF, search:true},
             {name:'valor', index:'valor', jsonmap:'valor', width:100, align:'right', formatter: currency},
-            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions:{url: editUrl}},
+            {name:'actions', index:'id', jsonmap:'id', width:30, align:'center', search:false, sortable:false, formatter:editar, formatoptions:{url: '{{ path('pedido_edit', {id:'__id'}) }}' }},
         ],
         loadComplete: jqGridLayout
     });
     $('#list').jqGrid('filterToolbar',{stringResult:true, searchOnEnter:false, defaultSearch:'cn'});
+
+    // add new button
+    $('<div id="new_button" class="btn btn-sm btn-primary"><span class="fa fa-plus"></span></div>').appendTo('#list_actions');
+    $('#new_button').click(function() {
+        location.href = '{{ path('pedido_new') }}';
+    });
+
 });
 </script>
 {%endblock%}

@@ -26,3 +26,11 @@
 .table > thead > tr > th {
     border-top: 0 none !important;
 }
+
+#add_button, #new_button {
+    background-color: #275b89;
+    border-color: #1f496d;
+    color: #fff;
+    padding-right: 1em;
+    padding-left: 1em;
+}
